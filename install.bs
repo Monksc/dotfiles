@@ -1,0 +1,16 @@
+ln -s $(pwd)/.vimrc $HOME/.vimrc
+ln -s $(pwd)/.vim $HOME/.vim
+ln -s $(pwd)/.bash_profile $HOME/.bash_profile
+ln -s $(pwd)/.zshrc $HOME/.zshrc
+ln -s $(pwd)/.zprofile $HOME/.zprofile
+ln -s $(pwd)/.tmux.conf $HOME/.tmux.conf
+ln -s $(pwd)/.tmux $HOME/.tmux
+ln -s $(pwd)/vim-ripgrep.vim $(pwd)/.vim/plugged/vim-ripgrep/vim-ripgrep.vim
+ln -s $(pwd)/.yabairc $HOME/.yabairc
+ln -s $(pwd)/.skhdrc $HOME/.skhdrc
+mkdir -p $HOME/.config/alacritty
+ln -s $(pwd)/alacritty.yml $HOME/.config/alacritty/alacritty.yml
+mkdir -p $HOME/.config/spacebar
+ln -s $(pwd)/spacebarrc $HOME/.config/spacebar/spacebarrc
+
+

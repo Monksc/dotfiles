@@ -40,6 +40,8 @@ Plug 'dense-analysis/ale'
 
 Plug 'airblade/vim-gitgutter'
 
+Plug 'jremmen/vim-ripgrep'
+
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 
@@ -67,8 +69,6 @@ Plug 'lervag/vimtex'
 
 Plug 'scrooloose/syntastic'
 
-Plug 'jremmen/vim-ripgrep'
-"
 "Plug 'dr-kino/cscope-maps'
 
 Plug 'morhetz/gruvbox'

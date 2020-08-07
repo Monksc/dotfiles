@@ -1,0 +1,13 @@
+highlight FunnyNumbers ctermfg=13 ctermbg=232 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE
+"highlight String ctermfg=220 ctermbg=99 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE
+highlight String ctermfg=220 ctermbg=0 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE
+"highlight identifier ctermfg=red ctermbg=99 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE
+highlight Identifier ctermfg=255 ctermbg=0 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE
+highlight Number ctermfg=blue ctermbg=0 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE
+highlight Import ctermfg=2 ctermbg=0 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE
+highlight CreateOp ctermfg=108 ctermbg=0 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE
+highlight Func ctermfg=9 ctermbg=0 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE
+highlight Foo ctermfg=9 ctermbg=118 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE
+highlight Type ctermfg=214 ctermbg=0 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE
+highlight Operator ctermfg=255 ctermbg=201 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE
+"highlight Function ctermfg=255 ctermbg=201 cterm=BOLD guifg=#2b2b2b guibg=#a9b7c6 gui=NONE

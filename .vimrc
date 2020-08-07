@@ -13,6 +13,10 @@ set backspace=indent,eol,start
 
 set autowrite
 
+" For Latex
+let g:tex_flavor = 'latex'
+
+
 "colo darcula
 
 " vim ctrl w + hjkl ctrl is removed

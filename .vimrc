@@ -26,6 +26,11 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Vim Grep
+let g:rg_command = 'rg --vimgrep -S --pcre2'
+let g:rg_highlight = 'true'
+"let g:rg_window_location = 'botright'
+
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -222,10 +227,6 @@ autocmd BufRead,BufNewFile *.wf colo wastonflowerscolo
 "nnoremap <C-o> :call UpdateWFColors()<cr>
 
 
-" Vim Grep
-let g:rg_command = 'rg --vimgrep -S'
-let g:rg_highlight = 'true'
-"let g:rg_window_location = 'botright'
 
 
 

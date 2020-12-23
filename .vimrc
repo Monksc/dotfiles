@@ -17,6 +17,7 @@ set autowrite
 let g:tex_flavor = 'latex'
 
 
+
 "colo darcula
 
 " vim ctrl w + hjkl ctrl is removed
@@ -41,22 +42,24 @@ let g:UltiSnipsEditSplit="vertical"
 
 
 call plug#begin()
+Plug 'vim/killersheep'
+
 Plug 'dense-analysis/ale'
 
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 
 Plug 'jremmen/vim-ripgrep'
 
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'thosakwe/vim-flutter'
+"jPlug 'dart-lang/dart-vim-plugin'
+"jPlug 'thosakwe/vim-flutter'
 "Plug 'iamcco/coc-flutter'
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'SirVer/ultisnips'| Plug 'honza/vim-snippets'
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
+"Plug 'SirVer/ultisnips'| Plug 'honza/vim-snippets'
 
 " Go
 "Plug 'fatih/vim-go'
@@ -64,29 +67,29 @@ Plug 'SirVer/ultisnips'| Plug 'honza/vim-snippets'
 
 Plug 'ctrlpvim/ctrlp.vim'
 
-Plug 'vim-scripts/c.vim'
+"Plug 'vim-scripts/c.vim'
 
-Plug 'lervag/vimtex'
+"Plug 'lervag/vimtex'
 "
 "Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 "
 "Plug 'preservim/nerdtree'
 
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 
 "Plug 'dr-kino/cscope-maps'
 
 Plug 'morhetz/gruvbox'
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
 
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'markwoodhall/vim-nuget'
+"Plug 'OmniSharp/omnisharp-vim'
+"Plug 'markwoodhall/vim-nuget'
 
 Plug 'kaicataldo/material.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'mattn/webapi-vim'
-Plug 'junegunn/fzf.vim'
-Plug 'Shougo/deoplete.nvim'
+"Plug 'vim-airline/vim-airline'
+"Plug 'mattn/webapi-vim'
+"Plug 'junegunn/fzf.vim'
+"Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
 " To install linters
@@ -114,7 +117,7 @@ nnoremap <leader>fD :FlutterVisualDebug<cr>
 "nmap <silent> gr <Plug>(coc-references)
 
 " For a ALE mood
-inoremap <silent> <C-n> <C-\><C-o>:ALEComplete<CR>
+"inoremap <silent> <C-n> <C-\><C-o>:ALEComplete<CR>
 nnoremap <silent> ff :ALEGoToDefinition<CR>
 nnoremap <silent> fs :ALEFindReferences<CR>
 
@@ -150,29 +153,13 @@ set statusline+=\ %l:%c
 "nnoremap <leader>d "_D
 "xnoremap <leader>p "_DP
 
-" Mips Stuff
+
+" Templates
+
 function! NewFile()
     silent! 0r $HOME/.vim/templates/skeleton.%:e
     s/<FILENAME>/\=expand("%:t:r")
 endfunction
-
-function! MipsFunction()
-    r $HOME/.vim/templates/mips/functions.s
-endfunction
-
-function! MipsFor(fname, id, ivar, length)
-    r $HOME/.vim/templates/mips/forloop.s
-    %s/<FNAME>/\=a:fname
-    %s/<ID>/\=a:id
-    %s/<COUNTER_VAR>/\=a:ivar
-    %s/<COUNTER_VAR>/\=a:ivar
-    %s/<LENGTH>/\=a:length
-endfunction
-
-function! MipsIfElse()
-    r $HOME/.vim/templates/mips/ifelse.s
-endfunction
-
 
 if has("autocmd")
   augroup templates
@@ -181,9 +168,29 @@ if has("autocmd")
   augroup END
 endif
 
-nnoremap <C-m>l :call MipsFor("", "1", "$s0", "10")
-nnoremap <C-m>i :call MipsIfElse()<CR>
-nnoremap <C-m>f :call MipsFunction()<CR>
+" Mips Stuff
+"
+"function! MipsFunction()
+"    r $HOME/.vim/templates/mips/functions.s
+"endfunction
+"
+"function! MipsFor(fname, id, ivar, length)
+"    r $HOME/.vim/templates/mips/forloop.s
+"    %s/<FNAME>/\=a:fname
+"    %s/<ID>/\=a:id
+"    %s/<COUNTER_VAR>/\=a:ivar
+"    %s/<COUNTER_VAR>/\=a:ivar
+"    %s/<LENGTH>/\=a:length
+"endfunction
+"
+"function! MipsIfElse()
+"    r $HOME/.vim/templates/mips/ifelse.s
+"endfunction
+
+
+"nnoremap <C-m>l :call MipsFor("", "1", "$s0", "10")
+"nnoremap <C-m>i :call MipsIfElse()<CR>
+"nnoremap <C-m>f :call MipsFunction()<CR>
 
 " Latex Stuff
 
@@ -193,12 +200,14 @@ endfunction
 
 function! LatexSave()
     "silent! execute "!pdflatex % >/dev/null 2>&1" | redraw!
-    silent execute "!camlatex %" | call RedrawOnEnter()
+    "silent execute "!camlatex %" | call RedrawOnEnter()
+    !pdflatex %
     silent !open ./*.pdf
-    silent !open -a Terminal
+    silent !open -a Alacritty
     "call RedrawOnEnter()
 endfunction
 autocmd BufWritePost *.tex call LatexSave()
+
 
 inoremap {<CR> {<CR>}<Esc>O
 "inoremap ( ()<Esc>ha
@@ -213,17 +222,17 @@ inoremap {<CR> {<CR>}<Esc>O
 "nnoremap <C-w>M <C-w>=
 
 " Pathogen
-execute pathogen#infect()
+"execute pathogen#infect()
 
 
 " My Compiler
 "autocmd BufNewFile,BufRead *.wf set syntax=go
-function! UpdateWFColors()
-    silent set filetype=watsonflowers
-    silent color wastonflowerscolo
-endfunction
-autocmd BufRead,BufNewFile *.wf set filetype=watsonflowers
-autocmd BufRead,BufNewFile *.wf colo wastonflowerscolo
+"function! UpdateWFColors()
+"    silent set filetype=watsonflowers
+"    silent color wastonflowerscolo
+"endfunction
+"autocmd BufRead,BufNewFile *.wf set filetype=watsonflowers
+"autocmd BufRead,BufNewFile *.wf colo wastonflowerscolo
 "nnoremap <C-o> :call UpdateWFColors()<cr>
 
 
@@ -238,6 +247,12 @@ nnoremap <C-f>s :RgStruct<CR>
 nnoremap <C-f>S :RgString<CR>
 nnoremap <C-f>t :!clear && tree -I node_modules \| less<CR>
 "nnoremap <C-r> :source ~/.vimrc<CR>
+
+
+" Switching between tabs
+nnoremap <C-w>n :tabnext<CR>
+nnoremap <C-w>p :tabprev<CR>
+nnoremap <C-w>c :tabnew .<CR>
 
 
 " Gruvbox stuff
@@ -271,6 +286,6 @@ endif
 
 colo gruvbox
 
-let g:ale_linters = {
-\ 'cs': ['OmniSharp']
-\}
+"let g:ale_linters = {
+"\ 'cs': ['OmniSharp']
+"\}

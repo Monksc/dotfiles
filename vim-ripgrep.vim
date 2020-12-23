@@ -4,6 +4,9 @@ endif
 
 let g:loaded_rg = 1
 
+let g:identifier    = '[A-Za-z0-9]+'
+let g:notidentifier = '[^A-Za-z0-9]+'
+
 if !exists('g:rg_binary')
   let g:rg_binary = 'rg'
 endif
@@ -30,6 +33,18 @@ endfun
 
 fun! s:Rg(txt)
   call s:RgGrepContext(function('s:RgSearch'), s:RgSearchTerm(a:txt))
+endfun
+
+fun! s:RgFunction(txt)
+  call s:RgGrepContext(function('s:RgSearch'), '"(fn) *' . s:RgSearchTerm(a:txt) . ' *\(.*\)"')
+endfun
+
+fun! s:RgStruct(txt)
+  call s:RgGrepContext(function('s:RgSearch'), '"(struct\|(impl +' . g:identifier . ' +for))' . g:notidentifier . s:RgSearchTerm(a:txt) . '"')
+endfun
+
+fun! s:RgIdentifier(txt)
+  call s:RgGrepContext(function('s:RgSearch'), '"(^\|' . g:notidentifier . ')' . s:RgSearchTerm(a:txt) . '($\|' . g:notidentifier . ')"')
 endfun
 
 fun! s:RgGetVisualSelection()
@@ -146,4 +161,8 @@ fun! s:RgShowRoot()
 endfun
 
 command! -nargs=* -complete=file Rg :call s:Rg(<q-args>)
+command! -nargs=* -complete=file RgIdentifier :call s:RgIdentifier(<q-args>)
+command! -nargs=* -complete=file RgFunction :call s:RgFunction(<q-args>)
+command! -nargs=* -complete=file RgStruct :call s:RgStruct(<q-args>)
 command! -complete=file RgRoot :call s:RgShowRoot()
+

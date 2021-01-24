@@ -85,4 +85,8 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 export RPI="/Users/cameronmonks/RPI"
 export PROJ="/Users/cameronmonks/Projects"
 
-
+export PYENV_VERSION="3.7.9"
+# Changing python versions
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi

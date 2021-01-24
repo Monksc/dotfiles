@@ -16,8 +16,6 @@ set autowrite
 " For Latex
 let g:tex_flavor = 'latex'
 
-
-
 "colo darcula
 
 " vim ctrl w + hjkl ctrl is removed
@@ -46,6 +44,9 @@ Plug 'vim/killersheep'
 
 Plug 'dense-analysis/ale'
 
+" React
+Plug 'eslint/eslint'
+
 "Plug 'airblade/vim-gitgutter'
 
 Plug 'jremmen/vim-ripgrep'
@@ -57,6 +58,7 @@ Plug 'racer-rust/vim-racer'
 "jPlug 'thosakwe/vim-flutter'
 "Plug 'iamcco/coc-flutter'
 
+" Snippits
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'junegunn/fzf.vim'
 "Plug 'SirVer/ultisnips'| Plug 'honza/vim-snippets'
@@ -157,13 +159,19 @@ set statusline+=\ %l:%c
 " Templates
 
 function! NewFile()
+    let dir = split(finddir('.git/..', expand('%:p').';'), '/\|\')[-1]
     silent! 0r $HOME/.vim/templates/skeleton.%:e
-    s/<FILENAME>/\=expand("%:t:r")
+    %s/<FILENAME>/\=expand("%:t")
+    %s/<PROJECT>/\=dir
+    %s/<YEAR>/\=strftime("%Y")
+    %s/<DATE>/\=strftime("%x")
 endfunction
 
 if has("autocmd")
   augroup templates
     autocmd BufNewFile *.s call NewFile()
+    autocmd BufNewFile *.c call NewFile()
+    autocmd BufNewFile *.h call NewFile()
     autocmd BufNewFile *.tex call NewFile()
   augroup END
 endif
@@ -289,3 +297,8 @@ colo gruvbox
 "let g:ale_linters = {
 "\ 'cs': ['OmniSharp']
 "\}
+
+let g:ale_fixers = {
+  \ 'javascript': ['eslint'],
+\}
+

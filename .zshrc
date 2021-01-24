@@ -28,3 +28,8 @@ export PATH=$PATH:$HOME/.bin
 # Add $HOME/.gem to Path
 export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin/
 
+# Changing python versions
+eval "$(pyenv init -)"
+export PYENV_VERSION="3.7.9"
+
+

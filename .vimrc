@@ -54,9 +54,8 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 
-"jPlug 'dart-lang/dart-vim-plugin'
-"jPlug 'thosakwe/vim-flutter'
-"Plug 'iamcco/coc-flutter'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 
 " Snippits
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -120,6 +119,7 @@ nnoremap <leader>fD :FlutterVisualDebug<cr>
 
 " For a ALE mood
 "inoremap <silent> <C-n> <C-\><C-o>:ALEComplete<CR>
+inoremap <silent> <C-k> <C-\><C-o>:ALEComplete<CR>
 nnoremap <silent> ff :ALEGoToDefinition<CR>
 nnoremap <silent> fs :ALEFindReferences<CR>
 
@@ -133,7 +133,7 @@ augroup Racer
     autocmd FileType rust nmap <buffer> <leader>gD <Plug>(rust-doc-tab)
 augroup END
 
-autocmd BufRead,BufNewFile,BufEnter *.dart UltiSnipsAddFiletypes dart-flutter
+"autocmd BufRead,BufNewFile,BufEnter *.dart UltiSnipsAddFiletypes dart-flutter
 
 set number relativenumber
 set ruler
@@ -300,5 +300,16 @@ colo gruvbox
 
 let g:ale_fixers = {
   \ 'javascript': ['eslint'],
+  \ 'c': ['gcc'],
+  \ 'c++': ['gcc'],
+  \ '.h': ['gcc']
 \}
+
+let g:ale_cpp_gcc_options='-std=c++98 -Wall -Wextra'
+let g:ale_c_gcc_options='-std=c99 -Wall -Wextra'
+
+
+command! -nargs=* -complete=file Hexview  :%!xxd
+command! -nargs=* -complete=file Hexviewr :%!xxd -r
+
 

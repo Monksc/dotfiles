@@ -90,3 +90,19 @@ export PYENV_VERSION="3.7.9"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+EDITOR="vim"
+export EDITOR
+
+# silence zsh warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Some more alias to avoid making mistakes:
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+export NODE_ENV=development
+
+archey

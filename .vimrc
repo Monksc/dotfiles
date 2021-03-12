@@ -86,11 +86,13 @@ Plug 'morhetz/gruvbox'
 "Plug 'OmniSharp/omnisharp-vim'
 "Plug 'markwoodhall/vim-nuget'
 
+" Looks at bottom of page
 Plug 'kaicataldo/material.vim'
-"Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
+
 "Plug 'mattn/webapi-vim'
-"Plug 'junegunn/fzf.vim'
-"Plug 'Shougo/deoplete.nvim'
+Plug 'junegunn/fzf.vim'
+Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
 " To install linters
@@ -264,10 +266,10 @@ nnoremap <C-w>c :tabnew .<CR>
 
 
 " Gruvbox stuff
-let g:gruvbox_contrast_dark='hard'
-"let g:gruvbox_contrast_light='soft'
+" let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_light='soft'
 set background=dark
-"let g:gruvbox_termcolors=16
+let g:gruvbox_termcolors=16
 colo gruvbox
 "hi Normal ctermbg=233 guibg=#000000
 "hi LineNr ctermbg=233 guibg=#000000

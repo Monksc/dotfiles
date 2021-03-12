@@ -312,4 +312,5 @@ let g:ale_c_gcc_options='-std=c99 -Wall -Wextra'
 command! -nargs=* -complete=file Hexview  :%!xxd
 command! -nargs=* -complete=file Hexviewr :%!xxd -r
 
+" set ft=tmux tw=0 nowrap
 

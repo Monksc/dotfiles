@@ -8,13 +8,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added CHANGELOG file ([#9](https://github.com/egel/tmux-gruvbox/issues/9))
 - Added theme installable through TPM ([#4](https://github.com/egel/tmux-gruvbox/issues/4))
+- Added light-medium theme ([#3](https://github.com/egel/tmux-gruvbox/issues/3)]
 
 ### Changed
 ### Deprecated
 ### Removed
 ### Fixed
 - Fixed spelling in the installation script ([#2](https://github.com/egel/tmux-gruvbox/issues/2))
-- Fixed visual bugs in gruvbox dark theme after release ofi new tmux v2.9 ([#6](https://github.com/egel/tmux-gruvbox/issues/6))
+- Fixed visual bugs in gruvbox dark theme after release of new tmux v2.9 ([#6](https://github.com/egel/tmux-gruvbox/issues/6))
+- Fixed installation script by removing the no longer used `attr` from dark and light themes ([#15](https://github.com/egel/tmux-gruvbox/issues/15))
 
 ### Security
 

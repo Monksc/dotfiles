@@ -6,6 +6,9 @@ uninstall:
     rm $(HOME)/.zprofile
     rm $(HOME)/.tmux.conf
     rm $(HOME)/.tmux
+    rm $(HOME)/.yabairc
+    rm $(HOME)/.skhdrc
+    rm $(HOME)/.config/alacritty/alacritty.yml
 
 install:
     ln -s $(CURDIR)/.vimrc $(HOME)/.vimrc
@@ -16,4 +19,11 @@ install:
     ln -s $(CURDIR)/.tmux.conf $(HOME)/.tmux.conf
     ln -s $(CURDIR)/.tmux $(HOME)/.tmux
     ln -s $(CURDIR)/vim-ripgrep.vim $(pwd)/.vim/plugged/vim-ripgrep/vim-ripgrep.vim
+	ln -s $(CURDIR)/.yabairc $(HOME)/.yabairc
+	ln -s $(CURDIR)/.skhdrc $(HOME)/.skhdrc
+	mkdir -p $(HOME)/.config/alacritty
+	ln -s $(CURDIR)/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
+	mkdir -p $(HOME)/.config/spacebar
+	ln -s $(CURDIR)/spacebarrc $(HOME)/.config/spacebar/spacebarrc
+
 

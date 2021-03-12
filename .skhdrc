@@ -1,0 +1,90 @@
+# Make modes
+:: navigating : spacebar -m config background_color   0xffff20ff
+:: application : spacebar -m config background_color   0xffaba021
+:: coding : spacebar -m config background_color   0xaf0f2021
+
+# Switching between modes
+ctrl - 0x2A ; navigating
+navigating < a ; application
+navigating < i ; coding
+application , coding < ctrl - 0x2A ; navigating
+
+# Open Terminal
+navigating < ctrl - return : open -n /Applications/Alacritty.app/ 
+
+# Navigation
+navigating < h : yabai -m window --focus west || yabai -m display --focus west || yabai -m space --focus prev
+navigating < j : yabai -m window --focus south || yabai -m display --focus south
+navigating < k : yabai -m window --focus north || yabai -m display --focus north
+navigating < l : yabai -m window --focus east || yabai -m display --focus east || yabai -m space --focus next
+navigating < cmd - 1 : yabai -m space --focus 1
+navigating < cmd - 2 : yabai -m space --focus 2
+navigating < cmd - 3 : yabai -m space --focus 3
+navigating < cmd - 4 : yabai -m space --focus 4
+navigating < cmd - c : yabai -m space --create
+navigating < cmd - d : yabai -m space --destroy
+navigating < cmd - n : yabai -m space --focus next
+navigating < cmd - p : yabai -m space --focus prev
+
+
+# Moving Windows
+navigating < ctrl - h : yabai -m window --warp west || yabai -m window --toggle split
+navigating < ctrl - j : yabai -m window --warp south || yabai -m window --toggle split
+navigating < ctrl - k : yabai -m window --warp north || yabai -m window --toggle split
+navigating < ctrl - l : yabai -m window --warp east || yabai -m window --toggle split
+
+# Resize Windows
+navigating < shift - h : \
+    yabai -m window --resize left:-20:0; \
+    yabai -m window --resize right:-20:0
+navigating < shift - j : \
+    yabai -m window --resize bottom:0:20; \
+    yabai -m window --resize top:0:20
+navigating < shift - k : \
+    yabai -m window --resize top:0:-20; \
+    yabai -m window --resize bottom:0:-20
+navigating < shift - l : \
+    yabai -m window --resize right:20:0; \
+    yabai -m window --resize left:20:0 
+
+# Equalize Windows =
+navigating < ctrl - 0x18 : yabai -m space --balance
+
+# Minimiz Window
+navigating < ctrl - m : yabai -m window --minimize
+
+# Zoom window
+navigating < ctrl - z : yabai -m window --toggle zoom-fullscreen
+
+# Flip View [
+navigating < ctrl - 0x21 : yabai -m window --toggle split
+
+# Quit
+navigating < ctrl - q : yabai -m window --close
+
+
+# Move focus container to workspace
+# shift + cmd - $ : yabai -m window --space last && yabai -m space --focus last
+navigating < shift + cmd - p : yabai -m window --space prev && yabai -m space --focus prev
+navigating < shift + cmd - n : yabai -m window --space next && yabai -m space --focus next
+navigating < shift + cmd - 1 : yabai -m window --space 1 && yabai -m space --focus 1
+navigating < shift + cmd - 2 : yabai -m window --space 2 && yabai -m space --focus 2
+navigating < shift + cmd - 3 : yabai -m window --space 3 && yabai -m space --focus 3
+navigating < shift + cmd - 4 : yabai -m window --space 4 && yabai -m space --focus 4
+navigating < shift + cmd - 5 : yabai -m window --space 5 && yabai -m space --focus 5
+navigating < shift + cmd - 6 : yabai -m window --space 6 && yabai -m space --focus 6
+
+# Stop Managing window
+navigating < ctrl - s : \
+    yabai -m rule --remove \
+    $(yabai -m rule --list | jq '.[] | select(.app=="'$(yabai -m query --windows --window | jq -r .app)'")' | jq '.index'); \
+    yabai -m rule --add \
+    app="$(yabai -m query --windows --window | jq -r .app)" manage=off
+
+navigating < ctrl + shift - s : \
+    yabai -m rule --remove \
+    $(yabai -m rule --list | jq '.[] | select(.app=="'$(yabai -m query --windows --window | jq -r .app)'")' | jq '.index'); \
+    yabai -m rule --add \
+    app="$(yabai -m query --windows --window | jq -r .app)" manage=on
+
+

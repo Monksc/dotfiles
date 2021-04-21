@@ -13,7 +13,8 @@
 #export GOROOT="/Users/cameronmonks/Projects/go"
 #export GOPATH="/Users/cameronmonks/Projects/go"
 #export PATH="$PATH:$GOPATH/bin"
-#export PATH="$PATH:/Users/cameronmonks/.bin"
+export PATH="$PATH:/Users/cameronmonks/.bin"
+export PATH="$PATH:/Users/cameronmonks/Projects/bin"
 #export PATH="$PATH:./"
 
 
@@ -72,7 +73,7 @@ PROMPT_COMMAND=get_prompt
 #export PATH=$ANDROID_SDK_ROOT:$PATH
 #export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
-#export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 #export LDFLAGS="-L/usr/local/opt/libffi/lib"
@@ -105,4 +106,14 @@ alias mv='mv -i'
 
 export NODE_ENV=development
 
+# Bash Auto Complete
+#[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+# heroku autocomplete setup
+HEROKU_AC_BASH_SETUP_PATH=/Users/cameronmonks/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
+
 archey
+# archey | slowcat 0.1 | lolcat
+# banner "Hello World" | slowcat 0.01 | lolcat
+

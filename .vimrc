@@ -38,6 +38,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 call plug#begin()
 Plug 'vim/killersheep'
@@ -58,7 +59,7 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
 
 " Snippits
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'junegunn/fzf.vim'
 "Plug 'SirVer/ultisnips'| Plug 'honza/vim-snippets'
 
@@ -91,7 +92,7 @@ Plug 'kaicataldo/material.vim'
 Plug 'vim-airline/vim-airline'
 
 "Plug 'mattn/webapi-vim'
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf.vim'
 Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
@@ -219,7 +220,26 @@ endfunction
 autocmd BufWritePost *.tex call LatexSave()
 
 
+"un! Getchar()
+" return strcharpart(strpart(getline('.'), col('.') - 1), 0, 1)
+"ndfun
+"
+"un! TypedQuote()
+"   let s:currentchar = Getchar()
+"   if s:currentchar == '"'
+"       execute "insert <Right>"
+"   else
+"       execute "insert hello\r"
+"   endif
+"ndfun
+
+
 inoremap {<CR> {<CR>}<Esc>O
+"inoremap " ""<Left>
+"inoremap " <esc>:call TypedQuote()<CR>i"<Left>"
+
+
+
 "inoremap ( ()<Esc>ha
 
 
@@ -260,10 +280,24 @@ nnoremap <C-f>t :!clear && tree -I node_modules \| less<CR>
 
 
 " Switching between tabs
+nnoremap <C-w>s <C-w>s
+nnoremap <C-w>v <C-w>v
+nnoremap <C-w>h <C-w>h
+nnoremap <C-w>j <C-w>j
+nnoremap <C-w>k <C-w>k
+nnoremap <C-w>l <C-w>l
+nnoremap <C-w>H <C-w>H
+nnoremap <C-w>J <C-w>J
+nnoremap <C-w>K <C-w>K
+nnoremap <C-w>L <C-w>L
+nnoremap <C-w> :echo "I PREVENTED IT FROM DOING SOMETHING STUPID"<CR>
 nnoremap <C-w>n :tabnext<CR>
 nnoremap <C-w>p :tabprev<CR>
 nnoremap <C-w>c :tabnew .<CR>
 
+
+" ShortCuts
+ab #i #include
 
 " Gruvbox stuff
 " let g:gruvbox_contrast_dark='hard'
@@ -315,4 +349,9 @@ command! -nargs=* -complete=file Hexview  :%!xxd
 command! -nargs=* -complete=file Hexviewr :%!xxd -r
 
 " set ft=tmux tw=0 nowrap
+
+" Lighten the color of the current line and change line number to gold
+" so you can easily see what line you are editing
+se cursorline
+
 

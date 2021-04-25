@@ -8,6 +8,7 @@ ln -s $(pwd)/.tmux $HOME/.tmux
 ln -s $(pwd)/vim-ripgrep.vim $(pwd)/.vim/plugged/vim-ripgrep/vim-ripgrep.vim
 ln -s $(pwd)/.yabairc $HOME/.yabairc
 ln -s $(pwd)/.skhdrc $HOME/.skhdrc
+ln -s $(pwd)/.bin $HOME/.bin
 mkdir -p $HOME/.config/alacritty
 ln -s $(pwd)/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 mkdir -p $HOME/.config/spacebar

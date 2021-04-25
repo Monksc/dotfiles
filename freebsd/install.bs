@@ -1,0 +1,1 @@
+echo loader.conf >> /boot/loader.conf

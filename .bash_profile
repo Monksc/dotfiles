@@ -104,14 +104,26 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+# Add in key bindings
+# bind -x '"\ef":"say \"Its now control W.\""'
+# stty werase undef
+# bind "\C-w":forward-word
+# bind "\C-h":backward-word
+# bind "\C-n":forward-word
+
 export NODE_ENV=development
 
 # Bash Auto Complete
 #[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+#[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # heroku autocomplete setup
 HEROKU_AC_BASH_SETUP_PATH=/Users/cameronmonks/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
+
+# Add in All Application to source
+for d in /Applications/*/Contents/MacOS ; do
+    export PATH="$PATH:$d"
+done
 
 archey
 # archey | slowcat 0.1 | lolcat

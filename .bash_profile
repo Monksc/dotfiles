@@ -1,27 +1,27 @@
 #export PS1="\u:\w\n$ "
 #export PS1="\u@\h\w $ "
-#alias valgrind="/Users/$HOME/RPI/RPI/Year1/Semester1/DataStructures/valgrind-patched-mac-10-13/vg-in-place"
-#export PATH="$PATH:/Users/$HOME/.flutterd/bin"
+#alias valgrind="$HOME/RPI/RPI/Year1/Semester1/DataStructures/valgrind-patched-mac-10-13/vg-in-place"
+#export PATH="$PATH:/$HOME/.flutterd/bin"
 #export JAVA_HOME='/Library/Java/JavaVirtualMachines/openjdk-14.0.1.jdk/Contents/Home'
 #export JAVA_HOME='/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/'
 #export PATH=$PATH:$JAVA_HOME/bin
 #export PATH_TO_FX="/Library/Java/Libraries/javafx-sdk-11.0.2/lib"
 
-#export ANDROID_HOME="/Users/$HOME/Library/Android/"
+#export ANDROID_HOME="$HOME/Library/Android/"
 #alias newjava="/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java"
 #export PATH="$PATH:$ANDROID_HOME"
-#export GOROOT="/Users/$HOME/Projects/go"
-#export GOPATH="/Users/$HOME/Projects/go"
+#export GOROOT="$HOME/Projects/go"
+#export GOPATH="$HOME/Projects/go"
 #export PATH="$PATH:$GOPATH/bin"
-export PATH="$PATH:/Users/$HOME/.bin"
-export PATH="$PATH:/Users/$HOME/Projects/bin"
-export PATH="$PATH:/$HOME/Projects/dotfiles/.bin"
+export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:$HOME/Projects/bin"
+export PATH="$PATH:$HOME/Projects/dotfiles/.bin"
 #export PATH="$PATH:./"
 
 
 # For Seliunium
 #alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
-#export PATH="$PATH:/Users/$HOME/Projects/socialmedia"
+#export PATH="$PATH:$HOME/Projects/socialmedia"
 
 # Dotnet
 #export PATH=$HOME/.dotnet/tools:$PATH
@@ -57,15 +57,15 @@ PROMPT_COMMAND=get_prompt
 #export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-#export COCOS_CONSOLE_ROOT=/Users/$HOME/Projects/cocos/cocos2d-x-4.0/tools/cocos2d-console/bin
+#export COCOS_CONSOLE_ROOT=$HOME/Projects/cocos/cocos2d-x-4.0/tools/cocos2d-console/bin
 #export PATH=$COCOS_CONSOLE_ROOT:$PATH
 
 # Add environment variable COCOS_X_ROOT for cocos2d-x
-#export COCOS_X_ROOT=/Users/$HOME/Projects/cocos
+#export COCOS_X_ROOT=$HOME/Projects/cocos
 #export PATH=$COCOS_X_ROOT:$PATH
 
 # Add environment variable COCOS_TEMPLATES_ROOT for cocos2d-x
-#export COCOS_TEMPLATES_ROOT=/Users/$HOME/Projects/cocos/cocos2d-x-4.0/templates
+#export COCOS_TEMPLATES_ROOT=$HOME/Projects/cocos/cocos2d-x-4.0/templates
 #export PATH=$COCOS_TEMPLATES_ROOT:$PATH
 
 # Add environment variable ANDROID_SDK_ROOT for cocos2d-x
@@ -84,8 +84,8 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
 
 # Folders
-export RPI="/Users/$HOME/RPI"
-export PROJ="/Users/$HOME/Projects"
+export RPI="$HOME/RPI"
+export PROJ="$HOME/Projects"
 
 export PYENV_VERSION="3.7.9"
 # Changing python versions
@@ -119,7 +119,7 @@ export NODE_ENV=development
 #[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # heroku autocomplete setup
-HEROKU_AC_BASH_SETUP_PATH=/Users/$HOME/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
+HEROKU_AC_BASH_SETUP_PATH=$HOME/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
 
 # Add in All Application to source
 for d in /Applications/*/Contents/MacOS ; do
@@ -127,7 +127,7 @@ for d in /Applications/*/Contents/MacOS ; do
 done
 
 archey
-neofetch
+# neofetch
 # archey | slowcat 0.1 | lolcat
 # banner "Hello World" | slowcat 0.01 | lolcat
 

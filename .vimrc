@@ -290,6 +290,21 @@ nnoremap <C-w>H <C-w>H
 nnoremap <C-w>J <C-w>J
 nnoremap <C-w>K <C-w>K
 nnoremap <C-w>L <C-w>L
+nnoremap <C-w>x <C-w>x
+nnoremap <C-w>= <C-w>=
+nnoremap <C-w>\| <C-w>\|
+nnoremap <C-w>_ <C-w>_
+
+nnoremap <C-w>- <C-w>-
+"nnoremap - <C-w>-
+nnoremap <C-w>+ <C-w>+
+"nnoremap + <C-w>+
+
+nnoremap <C-w>> <C-w>>
+"nnoremap <lt> <C-W><lt>
+nnoremap <C-w>< <C-w><
+"nnoremap > <C-w>>
+
 nnoremap <C-w> :echo "I PREVENTED IT FROM DOING SOMETHING STUPID"<CR>
 nnoremap <C-w>n :tabnext<CR>
 nnoremap <C-w>p :tabprev<CR>

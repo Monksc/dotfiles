@@ -1,0 +1,40 @@
+# to install ports
+sudo portsnap fetch
+
+# set up things like caps is CTRL
+bsdconfig
+
+# Set up wifi
+/etc/wpa_supplicant.conf
+network={
+ ssid="yournetwork"
+ psk="yournetworkpass"
+}
+/etc/rc.conf
+wlans_ath0="wlan0"
+ifconfig_wlan0="WPA DHCP"
+# Bash
+service netif restart
+
+# install doas
+pkg install doas
+
+# For xfce install
+sudo pkg install x11-wm/xfce4
+
+# For i3
+pkg install i3 i3status i3lock dmenu
+
+
+# Freebsd update
+sudo freebsd-udpate fetch install
+sudo freebsd-update -r 13.0RELEASE upgrade
+
+
+# Wifi RPI2
+sudo usbconfig list
+dmesg -a
+sudo ifconfig wlan0 create wlandev
+sudo ifconfig wlan0 up
+sudo ifconfig wlan0 list scan
+

@@ -15,6 +15,7 @@
 #export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:/Users/cameronmonks/.bin"
 export PATH="$PATH:/Users/cameronmonks/Projects/bin"
+export PATH="$PATH:/$HOME/Projects/dotfiles/.bin"
 #export PATH="$PATH:./"
 
 
@@ -120,12 +121,16 @@ export NODE_ENV=development
 # heroku autocomplete setup
 HEROKU_AC_BASH_SETUP_PATH=/Users/cameronmonks/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
 
+<<<<<<< HEAD
 # Add in All Application to source
 for d in /Applications/*/Contents/MacOS ; do
     export PATH="$PATH:$d"
 done
 
 archey
+=======
+neofetch
+>>>>>>> d665b5e0bb37f2d9b12b456f8212e2993efa406b
 # archey | slowcat 0.1 | lolcat
 # banner "Hello World" | slowcat 0.01 | lolcat
 

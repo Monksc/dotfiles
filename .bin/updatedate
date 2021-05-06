@@ -1,0 +1,5 @@
+#!/usr/local/bin/bash
+FOO=$(curl --head http://yahoo.com 2> /dev/null | grep Date | awk '{foo = substr($0, 12, length($0)-12); print "dateconverter.pl \"" foo "\" \"%e %b %Y %H:%M:%S %Z\" \"%y%m%d%H%M\" -4"}')
+DATE=$(echo $FOO | bash)
+echo $DATE
+echo "date $DATE" | bash

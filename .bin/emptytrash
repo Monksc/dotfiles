@@ -1,0 +1,3 @@
+#!/usr/local/bin/bash
+mkdir -p $HOME/.trash/mytrash/
+mv $HOME/.cache/trash/* $HOME/.trash/mytrash/

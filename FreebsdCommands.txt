@@ -4,18 +4,6 @@ sudo portsnap fetch
 # set up things like caps is CTRL
 bsdconfig
 
-# Set up wifi
-/etc/wpa_supplicant.conf
-network={
- ssid="yournetwork"
- psk="yournetworkpass"
-}
-/etc/rc.conf
-wlans_ath0="wlan0"
-ifconfig_wlan0="WPA DHCP"
-# Bash
-service netif restart
-
 # install doas
 pkg install doas
 
@@ -32,9 +20,28 @@ sudo freebsd-update -r 13.0RELEASE upgrade
 
 
 # Wifi RPI2
+/boot/loader.conf
+legal.realtek.license_ack=1
+if_urtwn_load="YES"
+
 sudo usbconfig list
 dmesg -a
-sudo ifconfig wlan0 create wlandev
+sysctl net.wlan.devices
+usbconfig -u 1 -a 4 dump_device_desc
+sudo ifconfig wlan0 create wlandev urtwn0
+sudo ifconfig wlan0 create wlandev rtwn0
 sudo ifconfig wlan0 up
 sudo ifconfig wlan0 list scan
 
+# Set up wifi
+/etc/wpa_supplicant.conf
+network={
+ ssid="yournetwork"
+ psk="yournetworkpass"
+}
+
+/etc/rc.conf
+wlans_ath0="wlan0"
+ifconfig_wlan0="WPA DHCP"
+# Bash
+service netif restart

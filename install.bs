@@ -13,5 +13,6 @@ mkdir -p $HOME/.config/alacritty
 ln -s $(pwd)/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 mkdir -p $HOME/.config/spacebar
 ln -s $(pwd)/spacebarrc $HOME/.config/spacebar/spacebarrc
+mkdir -p $HOME/.config/trash
 
 

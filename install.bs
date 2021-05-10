@@ -8,11 +8,14 @@ ln -s $(pwd)/.tmux $HOME/.tmux
 ln -s $(pwd)/vim-ripgrep.vim $(pwd)/.vim/plugged/vim-ripgrep/vim-ripgrep.vim
 ln -s $(pwd)/.yabairc $HOME/.yabairc
 ln -s $(pwd)/.skhdrc $HOME/.skhdrc
-ln -s $(pwd)/.bin $HOME/.bin
+#ln -s $(pwd)/.bin $HOME/.bin
+ln -s $(pwd)/gruvbox-dark.xresources $HOME/.Xdefaults
+ln -s $(pwd)/.Xresourses $HOME/.Xresourses
+ln -s $(pwd)/.xprofile $HOME/.xprofile
 mkdir -p $HOME/.config/alacritty
 ln -s $(pwd)/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 mkdir -p $HOME/.config/spacebar
 ln -s $(pwd)/spacebarrc $HOME/.config/spacebar/spacebarrc
-mkdir -p $HOME/.config/trash
-
-
+mkdir -p $HOME/.cache/trash
+mkdir -p $HOME/.config/i3
+ln -s $(pwd)/i3config $HOME/.config/i3/config

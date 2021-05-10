@@ -6,6 +6,9 @@
 ! Last Modified: 6 Sep 2014
 ! -----------------------------------------------------------------------------
 
+*faceName: Hack
+*faceSize: 9
+
 ! hard contrast: *background: #1d2021
 *background: #282828
 ! soft contrast: *background: #32302f

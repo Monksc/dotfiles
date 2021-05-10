@@ -1,0 +1,1 @@
+yes | pkg install vim-console tmux neofetch xorg i3 i3status i3lock dmenu hack-font-3.003_1 tree

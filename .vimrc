@@ -305,10 +305,32 @@ nnoremap <C-w>> <C-w>>
 nnoremap <C-w>< <C-w><
 "nnoremap > <C-w>>
 
+function! TabNextXTimes(x, command)
+    if a:x==0
+        execute a:command
+    else
+        "execute '.,.+' . a:x . 'tabnext'
+        execute a:command
+    endif
+endfunction
+
 nnoremap <C-w> :echo "I PREVENTED IT FROM DOING SOMETHING STUPID"<CR>
-nnoremap <C-w>n :tabnext<CR>
-nnoremap <C-w>p :tabprev<CR>
+"nnoremap <C-w>n ":.,.+".v:count."tabnext"
+nnoremap <C-w>n :call TabNextXTimes(v:count, "tabnext")<CR>
+"nnoremap <C-w>p :tabprev<CR>
+nnoremap <C-w>p :call TabNextXTimes(v:count, "tabprev")<CR>
 nnoremap <C-w>c :tabnew .<CR>
+nnoremap <C-w>0 :tabfirst<CR>
+nnoremap <C-w>1 :tabnext 1<CR>
+nnoremap <C-w>2 :tabnext 2<CR>
+nnoremap <C-w>3 :tabnext 3<CR>
+nnoremap <C-w>4 :tabnext 4<CR>
+nnoremap <C-w>5 :tabnext 5<CR>
+nnoremap <C-w>6 :tabnext 6<CR>
+nnoremap <C-w>7 :tabnext 7<CR>
+nnoremap <C-w>8 :tabnext 8<CR>
+nnoremap <C-w>9 :tabnext 9<CR>
+nnoremap <C-w>$ :tablast<CR>
 
 
 " ShortCuts

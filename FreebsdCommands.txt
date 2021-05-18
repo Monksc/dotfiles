@@ -1,8 +1,15 @@
 # to install ports
 sudo portsnap fetch
 
+# Update pkg
+pkg search -o webkit
+pkg update -f
+pkg update
+pkg upgrade
+
 # set up things like caps is CTRL
 bsdconfig
+
 
 # install doas
 pkg install doas

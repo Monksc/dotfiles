@@ -126,8 +126,11 @@ for d in /Applications/*/Contents/MacOS ; do
     export PATH="$PATH:$d"
 done
 
-archey
-# neofetch
+#archey
+#neofetch
 # archey | slowcat 0.1 | lolcat
 # banner "Hello World" | slowcat 0.01 | lolcat
 
+export CPATH="$CPATH:/usr/local/lib/"
+export CPATH="$CPATH:/usr/local/include/glib-2.0"
+export CPATH="$CPATH:/usr/local/include"

@@ -1,1 +1,1 @@
-echo loader.conf >> /boot/loader.conf
+cat loader.conf >> /boot/loader.conf

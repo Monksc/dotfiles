@@ -36,7 +36,7 @@ fun! s:Rg(txt)
 endfun
 
 fun! s:RgFunction(txt)
-  call s:RgGrepContext(function('s:RgSearch'), '"(fn) *' . s:RgSearchTerm(a:txt) . ' *\(.*\)"')
+  call s:RgGrepContext(function('s:RgSearch'), '"(fn\|function) *' . s:RgSearchTerm(a:txt) . ' *\(.*\)"')
 endfun
 
 fun! s:RgStruct(txt)

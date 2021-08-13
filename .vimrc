@@ -3,6 +3,7 @@ syntax on
 " set foldmethod=syntax " set clipboard=unnamed
 set ignorecase
 set laststatus=2
+set shell=bash\ -l
 
 filetype plugin indent on
 set tabstop=4
@@ -40,6 +41,8 @@ let g:UltiSnipsEditSplit="vertical"
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
+let g:snipMate = { 'snippet_version' : 1 }
+
 call plug#begin()
 Plug 'vim/killersheep'
 
@@ -60,12 +63,19 @@ Plug 'thosakwe/vim-flutter'
 
 " Snippits
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim'
 "Plug 'SirVer/ultisnips'| Plug 'honza/vim-snippets'
 
+" Snipmate
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+" Optional:
+Plug 'honza/vim-snippets'
+
 " Go
-"Plug 'fatih/vim-go'
-"Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -267,15 +277,12 @@ inoremap {<CR> {<CR>}<Esc>O
 
 
 
-
-
 nnoremap & :RgIdentifier<CR>
 nnoremap <C-f> :Rg -F "
 nnoremap <C-f>f :RgFunction<CR>
 nnoremap <C-f>c :RgCallers<CR>
 nnoremap <C-f>s :RgStruct<CR>
 nnoremap <C-f>S :RgString<CR>
-nnoremap <C-f>t :!clear && tree -I node_modules \| less<CR>
 "nnoremap <C-r> :source ~/.vimrc<CR>
 
 
@@ -305,6 +312,8 @@ nnoremap <C-w>> <C-w>>
 nnoremap <C-w>< <C-w><
 "nnoremap > <C-w>>
 
+nnoremap <C-w>e :Explore<CR>
+
 function! TabNextXTimes(x, command)
     if a:x==0
         execute a:command
@@ -320,6 +329,7 @@ nnoremap <C-w>n :call TabNextXTimes(v:count, "tabnext")<CR>
 "nnoremap <C-w>p :tabprev<CR>
 nnoremap <C-w>p :call TabNextXTimes(v:count, "tabprev")<CR>
 nnoremap <C-w>c :tabnew .<CR>
+nnoremap <C-w>C :Texplore .<CR>
 nnoremap <C-w>0 :tabfirst<CR>
 nnoremap <C-w>1 :tabnext 1<CR>
 nnoremap <C-w>2 :tabnext 2<CR>
@@ -333,8 +343,41 @@ nnoremap <C-w>9 :tabnext 9<CR>
 nnoremap <C-w>$ :tablast<CR>
 
 
+nnoremap <C-T>r :!tree -I "node_modules\|cache\|test_*\|build" \| less<CR>
+nnoremap <C-w>t :split<CR><C-w>T
+nnoremap <C-w>T <C-w>T
+nnoremap <C-T>e :terminal<CR><C-w>J<C-w>10000-<C-w>20+
+
+" Terminal mode
+
+tnoremap <C-w> <C-w>.
+tnoremap <C-w>w <C-w>.
+tnoremap <C-w>. <C-w>.
+tnoremap <C-w>h <C-w>h
+tnoremap <C-w>j <C-w>j
+tnoremap <C-w>k <C-w>k
+tnoremap <C-w>l <C-w>l
+
 " ShortCuts
-ab #i #include
+" ab #i #include
+" ab main #include <stdio.h><CR><CR>int main(int argc, char * argv[]) {<CR>printf("HELLO WORLD\n");<CR>return 0;<CR><esc>dd2kA
+" nt main(int argc, char * argv[]) {
+" printf("HELLO WORLD\n");
+" 
+" return 0;
+" }
+
+function! ViewPasteHistory()
+    let char = nr2char(getchar())
+    while char =~ '^\j$'
+        execute "normal u."
+        redraw!
+        let char = nr2char(getchar())
+    endwhile
+endfunction
+
+nnoremap <leader>p "1p:call ViewPasteHistory()<CR>
+
 
 " Gruvbox stuff
 " let g:gruvbox_contrast_dark='hard'
@@ -381,6 +424,12 @@ let g:ale_fixers = {
 let g:ale_cpp_gcc_options='-std=c++98 -Wall -Wextra'
 let g:ale_c_gcc_options='-std=c99 -Wall -Wextra'
 
+" augroup project
+"   autocmd!
+"   autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+" augroup END
+" let &path.="src/include,/usr/include/AL,"
+" set includeexpr=substitute(v:fname,'\\.','/','g')
 
 command! -nargs=* -complete=file Hexview  :%!xxd
 command! -nargs=* -complete=file Hexviewr :%!xxd -r
@@ -391,4 +440,17 @@ command! -nargs=* -complete=file Hexviewr :%!xxd -r
 " so you can easily see what line you are editing
 se cursorline
 
+
+" Useful commands
+" Code folding
+"       mb on start line
+"       zf'b on endline
+"
+"       zo open fold
+"       zc to close fold
+"       za to toggle
+" Indent code
+"   =i{
+" vip to visual a paragraph
+" <C-a> to increment a number
 

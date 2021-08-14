@@ -357,6 +357,10 @@ tnoremap <C-w>h <C-w>h
 tnoremap <C-w>j <C-w>j
 tnoremap <C-w>k <C-w>k
 tnoremap <C-w>l <C-w>l
+tnoremap <C-w>H <C-w>H
+tnoremap <C-w>J <C-w>J
+tnoremap <C-w>K <C-w>K
+tnoremap <C-w>L <C-w>L
 
 " ShortCuts
 " ab #i #include

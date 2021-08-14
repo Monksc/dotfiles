@@ -1,4 +1,4 @@
-uninstall:
+uninstall-old:
     rm $(HOME)/.vimrc
     rm $(HOME)/.vim
     rm $(HOME)/.bash_profile
@@ -10,7 +10,7 @@ uninstall:
     rm $(HOME)/.skhdrc
     rm $(HOME)/.config/alacritty/alacritty.yml
 
-install:
+install-old:
     ln -s $(CURDIR)/.vimrc $(HOME)/.vimrc
     ln -s $(CURDIR)/.vim $(HOME)/.vim
     ln -s $(CURDIR)/.bash_profile $(HOME)/.bash_profile
@@ -27,3 +27,8 @@ install:
 	ln -s $(CURDIR)/spacebarrc $(HOME)/.config/spacebar/spacebarrc
 
 
+uninstall:
+	.bin/uninstall.bs
+
+install:
+	.bin/install.bs

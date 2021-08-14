@@ -1,0 +1,14 @@
+rm -i $HOME/.vimrc
+rm -i $HOME/.vim
+rm -i $HOME/.bash_profile
+rm -i $HOME/.zshrc
+rm -i $HOME/.zprofile
+rm -i $HOME/.tmux.conf
+rm -i $HOME/.tmux
+rm -i $HOME/.yabairc
+rm -i $HOME/.skhdrc
+rm -i $HOME/.Xresourses
+rm -i $HOME/.xprofile
+rm -i $HOME/.config/alacritty/alacritty.yml
+rm -i $HOME/.config/spacebar/spacebarrc
+rm -i $HOME/.config/i3/config

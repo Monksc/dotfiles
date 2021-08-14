@@ -36,11 +36,11 @@ fun! s:Rg(txt)
 endfun
 
 fun! s:RgFunction(txt)
-  call s:RgGrepContext(function('s:RgSearch'), '"(fn\|function) *' . s:RgSearchTerm(a:txt) . ' *\(.*\)"')
+  call s:RgGrepContext(function('s:RgSearch'), '"(fn\|fun\|def\|function) *' . s:RgSearchTerm(a:txt) . ' *\(.*\)"')
 endfun
 
 fun! s:RgStruct(txt)
-  call s:RgGrepContext(function('s:RgSearch'), '"(struct\|(impl +' . g:identifier . ' +for))' . g:notidentifier . s:RgSearchTerm(a:txt) . '"')
+  call s:RgGrepContext(function('s:RgSearch'), '"(struct\|class\|typedef\|(impl +' . g:identifier . ' +for))' . g:notidentifier . s:RgSearchTerm(a:txt) . '"')
 endfun
 
 fun! s:RgIdentifier(txt)

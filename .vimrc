@@ -5,6 +5,18 @@ set ignorecase
 set laststatus=2
 set shell=bash\ -l
 
+" Up and down left and right padding
+set so=8
+set sidescroll=8
+set nowrap
+
+" To see tabs and other chatacters
+set list
+set listchars=tab:>-,trail:-
+
+" To see commands typed in
+"set cmdheight=10
+
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
@@ -13,6 +25,25 @@ set number
 set backspace=indent,eol,start
 
 set autowrite
+
+
+fun! s:GetVisualSelection()
+    " Why is this not a built-in Vim script function?!
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
+endfun
+
+" Add in authour information
+let g:snips_author = 'Cameron Monks'
+let g:snips_email = 'ccmonks32@gmail.com'
+let g:snips_github = 'https://github.com/monksc'
 
 " For Latex
 let g:tex_flavor = 'latex'
@@ -25,6 +56,31 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" vimspector debugger
+let g:vimspector_enable_mappings = 'HUMAN'
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
+" Easily escape
+nmap <Leader>de :VimspectorReset<cr>
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+" Custom debugging ones i made
+nmap <Leader>dc <Plug>VimspectorContinue
+xmap <Leader>dc <Plug>VimspectorContinue
+nmap <Leader>ds <Plug>VimspectorStepOver
+xmap <Leader>ds <Plug>VimspectorStepOver
+nmap <Leader>di <Plug>VimspectorStepInto
+xmap <Leader>di <Plug>VimspectorStepInto
+nmap <Leader>db <Plug>VimspectorToggleBreakpoint
+xmap <Leader>db <Plug>VimspectorToggleBreakpoint
+nmap <Leader>dj <Plug>VimspectorRunToCursor
+xmap <Leader>dj <Plug>VimspectorRunToCursor
+nmap <Leader>dp <Plug>VimspectorPause
+xmap <Leader>dp <Plug>VimspectorPause
+nmap <Leader>do <Plug>VimspectorStepOut
+xmap <Leader>do <Plug>VimspectorStepOut
 
 " Vim Grep
 let g:rg_command = 'rg --vimgrep -S --pcre2'
@@ -44,6 +100,9 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:snipMate = { 'snippet_version' : 1 }
 
 call plug#begin()
+" Debugger
+Plug 'puremourning/vimspector'
+
 Plug 'vim/killersheep'
 
 Plug 'dense-analysis/ale'
@@ -229,6 +288,13 @@ function! LatexSave()
 endfunction
 autocmd BufWritePost *.tex call LatexSave()
 
+function! ScadSave()
+    !time OpenSCAD -o a.stl %
+    silent !open a.stl
+    silent !open -a Alacritty
+endfunction
+autocmd BufWritePost *.scad call ScadSave()
+
 
 "un! Getchar()
 " return strcharpart(strpart(getline('.'), col('.') - 1), 0, 1)
@@ -371,6 +437,16 @@ tnoremap <C-w>L <C-w>L
 " return 0;
 " }
 
+function! WriteToPipeWriter(foo)
+    for i in split(a:foo, '\n')
+        execute 'silent !pipe-writer -f vim -m ' . "$'" . escape(i, "'") . "'" . '&' | redraw!
+    endfor
+endfunction
+
+vnoremap <leader>r y:call WriteToPipeWriter(<C-R>=string(@")<CR>)<CR>
+
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
 function! ViewPasteHistory()
     let char = nr2char(getchar())
     while char =~ '^\j$'
@@ -414,9 +490,10 @@ endif
 
 colo gruvbox
 
-"let g:ale_linters = {
-"\ 'cs': ['OmniSharp']
-"\}
+let g:ale_linters = {
+\ 'cs': ['OmniSharp'],
+\ 'python': ['flake8', 'pylint', 'python-lsp-server']
+\}
 
 let g:ale_fixers = {
   \ 'javascript': ['eslint'],
@@ -424,6 +501,8 @@ let g:ale_fixers = {
   \ 'c++': ['gcc'],
   \ '.h': ['gcc']
 \}
+
+" let b:ale_linters = ['flake8', 'pylint']
 
 let g:ale_cpp_gcc_options='-std=c++98 -Wall -Wextra'
 let g:ale_c_gcc_options='-std=c99 -Wall -Wextra'

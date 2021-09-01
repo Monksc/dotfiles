@@ -124,6 +124,7 @@ alias mv='mv -i'
 alias tre='tree -I "node_modules|cache|test_*|build"'
 
 alias ishell2='rlwrap -a -c'
+alias vimdebug='/usr/local/bin/vim'
 
 # Add in key bindings
 # bind -x '"\ef":"say \"Its now control W.\""'

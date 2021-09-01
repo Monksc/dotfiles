@@ -19,6 +19,7 @@ function usage ()
     skip                Skips the top song in queue
     queue|list          Shows the queue
     display             Shows queue but updated constantly
+    banner              Shows current song as a banner
     edit                Edits queue"
 
 }    # ----------  end of function usage  ----------
@@ -121,7 +122,9 @@ function handleAdd() {
 #  DESCRIPTION:  Handles the skip command
 #===============================================================================
 function handleSkip() {
+    #cat /tmp/songqueue/queue.txt | head -n 1 | awk -v quote="'" '{ print "rm " quote "/tmp/songqueue/songs/" $0 ".wav" quote }' | bash
     tail -n +2 /tmp/songqueue/queue.txt > /tmp/songqueue/queue-temp.txt
+    head -n 1 /tmp/songqueue/queue.txt >> /tmp/songqueue/queue-temp.txt
     cat /tmp/songqueue/queue-temp.txt > /tmp/songqueue/queue.txt
 }
 
@@ -134,7 +137,6 @@ function handlePlay() {
     while [ $(cat "/tmp/songqueue/queue.txt" | wc -l | awk '{ print $1 }') -gt 0 ]
     do 
         cat /tmp/songqueue/queue.txt | head -n 1 | awk -v quote="'" -v "args=$*" '{ print "afplay " args " " quote "/tmp/songqueue/songs/" $0 ".wav" quote }' | bash
-        cat /tmp/songqueue/queue.txt | head -n 1 | awk -v quote="'" '{ print "rm " quote "/tmp/songqueue/songs/" $0 ".wav" quote }' | bash
         handleSkip
     done
 }
@@ -150,7 +152,7 @@ function handleQueue() {
 
 #===  FUNCTION  ================================================================
 #         NAME:  handleDisplay
-#  DESCRIPTION:  Handles display
+#  DESCRIPTION:  Handles the display command
 #===============================================================================
 function handleDisplay() {
     clear
@@ -161,6 +163,58 @@ function handleDisplay() {
             clear; \
             echo "Queue"; \
             handleQueue "$@";)
+    done
+}
+
+#===  FUNCTION  ================================================================
+#         NAME:  handleBanner
+#  DESCRIPTION:  Handles the banner command
+#===============================================================================
+function handleBanner() {
+    #===  FUNCTION  ================================================================
+    #         NAME:  usage
+    #  DESCRIPTION:  Display usage information.
+    #===============================================================================
+    function usage ()
+    {
+        echo "Usage :  0 [options] [--]
+
+        Options:
+        -h|help       Display this message
+        -v|version    Display script version
+        -w            Param for width
+        -t            Param for time interval"
+
+    }    # ----------  end of function usage  ----------
+
+    #-----------------------------------------------------------------------
+    #  Handle command line arguments
+    #-----------------------------------------------------------------------
+
+    timeInterval=0.01
+    width=50
+
+    while getopts :hvw:t: flag
+    do
+        case "${flag}" in
+
+            h|help     )  usage; exit 0   ;;
+
+            v|version  )  echo "$0 -- Version $__ScriptVersion"; exit 0   ;;
+
+            w          )  width=${OPTARG}   ;;
+
+            t          )  timeInterval=${OPTARG}   ;;
+
+            * )  echo -e "\n  Option does not exist : $OPTARG\n"
+                  usage; exit 1   ;;
+
+      esac    # --- end of case ---
+    done
+    shift $(($OPTIND-1))
+
+    while true; do
+        ((head -n 1 /tmp/songqueue/queue.txt | (xargs banner -w "$width") ) | slowcat "$timeInterval" | lolcat) || exit 1
     done
 }
 
@@ -205,6 +259,12 @@ fi
 if [[ $1 == "display" ]]; then
     shift
     handleDisplay "$@"
+    exit 0
+fi
+
+if [[ $1 == "banner" ]]; then
+    shift
+    handleBanner "$@"
     exit 0
 fi
 

@@ -164,5 +164,5 @@ command! -nargs=* -complete=file Rg :call s:Rg(<q-args>)
 command! -nargs=* -complete=file RgIdentifier :call s:RgIdentifier(<q-args>)
 command! -nargs=* -complete=file RgFunction :call s:RgFunction(<q-args>)
 command! -nargs=* -complete=file RgStruct :call s:RgStruct(<q-args>)
-command! -complete=file RgRoot :call s:RgShowRoot()
+command! -nargs=* -complete=file RgRoot :call s:RgShowRoot()
 

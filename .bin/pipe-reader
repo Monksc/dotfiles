@@ -1,2 +1,8 @@
 #!/bin/bash
-tail -F $HOME/.cache/viminput/input.txt
+if [ $# == 0 ]; then
+    tail -F "$HOME/.cache/viminput/input.txt"
+elif [ "$1" == 'vim' ]; then
+    tail -F "$HOME/.cache/viminput/vim-input.txt"
+else
+    tail -F "$@"
+fi

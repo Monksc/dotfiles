@@ -89,10 +89,16 @@ bool runInput(const char * program_name, char * arguments[]) {
     }
 
     if (pid == 0) {
+        close(fd[0]);
         if (dup2(fd[1], 1) == -1) {
             ERROR("DUP2");
             exit(1);
         }
+        if (dup2(fd[1], 2) == -1) {
+            ERROR("DUP2");
+            exit(1);
+        }
+        close(fd[1]);
         execv(path, arguments);
         exit(1);
     }
@@ -138,8 +144,9 @@ bool runProgram(const char * program_name, char * arguments[]) {
 
 int main(int argc, char * argv[]) {
 
-    //setvbuf(stdin, NULL, _IONBF, 0);
-    //setbuf(stdin,NULL);
+    setvbuf(stdin, NULL, _IONBF, 0);
+    setbuf(stdin, NULL);
+    setvbuf(stdout, NULL, _IONBF, 0);
 
     if (argc < 4) {
         fprintf(stderr, "ERROR: Incorrect usage. Usage: <%s> <program> [arguments] '|' "

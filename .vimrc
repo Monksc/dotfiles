@@ -439,7 +439,8 @@ tnoremap <C-w>L <C-w>L
 
 function! WriteToPipeWriter(foo)
     for i in split(a:foo, '\n')
-        execute 'silent !pipe-writer -f vim -m ' . "$'" . escape(i, "'") . "'" . '&' | redraw!
+        "execute 'silent !pipe-writer -f vim -m ' . "$'" . escape(i, "'") . "'" . '&' | redraw!
+        execute 'silent !easypipe write vim -m ' . "$'" . escape(i, "'") . "'" . '&' | redraw!
     endfor
 endfunction
 

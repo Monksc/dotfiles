@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <ctype.h>
 
 
 // MARK: Message
@@ -154,6 +155,8 @@ int reader(int argc, char * argv[])
         }
     }
 
+    int was_indented = 0;
+
     // Check for new line
     while (1) {
         fclose(file);
@@ -166,13 +169,27 @@ int reader(int argc, char * argv[])
                 strcmp(msg.name, argv[2]) == 0 &&
                 msg.count > highestCount) {
 
+                int is_indented = isspace(msg.msg[0]);
                 highestCount = msg.count;
-                printf("%s\n", msg.msg);
+                if (was_indented && !is_indented) {
+                    printf("\n");
+                }
+                was_indented = is_indented;
+
+                const char * itr = msg.msg;
+                while (*itr && isspace(*itr)) {
+                    itr++;
+                }
+                if (*itr) {
+                    printf("%s\n", itr);
+                }
             }
         }
 
         sleep(2);
     }
+
+    printf("OUT OF WHILE LOOP\n");
 
     fclose(file);
     free(line);

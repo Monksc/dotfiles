@@ -1,0 +1,21 @@
+
+#===  FUNCTION  ================================================================
+#         NAME:  pipeWriter
+#  DESCRIPTION:  Reads input and writes to pipe
+#===============================================================================
+function pipeWriter() {
+    easypipe write append
+}
+
+#===  FUNCTION  ================================================================
+#         NAME:  pipeReader
+#  DESCRIPTION:  Reads from the pipe and prints to the screen
+#===============================================================================
+function pipeReader() {
+    
+}
+
+
+cat | pipeWriter
+easypipe read append cat
+"$@" | cat

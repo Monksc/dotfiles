@@ -19,6 +19,9 @@
 
 #include <util.h>
 
+#include <sys/ioctl.h>
+
+
 #define ERROR(errorMsg) \
     fprintf(stderr, "ERROR: " errorMsg " LINE: %d\n", __LINE__)
 
@@ -107,11 +110,33 @@ bool runInput(const char * program_name, char * arguments[]) {
     close(fd[1]);
     dup2(fd[0], 0);
 
+    // fd_set rfds;
+    // FD_ZERO(&rfds);
+    // FD_SET(masterfd, &rfds);
+    // struct timeval tv;
+    // tv.tv_sec = 0;
+    // tv.tv_usec = 0;
+
+
     sleep(2);
     char * line = malloc(1024 * sizeof(char));
     while ((line = fgets(line, 1023 * sizeof(char), stdin)) != NULL) {
         dprintf(masterfd, "%s", line);
+        // while (ioctl(fd[0], I_NREAD, &n) == 0 && n > 0) {
+        //     sleep(1);
+        // }
+        // int s = select(1, NULL, &rfds, NULL, &tv);
+        // printf("RECIEVED %d %d\n", s, masterfd);
+        // while (s != 0) {
+        //     sleep(1);
+        //     s = select(1, &rfds, NULL, NULL, &tv);
+        //     printf("RECIEVED %d\n", s);
+        // }
+        // printf("Finished\n");
     }
+
+    printf("RUN INPUT END\n");
+    dprintf(masterfd, "RUN INPUT END\n");
 
     close(fd[0]);
     exit(0);
@@ -132,6 +157,8 @@ bool runProgram(const char * program_name, char * arguments[]) {
         dup2(outputfd, 1);
         dup2(outputfd, 2);
         execv(path, arguments);
+        printf("PYTHON3 HAS ENDED\n");
+        dprintf(outputfd, "PYTHON3 HAS ENDED\n");
         exit(1);
     }
 

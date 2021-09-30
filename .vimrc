@@ -3,12 +3,12 @@ syntax on
 " set foldmethod=syntax " set clipboard=unnamed
 set ignorecase
 set laststatus=2
-set shell=bash\ -l
+"set shell=bash\ -l
 
 " Up and down left and right padding
 set so=8
 set sidescroll=8
-set nowrap
+" set nowrap
 
 " To see tabs and other chatacters
 set list
@@ -412,7 +412,9 @@ nnoremap <C-w>$ :tablast<CR>
 nnoremap <C-T>r :!tree -I "node_modules\|cache\|test_*\|build" \| less<CR>
 nnoremap <C-w>t :split<CR><C-w>T
 nnoremap <C-w>T <C-w>T
-nnoremap <C-T>e :terminal<CR><C-w>J<C-w>10000-<C-w>20+
+"nnoremap <C-T>e :set shell=bash\ -l<CR>:terminal<CR><C-w>J<C-w>10000-<C-w>20+<C-w>k:set shell=''<CR><C-w>j
+nnoremap <C-T>e :terminal<CR><C-w>J<C-w>10000-<C-w>20+source $HOME/.bash_profile<CR>
+"nnoremap <C-T>e :terminal<CR><C-w>J<C-w>10000-<C-w>20+
 
 " Terminal mode
 
@@ -438,13 +440,20 @@ tnoremap <C-w>L <C-w>L
 " }
 
 function! WriteToPipeWriter(foo)
+    "silent execute 'silent !easypipe write vim -m ' . "$'" . escape(a:foo, "'") . "'" . '&' | redraw!
+    "set shell=''
     for i in split(a:foo, '\n')
-        "execute 'silent !pipe-writer -f vim -m ' . "$'" . escape(i, "'") . "'" . '&' | redraw!
-        execute 'silent !easypipe write vim -m ' . "$'" . escape(i, "'") . "'" . '&' | redraw!
+        " execute 'silent !pipe-writer -f vim -m ' . "$'" . escape(i, "'") . "'" . '&' | redraw!
+        "execute 'silent !easypipe write vim -m ' . "$'" . escape(i, "'") . "'" . '&' | redraw!
+        silent execute 'silent !easypipe write vim -m ' . "$'" . escape(i, "'%") . "'" . '&' | redraw!
+        " silent execute '!easypipe write vim -m ' . "$'" . escape(i, "'") . "'"
     endfor
+    silent execute 'silent !easypipe write vim -m " $(ascii 10)" &' | redraw!
+    "set shell=bash\ -l
 endfunction
 
-vnoremap <leader>r y:call WriteToPipeWriter(<C-R>=string(@")<CR>)<CR>
+"vnoremap <leader>r y:call WriteToPipeWriter(<C-R>=string(@")<CR>)<CR>
+vnoremap <silent> <leader>r y:call WriteToPipeWriter(<C-R>=string(@")<CR>)<CR>
 
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 

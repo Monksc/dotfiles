@@ -32,10 +32,14 @@ export PATH="$PATH:$HOME/Projects/cproj/viminput"
 #export PATH=$HOME/.dotnet/tools:$PATH
 
 alias t="set -o ignoreeof"
+#alias ll="ls -G -lh -all --color=auto"
 alias ll="ls -G -lh -all"
 alias c="gcc -g -Wall -Werror -Wvla -fsanitize=address"
 
 echo "Welcome Cameron!"
+# cal
+# date
+
 
 # add git graph alias
 alias gitg='git log --oneline --abbrev-commit --all --graph --decorate --color'
@@ -126,6 +130,9 @@ alias tre='tree -I "node_modules|cache|test_*|build"'
 alias ishell2='rlwrap -a -c'
 alias vimdebug='/usr/local/bin/vim'
 
+alias vimjupyter='rlwrap fromterminal easypipe read vim "|"'
+alias vimjupyterpython='rlwrap fromterminal easypipe read vim "|" ipython'
+
 # Add in key bindings
 # bind -x '"\ef":"say \"Its now control W.\""'
 # stty werase undef
@@ -167,5 +174,8 @@ export C_INCLUDE_PATH="$C_INCLUDE_PATH:/opt/X11/include"
 
 export PATH="$(brew --prefix bison)/bin:$PATH"
 export PATH="$(brew --prefix flex)/bin:$PATH"
+
+# alias pbcopy='xclip -selection clipboard'
+# alias pbpaste='xclip -selection clipboard -o'
 
 

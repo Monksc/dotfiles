@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 $@ xorg plank cairo-dock dmenu docky
 
 cd /tmp/

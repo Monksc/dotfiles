@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 rm -i $HOME/.vimrc
 rm -i $HOME/.vim
 rm -i $HOME/.bash_profile

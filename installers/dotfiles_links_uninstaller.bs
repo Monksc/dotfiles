@@ -9,7 +9,7 @@ rm -i $HOME/.tmux.conf
 rm -i $HOME/.tmux
 rm -i $HOME/.yabairc
 rm -i $HOME/.skhdrc
-rm -i $HOME/.Xresourses
+rm -i $HOME/.Xresources
 rm -i $HOME/.Xdefaults
 rm -i $HOME/.xprofile
 rm -i $HOME/.config/alacritty/alacritty.yml

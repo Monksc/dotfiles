@@ -1,3 +1,4 @@
-yes | pkg install vim-console tmux neofetch xorg i3 i3status i3lock dmenu hack-font-3.003_1 \
-    tree rlwrap ranger alacritty youtube-dl \
-    trash-cli nvdu jq
+yes | pkg install vim-console tmux neofetch archey3 xorg i3 i3status i3lock dmenu hack-font-3.003_1 \
+    tree rlwrap ranger alacritty youtube-dl alsa-utils \
+    trash-cli nvdu jq banner cairo-dock docky awesome firefox gnome htop kde lolcat plasma \
+    xfce wayland nodejs npm git

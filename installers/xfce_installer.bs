@@ -1,0 +1,13 @@
+$@ xorg plank cairo-dock dmenu docky
+
+cd /tmp/
+git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
+cd WhiteSur-gtk-theme
+./install.sh
+
+
+cd /tmp/
+git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
+cd WhiteSur-gtk-theme
+./install.sh
+

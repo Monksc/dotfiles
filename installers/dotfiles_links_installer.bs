@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-while [ $(echo $(pwd) | awk -v -v 'FS=/' '{print $NF}') == 'dotfiles' ]
+while [ $(echo $(pwd) | awk -v 'FS=/' '{print $NF}') != 'dotfiles' ]
 do
 	cd ..
 	if [ $(echo $(pwd) | wc -c) == 2 ]
@@ -9,6 +9,8 @@ do
 		exit 1
 	fi
 done
+
+echo $(pwd)
 
 confirm() {
     # call with a prompt string or use a default
@@ -24,7 +26,7 @@ confirm() {
 }
 
 installFile() {
-    if [ -a $2 ]; then
+    if [ -a "$2" ]; then
 	if [ -L $2 ]; then
 	    confirm "Do you wish to remove symlink file at $2" && rm "$2" && rm -i $2
 	elif [ -d $2 ]; then
@@ -34,18 +36,18 @@ installFile() {
 	fi
     fi
 
-    if [ !( -a $2 ) ]; then
+    if [ ! -a "$2" ]; then
         ln -s "$1" "$2"
     fi
 }
 
-installFile $(pwd)/installers/.vimrc $HOME/.vimrc
-installFile $(pwd)/installers/.vim $HOME/.vim
-installFile $(pwd)/installers/.bash_profile $HOME/.bash_profile
-installFile $(pwd)/installers/.zshrc $HOME/.zshrc
-installFile $(pwd)/installers/.zprofile $HOME/.zprofile
-installFile $(pwd)/installers/.tmux.conf $HOME/.tmux.conf
-installFile $(pwd)/installers/.tmux $HOME/.tmux
+installFile $(pwd)/config/.vimrc $HOME/.vimrc
+installFile $(pwd)/config/.vim $HOME/.vim
+installFile $(pwd)/config/.bash_profile $HOME/.bash_profile
+installFile $(pwd)/config/.zshrc $HOME/.zshrc
+installFile $(pwd)/config/.zprofile $HOME/.zprofile
+installFile $(pwd)/config/.tmux.conf $HOME/.tmux.conf
+installFile $(pwd)/config/.tmux $HOME/.tmux
 installFile $(pwd)/other/vim-ripgrep.vim $(pwd)/.vim/plugged/vim-ripgrep/vim-ripgrep.vim
 installFile $(pwd)/config/.yabairc $HOME/.yabairc
 installFile $(pwd)/config/.skhdrc $HOME/.skhdrc

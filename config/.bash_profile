@@ -147,17 +147,19 @@ export NODE_ENV=development
 # [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # heroku autocomplete setup
-HEROKU_AC_BASH_SETUP_PATH=$HOME/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
+HEROKU_AC_BASH_SETUP_PATH=$HOME/Library/Caches/heroku/autocomplete/bash_setup && test -f "$HEROKU_AC_BASH_SETUP_PATH" && source "$HEROKU_AC_BASH_SETUP_PATH";
 
 # $(flutter bash-completion)
 # flutter bash-completion | bash
 
 # Add in All Application to source
-for d in /Applications/*/Contents/MacOS ; do
-    export PATH="$PATH:$d"
-done
+if [ "$(uname -s)" == 'Darwin' ]; then
+    for d in /Applications/*/Contents/MacOS ; do
+        export PATH="$PATH:$d"
+    done
+fi
 
-for d in /Users/cameronmonks/Projects/bin/* ; do
+for d in "$HOME"/Projects/bin/* ; do
     export PATH="$PATH:$d"
 done
 
@@ -172,10 +174,14 @@ export CPATH="$CPATH:/usr/local/include/glib-2.0"
 export CPATH="$CPATH:/usr/local/include"
 export C_INCLUDE_PATH="$C_INCLUDE_PATH:/opt/X11/include"
 
-export PATH="$(brew --prefix bison)/bin:$PATH"
-export PATH="$(brew --prefix flex)/bin:$PATH"
+if [ "$(uname -s)" == 'Darwin' ]; then
+    export PATH="$(brew --prefix bison)/bin:$PATH"
+    export PATH="$(brew --prefix flex)/bin:$PATH"
+fi
 
-# alias pbcopy='xclip -selection clipboard'
-# alias pbpaste='xclip -selection clipboard -o'
+if [ "$(uname -s)" != 'Darwin' ]; then
+    alias pbcopy='xclip -selection clipboard'
+    alias pbpaste='xclip -selection clipboard -o'
+fi
 
 

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-while [ $(echo $(pwd) | awk -v 'FS=/' '{print $NF}') != 'dotfiles' ]
+while [ "$(pwd | awk -v 'FS=/' '{print $NF}')" != 'dotfiles' ]
 do
 	cd ..
-	if [ $(echo $(pwd) | wc -c) == 2 ]
+	if [ "$(pwd | wc -c)" == 2 ]
 	then
 		echo "You are not in the right directory." 1>&2
 		exit 1
@@ -27,7 +27,7 @@ if [ "$(uname -s)" == 'Darwin' ]; then
     confirm "Would you like to install using macOS?" && ./installers/macos_installer.bs
 elif [ "$(uname -s)" == 'Linux' ]; then
     if [ "$(cat /etc/*release | grep "^NAME=" | awk -v 'FS="' '{print $2}')" == 'Arch Linux' ]; then
-        confirm "Would you like to install using macOS?" && ./installers/macos_installer.bs
+        confirm "Would you like to install using macOS?" && ./installers/arch_linux_installer.bs
     else
         echo "We dont know enough about this linux distro. You must install manually." 1>&2
     fi

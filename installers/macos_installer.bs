@@ -21,6 +21,8 @@ fi
 
 brew update && brew upgrade
 
+./installers/dotfiles_links_installer.bs
+
 brew install tmux neofetch archey archey4 \
     tree rlwrap ranger youtube-dl \
     trash-cli jq banner htop lolcat \

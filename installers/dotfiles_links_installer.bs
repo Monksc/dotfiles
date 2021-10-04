@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-while [ $(echo $(pwd) | awk -v 'FS=/' '{print $NF}') != 'dotfiles' ]
-do
-	cd ..
-	if [ $(echo $(pwd) | wc -c) == 2 ]
-	then
-		echo "You are not in the right directory." 1>&2
-		exit 1
-	fi
-done
-
 confirm() {
     # call with a prompt string or use a default
     read -r -p "${1:-Are you sure? [y/N]} " response

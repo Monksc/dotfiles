@@ -28,7 +28,7 @@ confirm 'Do you want to install versions of python?' && installpython
 
 which opam
 if [ $? == 0 ]; then
-    if ! [[ -f "$HOM#/.opam" ]]; then
+    if ! [[ -f "$HOME/.opam" ]]; then
         opam init
     fi
 fi
@@ -36,8 +36,8 @@ fi
 # Set up tmux
 setUpTmux() {
     git clone https://github.com/tmux-plugins/tpm ./config/.tmux/plugins/tpm/
-    git clone https://github.com/egel/tmux-gruvbox ./config/.tmux/.tmux/plugins/tmux-gruvbox/
-    git clone https://github.com/tmux-plugins/tmux-sensible ./config/.tmux/.tmux/plugins/tmux-sensible/
+    git clone https://github.com/egel/tmux-gruvbox ./config/.tmux/plugins/tmux-gruvbox/
+    git clone https://github.com/tmux-plugins/tmux-sensible ./config/.tmux/plugins/tmux-sensible/
 }
 confirm 'Do you want to install tmux packages?' && setUpTmux
 

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+confirm() {
+    # call with a prompt string or use a default
+    read -r -p "${1:-Are you sure? [y/N]} " response
+    case "$response" in
+        [yY][eE][sS]|[yY]) 
+            true
+            ;;
+        *)
+            false
+            ;;
+    esac
+}
+
+installlatestversionofpython() {
+    confirm "Do you want to install $(pyenv install --list | grep '^ *[0-9]\+\(\.[0-9]\+\)\+ *$' | grep $1 | sort -Vr | head -n 1)?" && pyenv install --list | grep '^ *[0-9]\+\(\.[0-9]\+\)\+ *$' | grep $1 | sort -Vr | head -n 1 | xargs pyenv install
+}
+
+installpython() {
+    installlatestversionofpython '.'
+    installlatestversionofpython '2\.[0-8]+\.'
+    installlatestversionofpython '3\.7\.'
+    installlatestversionofpython '3\.9\.'
+}
+
+confirm 'Do you want to install versions of python?' && installpython
+
+

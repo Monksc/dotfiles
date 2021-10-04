@@ -15,16 +15,20 @@ sudo pacman -Syu
 sudo pacman --sync --refresh --sysupgrade
 sudo pacman -Syu
 
+dotfiles_links_installer.bs
+
 sudo pacman -Syy tmux neofetch archey3 \
     tree rlwrap ranger alacritty youtube-dl alsa-utils \
     trash-cli jq banner htop lolcat \
     nodejs npm git wget xclip net-tools nmap \
-    rust cargo rustup
+    rust cargo rustup pyenv
 
 
 confirm 'Do you want to install xfce?' && ./xfce_installer.bs sudo pacman -Syy
 
 confirm 'Do you want to install common applications?' && ./application_installer.bs sudo pacman -Syy
+
+confirm 'Do you want to install other softwear?' && ./othersoftwear.bs sudo pacman -Syy
 
 sudo pacman -S --needed base-devel
 

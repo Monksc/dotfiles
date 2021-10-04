@@ -1,0 +1,31 @@
+while [ $(echo $(pwd) | awk -v -v 'FS=/' '{print $NF}') == 'dotfiles' ]
+do
+	cd ..
+	if [ $(echo $(pwd) | wc -c) == 2 ]
+	then
+		echo "You are not in the right directory." 1>&2
+		exit 1
+	fi
+done
+
+ln -s $(pwd)/installers/.vimrc $HOME/.vimrc
+ln -s $(pwd)/installers/.vim $HOME/.vim
+ln -s $(pwd)/installers/.bash_profile $HOME/.bash_profile
+ln -s $(pwd)/installers/.zshrc $HOME/.zshrc
+ln -s $(pwd)/installers/.zprofile $HOME/.zprofile
+ln -s $(pwd)/installers/.tmux.conf $HOME/.tmux.conf
+ln -s $(pwd)/installers/.tmux $HOME/.tmux
+ln -s $(pwd)/other/vim-ripgrep.vim $(pwd)/.vim/plugged/vim-ripgrep/vim-ripgrep.vim
+ln -s $(pwd)/config/.yabairc $HOME/.yabairc
+ln -s $(pwd)/config/.skhdrc $HOME/.skhdrc
+ln -s $(pwd)/.bin $HOME/.bin
+ln -s $(pwd)/config/gruvbox-dark.xresources $HOME/.Xdefaults
+ln -s $(pwd)/config/.Xresourses $HOME/.Xresourses
+ln -s $(pwd)/config/.xprofile $HOME/.xprofile
+mkdir -p $HOME/.config/alacritty
+ln -s $(pwd)/config/alacritty.yml $HOME/.config/alacritty/alacritty.yml
+mkdir -p $HOME/.config/spacebar
+ln -s $(pwd)/config/spacebarrc $HOME/.config/spacebar/spacebarrc
+mkdir -p $HOME/.cache/trash
+mkdir -p $HOME/.config/i3
+ln -s $(pwd)/config/i3config $HOME/.config/i3/config

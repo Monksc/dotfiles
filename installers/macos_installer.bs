@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+confirm() {
+    # call with a prompt string or use a default
+    read -r -p "${1:-Are you sure? [y/N]} " response
+    case "$response" in
+        [yY][eE][sS]|[yY]) 
+            true
+            ;;
+        *)
+            false
+            ;;
+    esac
+}
+
+which brew >/dev/null
+if [ $? -ne 0 ]; then
+	echo "HI"
+	confirm "Do you want to install brew?" && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+brew update && brew upgrade
+
+brew install tmux neofetch archey archey4 \
+    tree rlwrap ranger youtube-dl \
+    trash-cli jq banner htop lolcat \
+    nodejs npm git postgresql go pyenv \
+    gradle haskell-stack heroku htop llvm \
+    redis ripgrep docker nmap tor ocaml \
+    openjdk oepnssl ghc perl bison
+    rust rustup-init
+
+brew install --cask font-hack alacritty android-ndk \
+    android-sdk flutter postman
+
+confirm 'Do you want to install common applications?' && ./installers/application_installer.bs brew install --cask
+
+confirm 'Do you want to install dotfiles?' && installers/dotfiles_links_installer.bs
+
+confirm 'Do you want to install other softwear?' && installers/othersoftwear.bs
+
+brew update && brew upgrade

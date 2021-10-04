@@ -1,1 +1,19 @@
+watch --color istats
+pkill -SIGHUP gpg-agent
+skhd --reload
+while [ $(yabai -m rule --remove 4; echo $?) -lt 1 ]; do echo "EHLLO"; done
+cd /Users/cameronmonks/Projects/bin/labelImg && python3 labelImg.py \
+    [IMAGE_PATH] [PRE-DEFINED CLASS FILE]
+cat ../duckduckgo.com_Archive\ \[21-03-31\ 19-16-53\].har | jq .log | jq .entries | jq '[.[] | .request .url ]' | awk '/htt/{print "curl", substr($0, 3, length($0)-3), "--output", NR+"-image.png"}' | bash
+softwareupdate --all --install --force
+msgcat --color=test
+defaults write -g NSWindowSupportsAutomaticInlineTitle -bool false
+heroku restart
+cloc .
+clang -emit-llvm -S test.c -o test.ll
+rlwrap <program>
+ranger
+tee >(program 1) >(program 2)
+expr '5' '*' '10'
+echo $((4*3+2))
 dbus-run-session -- gnome-shell --display-server --wayland

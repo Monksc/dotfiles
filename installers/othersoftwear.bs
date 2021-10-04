@@ -26,4 +26,16 @@ installpython() {
 
 confirm 'Do you want to install versions of python?' && installpython
 
+which opam
+if [ $? == 0 ]; then
+    opam init
+fi
+
+# Set up tmux
+setUpTmux() {
+    git clone https://github.com/tmux-plugins/tpm ./config/.tmux/plugins/tpm
+    git clone https://github.com/egel/tmux-gruvbox ./config/.tmux
+    git clone https://github.com/tmux-plugins/tmux-sensible ./config/.tmux
+}
+confirm 'Do you want to install tmux packages?' && setUpTmux
 

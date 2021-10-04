@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+while [ $(echo $(pwd) | awk -v 'FS=/' '{print $NF}') != 'dotfiles' ]
+do
+	cd ..
+	if [ $(echo $(pwd) | wc -c) == 2 ]
+	then
+		echo "You are not in the right directory." 1>&2
+		exit 1
+	fi
+done
+
+confirm() {
+    # call with a prompt string or use a default
+    read -r -p "${1:-Are you sure? [y/N]} " response
+    case "$response" in
+        [yY][eE][sS]|[yY]) 
+            true
+            ;;
+        *)
+            false
+            ;;
+    esac
+}
+
+if [ "$(uname -s)" == 'Darwin' ]; then
+    confirm "Would you like to install using macOS?" && ./installers/macos_installer.bs
+elif [ "$(uname -s)" == 'Linux' ]; then
+    if [ "$(cat /etc/*release | grep "^NAME=" | awk -v 'FS="' '{print $2}')" == 'Arch Linux' ]; then
+        confirm "Would you like to install using macOS?" && ./installers/macos_installer.bs
+    else
+        echo "We dont know enough about this linux distro. You must install manually." 1>&2
+    fi
+else
+    echo "Sorry but we dont know enough about this os. If its FreeBSD we have some info on the dotfiles but not much." 1>&2
+    echo "I have not used FreeBSD in a long time but loved it and good luck. Just not enough softwear." 1>&2
+fi
+
+

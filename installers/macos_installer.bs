@@ -26,7 +26,7 @@ brew install tmux neofetch archey archey4 \
     trash-cli jq banner htop lolcat \
     nodejs npm git postgresql go pyenv \
     gradle haskell-stack heroku htop llvm \
-    redis ripgrep docker nmap tor ocaml \
+    redis ripgrep docker nmap tor ocaml opam \
     openjdk oepnssl ghc perl bison
     rust rustup-init
 

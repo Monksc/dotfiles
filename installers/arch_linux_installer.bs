@@ -23,7 +23,7 @@ sudo pacman -Syy tmux neofetch archey3 \
     tree rlwrap ranger alacritty youtube-dl alsa-utils \
     trash-cli jq banner htop lolcat \
     nodejs npm git wget xclip net-tools nmap \
-    rust cargo rustup pyenv
+    rust cargo rustup pyenv ocaml opam
 
 
 confirm 'Do you want to install xfce?' && ./xfce_installer.bs sudo pacman -Syy

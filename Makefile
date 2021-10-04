@@ -1,4 +1,4 @@
 uninstall:
-	./installers/uninstall.bs
+	installers/dotfiles_links_uninstaller.bs
 install:
-	./installers/install.bs
+	./installers/install_all.bs

@@ -28,7 +28,7 @@ confirm 'Do you want to install versions of python?' && installpython
 
 which opam
 if [ $? == 0 ]; then
-    if ! [[ -f "$HOME/.opam" ]]; then
+    if ! [[ -a "$HOME/.opam" ]]; then
         opam init
     fi
 fi

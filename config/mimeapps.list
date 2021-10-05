@@ -1,0 +1,15 @@
+[Default Applications]
+inode/directory=xfce4-file-manager.desktop
+x-scheme-handler/trash=xfce4-file-manager.desktop
+x-scheme-handler/mailto=xfce4-mail-reader.desktop
+application/geo+json=vim.desktop
+application/gml+xml=vim.desktop
+application/javascript=vim.desktop
+
+[Added Associations]
+inode/directory=xfce4-file-manager.desktop;
+x-scheme-handler/trash=xfce4-file-manager.desktop;
+x-scheme-handler/mailto=xfce4-mail-reader.desktop;
+application/geo+json=vim.desktop;
+application/gml+xml=vim.desktop;
+application/javascript=vim.desktop;

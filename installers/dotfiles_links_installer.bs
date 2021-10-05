@@ -15,13 +15,13 @@ confirm() {
 
 installFile() {
     if [ -a "$2" ]; then
-	if [ -L "$2" ]; then
-	    confirm "Do you wish to remove symlink file at $2" && rm "$2" && rm -i "$2"
-	elif [ -d "$2" ]; then
-	    confirm "Do you wish to move directory at $2 to $2.old" && mv -i -n "$2" "$2.old"
-	else
-	    confirm "Do you wish to move file at $2 to $2.old" && mv -i -n "$2" "$2.old"
-	fi
+        if [ -L "$2" ]; then
+            confirm "Do you wish to remove symlink file at $2" && rm "$2" && rm -i "$2"
+        elif [ -d "$2" ]; then
+            confirm "Do you wish to move directory at $2 to $2.old" && mv -i -n "$2" "$2.old"
+        else
+            confirm "Do you wish to move file at $2 to $2.old" && mv -i -n "$2" "$2.old"
+        fi
     fi
 
     if ! [[ -a "$2" ]]; then
@@ -49,5 +49,20 @@ mkdir -p "$HOME/.config/spacebar"
 installFile "$(pwd)/config/spacebarrc" "$HOME/.config/spacebar/spacebarrc"
 mkdir -p "$HOME/.cache/trash"
 mkdir -p "$HOME/.config/i3"
-installFile "$(pwd)/config/i3config" "$HOME/.config/i3/config"
-
+installFile "$(pwd)/config/i3config" "$HOME/.config/i3config"
+installFile "$(pwd)/config/autostart" "$HOME/.config/autostart"
+installFile "$(pwd)/config/cairo-dock" "$HOME/.config/cairo-dock"
+installFile "$(pwd)/config/compton.conf" "$HOME/.config/compton.conf"
+installFile "$(pwd)/config/gtk-3.0" "$HOME/.config/gtk-3.0"
+installFile "$(pwd)/config/gtk-4.0" "$HOME/.config/gtk-4.0"
+installFile "$(pwd)/config/htop" "$HOME/.config/htop"
+installFile "$(pwd)/config/ktimezonedrc" "$HOME/.config/ktimezonedrc"
+installFile "$(pwd)/config/mimeapps.list" "$HOME/.config/mimeapps.list"
+installFile "$(pwd)/config/neofetch" "$HOME/.config/neofetch"
+installFile "$(pwd)/config/okularrc" "$HOME/.config/okularrc"
+installFile "$(pwd)/config/plank" "$HOME/.config/plank"
+installFile "$(pwd)/config/ranger" "$HOME/.config/ranger"
+installFile "$(pwd)/config/synapse" "$HOME/.config/synapse"
+installFile "$(pwd)/config/vala-panel" "$HOME/.config/vala-panel"
+installFile "$(pwd)/config/xfce4" "$HOME/.config/xfce4"
+installFile "$(pwd)/config/.xinitrc" "$HOME/.xinitrc"

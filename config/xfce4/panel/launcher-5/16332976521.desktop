@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Synapse
+Comment=Search everything you do.
+Exec=synapse
+Icon=folder-saved-search
+Path=
+Terminal=false
+StartupNotify=true

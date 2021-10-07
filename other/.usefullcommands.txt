@@ -17,3 +17,4 @@ tee >(program 1) >(program 2)
 expr '5' '*' '10'
 echo $((4*3+2))
 dbus-run-session -- gnome-shell --display-server --wayland
+ispci # used for arch linux to see PCI devices

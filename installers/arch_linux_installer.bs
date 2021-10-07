@@ -120,10 +120,10 @@ sudo pacman -S --needed base-devel
 
 # Installing Yay
 cd /tmp
-sudo git clone https://aur.archlinux.org/yay-git.git
+git clone https://aur.archlinux.org/yay-git.git
 cd yay-git
 makepkg -si
-sudo yay -Syu
+yay -Syu
 
 yay -S pamac-aur-git
 
@@ -132,7 +132,7 @@ xfconf-query -c xsettings -p /Gtk/ShellShowsAppmenu -n -t bool -s true
 
 # Installing Snap
 cd /tmp
-sudo git clone https://aur.archlinux.org/snapd.git
+git clone https://aur.archlinux.org/snapd.git
 cd snapd
 makepkg -si
 sudo systemctl enable --now snapd.socket

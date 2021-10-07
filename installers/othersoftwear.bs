@@ -26,7 +26,7 @@ installpython() {
 
 confirm 'Do you want to install versions of python?' && installpython
 
-which opam
+which opam >> /dev/null
 if [ $? == 0 ]; then
     if ! [[ -a "$HOME/.opam" ]]; then
         opam init

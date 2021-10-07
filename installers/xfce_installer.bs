@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-$@ xorg plank cairo-dock dmenu docky
+$@ xorg xorg-xinit plank cairo-dock dmenu docky
 
 cd /tmp/
 git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git

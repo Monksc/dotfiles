@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+$@ xorg xorg plasma plasma-wayland-session kde-applications
+
+sudo systemctl enable sddm.service
+sudo systemctl enable NetworkManager.service

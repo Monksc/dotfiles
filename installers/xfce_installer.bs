@@ -13,3 +13,6 @@ git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
 cd WhiteSur-gtk-theme
 ./install.sh
 
+cp ~/.themes/WhiteSur-dark/plank ~/.local/share/plank/themes/WhiteSur-dark
+cp ~/.themes/WhiteSur-light/plank ~/.local/share/plank/themes/WhiteSur-light
+

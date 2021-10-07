@@ -1,5 +1,8 @@
 {
   "ui" : {
+    "shortcuts": {
+        "activate": "<super>space"
+    },
     "global" : {
       "ui-type" : "virgilio"
     }

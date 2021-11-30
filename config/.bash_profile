@@ -36,6 +36,8 @@ alias t="set -o ignoreeof"
 alias ll="ls -G -lh -all"
 alias c="gcc -g -Wall -Werror -Wvla -fsanitize=address"
 
+alias wine32v2="WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg"
+
 echo "Welcome Cameron!"
 # cal
 # date
@@ -120,6 +122,50 @@ export EDITOR
 # silence zsh warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# Functions
+
+ip() {
+    if [ "$1" == "tor" ]; then
+        curl --socks5-hostname localhost:9050 ifconfig.me
+    elif [ "$1" == "global" ]; then
+        curl ifconfig.me
+    elif [ "$1" == "local" ]; then
+        ifconfig | grep "192" | awk '{print $2}'
+    else
+        echo '[tor|global|local]'
+    fi
+}
+
+ssh-helper() {
+    if [ "$1" == "list" -a $# -eq 1 ]; then
+        nmap -rn $(ip local)/24 -p 22 | grep -B 5 "open"
+    elif [ "$1" == "list" -a "$2" == "ip" -a $# -eq 2 ]; then
+        ssh-helper list | sed -rn 's/.*([0-9]{3}\.[0-9]+\.[0-9]+\.[0-9]+).*/\1/gp'
+    elif [ "$1" == "list" -a "$2" == "ip" ]; then
+        ssh-helper list ip | head -n "$3"
+    elif [ $# -eq 1 ]; then
+        ssh "$1"@$(ssh-helper list ip 1)
+    else
+        echo "[list[ ip][ #]|username]"
+    fi
+}
+
+random-sequence() {
+    if [ $# == 2 ]; then
+        cat /dev/urandom | LC_ALL=C tr -dc "$1" | fold -w "$2" | head -n 1
+    else
+        echo "random-sequence <regex> <length>"
+    fi
+}
+
+my-tmux-cddir() {
+    tmux command-prompt "attach -c $(pwd)"
+}
+
+my-flutter-device-id() {
+    flutter devices | grep 'mobile' | awk -v'FS=•' 'NF>2{ print $2 }'
+}
+
 # Some more alias to avoid making mistakes:
 alias rm='rm -i'
 alias cp='cp -i'
@@ -132,6 +178,9 @@ alias vimdebug='/usr/local/bin/vim'
 
 alias vimjupyter='rlwrap fromterminal easypipe read vim "|"'
 alias vimjupyterpython='rlwrap fromterminal easypipe read vim "|" ipython'
+
+alias psql13='/usr/local/Cellar/postgresql@13/13.4/bin/psql'
+alias pg_restore13='/usr/local/Cellar/postgresql@13/13.4/bin/pg_restore'
 
 # Add in key bindings
 # bind -x '"\ef":"say \"Its now control W.\""'
@@ -175,6 +224,11 @@ export CPATH="$CPATH:/usr/local/include"
 export C_INCLUDE_PATH="$C_INCLUDE_PATH:/opt/X11/include"
 
 if [ "$(uname -s)" == 'Darwin' ]; then
+    # alias ip='ifconfig | grep "192" | awk '"'"'{print $2}'"'"
+    # alias ssh-list='nmap -rn $(ip)/24 -p 22 | grep -B 5 "open"'
+    # alias ssh-list-ip='ssh-list | sed -rn '"'"'s/.*([0-9]{3}\.[0-9]+\.[0-9]+\.[0-9]+).*/\1/gp'"'"
+    # alias ssh-list-ip-1='ssh-list-ip | head -n 1'
+    # alias ssh-pi='ssh pi@$(ssh-list-ip-1)'
     export PATH="$(brew --prefix bison)/bin:$PATH"
     export PATH="$(brew --prefix flex)/bin:$PATH"
 fi
@@ -182,6 +236,10 @@ fi
 if [ "$(uname -s)" != 'Darwin' ]; then
     alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
+    alias open='xdg-open'
+    alias open-mime='mimeopen'
 fi
 
 
+export PATH="/usr/local/opt/node@16/bin:$PATH"
+#export PAGER=less

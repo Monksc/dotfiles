@@ -22,7 +22,7 @@ timedatectl set-timezone US/Eastern
 timedatectl set-ntp true
 # timedatectl status
 # fdisk -l
-echo -e "m\ng\nn\n1\n\n+550M\nn\n2\n\n+2G\nn\n3\n\n\nt\n1\n1\nt\n2\n19\n\nw\n" | fdisk /dev/sda
+echo -e "g\nn\n1\n\n+550M\nn\n2\n\n+2G\nn\n3\n\n\nt\n1\n1\nt\n2\n19\n\nw\n" | fdisk /dev/sda
 # fdisk /dev/sda
 #   m
 #   g
@@ -56,7 +56,7 @@ mount /dev/sda3 /mnt
 pacstrap /mnt base linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
-wget https://raw.githubusercontent.com/Monksc/dotfiles/master/installers/arch_linux_first_installer.bs -o /tmp/arch_installer_chroot.bs
+wget https://raw.githubusercontent.com/Monksc/dotfiles/master/installers/arch_linux_first_installer2.bs -O /tmp/arch_installer_chroot.bs
 cat /tmp/arch_installer_chroot.bs | arch-chroot /mnt
 umount -l /mnt
 #installers/arch_linux_installer.bs

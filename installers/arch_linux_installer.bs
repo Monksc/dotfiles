@@ -97,6 +97,41 @@ confirm() {
     esac
 }
 
+installThirdPartyPackageManagers() {
+    sudo pacman -S --needed base-devel
+
+    # Installing Yay
+    cd /tmp
+    git clone https://aur.archlinux.org/yay-git.git
+    cd yay-git
+    makepkg -si
+    yay -Syu
+
+    yay -S pamac-aur-git
+
+    pamac install panther-launcher-git synapse-git appmenu-gtk-module-git
+
+    xfconf-query -c xsettings -p /Gtk/ShellShowsMenubar -n -t bool -s true
+    xfconf-query -c xsettings -p /Gtk/ShellShowsAppmenu -n -t bool -s true
+
+    # Installing Snap
+    cd /tmp
+    git clone https://aur.archlinux.org/snapd.git
+    cd snapd
+    makepkg -si
+    sudo systemctl enable --now snapd.socket
+
+    sudo pacman -Syu
+    sudo pacman --sync --refresh --sysupgrade
+    sudo pacman -Syu
+}
+
+installZenKernel() {
+    sudo pacman -S linux-zen
+    sudo pacman -R linux
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+}
+
 sudo pacman -Syu
 sudo pacman --sync --refresh --sysupgrade
 sudo pacman -Syu
@@ -109,36 +144,20 @@ sudo pacman -Syy tmux neofetch archey3 \
     nodejs npm git wget xclip net-tools nmap \
     rust cargo rustup pyenv ocaml opam
 
+installThirdPartyPackageManagers
 
 confirm 'Do you want to install xfce?' && ./installers/xfce_installer.bs sudo pacman -Syy
+
+confirm 'Do you want to install kde plasma?' && ./installers/kde_plasma_installer.bs sudo pacman -Syy
 
 confirm 'Do you want to install common applications?' && ./installers/application_installer.bs sudo pacman -Syy
 
 confirm 'Do you want to install other softwear?' && ./installers/othersoftwear.bs sudo pacman -Syy
 
-sudo pacman -S --needed base-devel
 
-# Installing Yay
-cd /tmp
-git clone https://aur.archlinux.org/yay-git.git
-cd yay-git
-makepkg -si
-yay -Syu
+sudo systemctl enable sshd.service
+# sudo systemctl disable session-c1.scope # disables login /usr/bin/sddm-greeter
 
-yay -S pamac-aur-git
+confirm 'Do you want to install zen kernel?' && installZenKernel
 
-pamac install panther-launcher-git synapse-git appmenu-gtk-module-git
-
-xfconf-query -c xsettings -p /Gtk/ShellShowsMenubar -n -t bool -s true
-xfconf-query -c xsettings -p /Gtk/ShellShowsAppmenu -n -t bool -s true
-
-# Installing Snap
-cd /tmp
-git clone https://aur.archlinux.org/snapd.git
-cd snapd
-makepkg -si
-sudo systemctl enable --now snapd.socket
-
-sudo pacman -Syu
-sudo pacman --sync --refresh --sysupgrade
-sudo pacman -Syu
+echo "You should reboot now"

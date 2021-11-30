@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+
+# Initial installation commands
+# ls /sys/firmware/efi/efivars
+# ls /usr/share/kdb/keymaps/**/*.map.gz | grep '[^a-z]us[^a-z]'
+loadkeys us
+# ll /usr/share/kdb/consolefonts | less
+# setfont <font>
+# man ip-link
+# ip addr
+# ip a
+# Maybe run: rfkill unblock wifi
+# iwctl
+#   station wlan0 get-networks
+#   station wlan0 connect <name>
+pacman -Syy
+# man timedatectl
+# timedatectl list-timezones
+timedatectl set-timezone US/Eastern
+# timedatectl status
+# fdisk -l
+echo -e "m\ng\nn\n1\n\n+550M\nn\n2\n\n+2G\nn\n3\n\n\nt\n1\nl\n1\nt\n2\n19\n\nw\n" | fdisk /dev/sda
+# fdisk /dev/sda
+#   m
+#   g
+#   n
+#   1
+#
+#   +550M
+#   n
+#   2
+#
+#   +2G
+#   n
+#   3
+#
+#
+#   t
+#   1
+#   l
+#   1
+#   t
+#   2
+#   19
+#
+#   w
+mkfs.fat -F32 /dev/sda1
+mkswap /dev/sda2
+swapon /dev/sda2
+mkfs.ext4 /dev/sda3
+mount /dev/sda3 /mnt
+#mount /dev/sda1 /mnt/boot
+pacstrap /mnt base linux linux-firmware
+genfstab -U /mnt >> /mnt/etc/fstab
+arch-chroot /mnt
+ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
+hwclock --systohc
+# pacman -S vim
+sed 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen > /tmp/local.gen
+cat /tmp/locale.gen > /etc/locale.gen
+# vim /etc/locale.gen
+#   uncoment en_US.UTF-8 UTF-8
+
+locale-gen
+echo "cammonks-arch-btw" > /etc/hostname
+# vim /etc/hostname
+#   cammonks-mbp
+echo -e "127.0.0.1\tlocalhost\n::1\tlocalhost\n127.0.1.1\tcammonks-arch-btw.localdomain\tcammonks-arch-btw" >> /etc/hosts
+# vim /etc/hosts
+#   127.0.0.1   localhost
+#   ::1         localhost
+#   127.0.1.1   cammonks-mbp.localdomain    cammonks-mbp
+echo -e "toor\ntoor" | passwd
+# passwd
+#   root_password
+useradd -m cammonks
+echo -e "c# am\ncam" | passwd cammonks
+#   cammonks_password
+usermod -aG wheel,audio,video,optical,storage cammonks
+pacman -Syy sudo
+sed 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers > /tmp/sudoers
+cat /tmp/sudoers > /etc/sudoers
+# visudo
+#   %wheel ALL=(ALL) ALL
+pacman -Syy grub efibootmgr dosfstools os-prober mtools
+mkdir /boot/EFI
+mount /dev/sda1 /boot/EFI
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+grub-mkconfig -o /boot/grub/grub.cfg
+pacman -Syy networkmanager vim git
+systemctl enable NetworkManager
+exit
+umount -l /mnt
+#installers/arch_linux_installer.bs
+reboot

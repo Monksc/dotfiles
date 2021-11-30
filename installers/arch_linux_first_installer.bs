@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# pacman -Syy wget
+# wget https://raw.githubusercontent.com/Monksc/dotfiles/master/installers/arch_linux_first_installer.bs
 # Initial installation commands
 # ls /sys/firmware/efi/efivars
 # ls /usr/share/kdb/keymaps/**/*.map.gz | grep '[^a-z]us[^a-z]'
@@ -19,7 +21,7 @@ pacman -Syy
 timedatectl set-timezone US/Eastern
 # timedatectl status
 # fdisk -l
-echo -e "m\ng\nn\n1\n\n+550M\nn\n2\n\n+2G\nn\n3\n\n\nt\n1\nl\n1\nt\n2\n19\n\nw\n" | fdisk /dev/sda
+echo -e "m\ng\nn\n1\n\n+550M\nn\n2\n\n+2G\nn\n3\n\n\nt\n1\n1\nt\n2\n19\n\nw\n" | fdisk /dev/sda
 # fdisk /dev/sda
 #   m
 #   g

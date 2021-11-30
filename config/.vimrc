@@ -1,5 +1,7 @@
 let background='dark'
 syntax on
+set spell spelllang=en_us
+setlocal spell spelllang=en_us
 " set foldmethod=syntax " set clipboard=unnamed
 set ignorecase
 set laststatus=2
@@ -205,7 +207,7 @@ augroup Racer
     autocmd FileType rust nmap <buffer> <leader>gD <Plug>(rust-doc-tab)
 augroup END
 
-"autocmd BufRead,BufNewFile,BufEnter *.dart UltiSnipsAddFiletypes dart-flutter
+" autocmd BufRead,BufNewFile,BufEnter *.dart UltiSnipsAddFiletypes dart-flutter
 
 set number relativenumber
 set ruler
@@ -230,8 +232,19 @@ set statusline+=\ %l:%c
 
 " Templates
 
+funct! Exec(command)
+    echo a:command
+    redir =>output
+    silent exec a:command
+    redir END
+    return output
+endfunct!
+
 function! NewFile()
     let dir = split(finddir('.git/..', expand('%:p').';'), '/\|\')[-1]
+" let quote = "'"
+" let dir = Exec('!(git rev-parse --show-toplevel 2>/dev/null) | awk -v ' . quote . 'FS=/' . quote . ' ' . quote . '{print $NF }' . quote)
+" echo "DIR" . dir
     silent! 0r $HOME/.vim/templates/skeleton.%:e
     %s/<FILENAME>/\=expand("%:t")
     %s/<PROJECT>/\=dir
@@ -313,6 +326,11 @@ autocmd BufWritePost *.scad call ScadSave()
 inoremap {<CR> {<CR>}<Esc>O
 "inoremap " ""<Left>
 "inoremap " <esc>:call TypedQuote()<CR>i"<Left>"
+inoremap <C-q> <C-a>
+inoremap <C-a> <Esc>I
+inoremap <C-r> <C-e>
+inoremap <C-e> <Esc>A
+
 
 
 

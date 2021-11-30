@@ -19,6 +19,7 @@ pacman -Syy
 # man timedatectl
 # timedatectl list-timezones
 timedatectl set-timezone US/Eastern
+timedatectl set-ntp true
 # timedatectl status
 # fdisk -l
 echo -e "m\ng\nn\n1\n\n+550M\nn\n2\n\n+2G\nn\n3\n\n\nt\n1\n1\nt\n2\n19\n\nw\n" | fdisk /dev/sda

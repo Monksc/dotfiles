@@ -29,11 +29,11 @@ brew install tmux neofetch archey archey4 \
     nodejs npm git postgresql go pyenv \
     gradle haskell-stack heroku htop llvm \
     redis ripgrep docker nmap tor ocaml opam \
-    openjdk oepnssl ghc perl bison
-    rust rustup-init
+    openjdk oepnssl ghc perl bison \
+    rust rustup-init playcover coreutils
 
 brew install --cask font-hack alacritty android-ndk \
-    android-sdk flutter postman
+    android-sdk flutter postman # background-music soundflower
 
 confirm 'Do you want to install common applications?' && ./installers/application_installer.bs brew install --cask
 

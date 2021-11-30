@@ -41,3 +41,5 @@ setUpTmux() {
 }
 confirm 'Do you want to install tmux packages?' && setUpTmux
 
+confirm 'Do you want to install other programs?' && ./installers/common_programs_installer.bs
+

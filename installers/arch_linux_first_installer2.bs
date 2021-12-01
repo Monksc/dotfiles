@@ -34,4 +34,13 @@ grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 pacman -Syy --noconfirm networkmanager vim git
 systemctl enable NetworkManager
+
+su cammonks
+cd
+mkdir Projects
+cd Projects
+git clone https://github.com/Monksc/dotfiles.git
+cd dotfiles
+./installers/arch_linux_installer.bs
+
 exit

@@ -1,7 +1,7 @@
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc
 # pacman -S vim
-sed 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen > /tmp/local.gen
+sed 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen > /tmp/locale.gen
 cat /tmp/locale.gen > /etc/locale.gen
 # vim /etc/locale.gen
 #   uncoment en_US.UTF-8 UTF-8

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-$@ xorg xorg plasma plasma-wayland-session kde-applications kvantum-qt5
+$@ xorg xorg plasma plasma-wayland-session kde-applications kvantum-qt5 lightdm
 
 pamac install latte-dock
 
 # mkdir /tmp/
 # wget https://dl2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2MzExOTY5NzUiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6ImY1ZWRiMTljYjU3ZDQxMTZhMzkxYzc3NzJiZjZhZWJiNWRmMzM5MjQ4MzFlNzk1ZTJlMzEwZGVkZDBlYmQzY2Q5MGFkYjMyZGNkYTc4Y2Y1MGQyODM0OTBiN2U3ZDMzMzQ3MTVjY2VmZTEwZGI1NDI5MDM3N2M1YzJkYzNhMzI2IiwidCI6MTYzMzYzODE2MSwic3RmcCI6IjU4MjljYTgwNzI1M2QwZTViZjNjN2E5NjViOTM1MmU1Iiwic3RpcCI6IjY3LjI0MS4yNTMuMzIifQ.4Gy_IvJDOJhntHnNq4_oY3OpWEQe5KOQEnJL7-cTNns/WhiteSur.tar.xz
 
-# sudo systemctl enable sddm.service
-# sudo systemctl enable NetworkManager.service
+sudo systemctl enable sddm.service
+sudo systemctl enable NetworkManager.service

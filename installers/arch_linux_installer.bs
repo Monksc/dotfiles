@@ -31,11 +31,11 @@ installThirdPartyPackageManagers() {
     xfconf-query -c xsettings -p /Gtk/ShellShowsAppmenu -n -t bool -s true
 
     # Installing Snap
-    cd /tmp
-    git clone https://aur.archlinux.org/snapd.git
-    cd snapd
-    makepkg -si
-    sudo systemctl enable --now snapd.socket
+    # cd /tmp
+    # git clone https://aur.archlinux.org/snapd.git
+    # cd snapd
+    # makepkg -si
+    # sudo systemctl enable --now snapd.socket
 
     sudo pacman -Syu
     sudo pacman --sync --refresh --sysupgrade

@@ -1,0 +1,11 @@
+[$Version]
+update_info=kwin.upd:replace-scalein-with-scale,kwin.upd:port-minimizeanimation-effect-to-js,kwin.upd:port-scale-effect-to-js,kwin.upd:port-dimscreen-effect-to-js,kwin.upd:auto-bordersize,kwin.upd:animation-speed,kwin.upd:desktop-grid-click-behavior,kwin.upd:no-swap-encourage,kwin.upd:make-translucency-effect-disabled-by-default,kwin.upd:remove-flip-switch-effect,kwin.upd:remove-cover-switch-effect,kwin.upd:remove-cubeslide-effect,kwin.upd:remove-xrender-backend
+
+[Desktops]
+Id_1=19f2f931-4d80-4f02-974c-6fcbb11857c7
+Number=1
+Rows=1
+
+[org.kde.kdecoration2]
+ButtonsOnLeft=XIA
+ButtonsOnRight=

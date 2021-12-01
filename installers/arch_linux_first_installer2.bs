@@ -40,7 +40,7 @@ cd
 mkdir Projects
 cd Projects
 git clone https://github.com/Monksc/dotfiles.git
-cd dotfiles
-./installers/arch_linux_installer.bs
+# cd dotfiles
+# ./installers/arch_linux_installer.bs
 
 exit

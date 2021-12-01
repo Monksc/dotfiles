@@ -60,4 +60,4 @@ wget https://raw.githubusercontent.com/Monksc/dotfiles/master/installers/arch_li
 cat /tmp/arch_installer_chroot.bs | arch-chroot /mnt
 umount -l /mnt
 #installers/arch_linux_installer.bs
-shutdown
+shutdown now

@@ -33,7 +33,7 @@ export PATH="$PATH:$HOME/Projects/cproj/viminput"
 
 alias t="set -o ignoreeof"
 #alias ll="ls -G -lh -all --color=auto"
-alias ll="ls -G -lh -all"
+#alias ll="ls -G -lh -all"
 alias c="gcc -g -Wall -Werror -Wvla -fsanitize=address"
 
 alias wine32v2="WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg"
@@ -231,6 +231,7 @@ if [ "$(uname -s)" == 'Darwin' ]; then
     # alias ssh-pi='ssh pi@$(ssh-list-ip-1)'
     export PATH="$(brew --prefix bison)/bin:$PATH"
     export PATH="$(brew --prefix flex)/bin:$PATH"
+    alias ll="ls -G -lh -all"
 fi
 
 if [ "$(uname -s)" != 'Darwin' ]; then
@@ -238,6 +239,7 @@ if [ "$(uname -s)" != 'Darwin' ]; then
     alias pbpaste='xclip -selection clipboard -o'
     alias open='xdg-open'
     alias open-mime='mimeopen'
+    alias ll="ls -G -lh -all --color=auto"
 fi
 
 

@@ -1,6 +1,6 @@
 [KFileDialog Settings]
-Recent Files[$e]=mcOS-BigSur-Large.layout.latte,file:$HOME/Downloads/launchpad.svg,file:$HOME/Downloads/ditoMenu-spotlight.svg,file:$HOME/Downloads/sideBar-controlCentre.svg,file:$HOME/Downloads/mcOS-BigSur-Large.layout.latte
-Recent URLs[$e]=file:$HOME/Downloads/,file:$HOME/,file:$HOME/Documents/
+Recent Files[$e]=mcOS-BigSur-Large.layout.latte,file:$HOME/Projects/dotfiles/images/icons/launchpad.svg,file:$HOME/Projects/dotfiles/images/icons/sideBar-controlCentre.svg,file:$HOME/Projects/dotfiles/images/icons/ditoMenu-spotlight.svg
+Recent URLs[$e]=file:$HOME/Downloads/,file:$HOME/,file:$HOME/Documents/,file:$HOME/Projects/dotfiles/images/icons/
 detailViewIconSize=16
 
 [LatteSettingsDialog]

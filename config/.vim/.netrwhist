@@ -1,12 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/cammonks/Projects/dotfiles/themes'
+let g:netrw_dirhist_6='/home/cammonks/Projects/dotfiles'
+let g:netrw_dirhist_5='/home/cammonks/.themes'
+let g:netrw_dirhist_4='/home/cammonks/Projects/dotfiles/installers'
 let g:netrw_dirhist_3='/home/cammonks/Projects/dotfiles/config'
 let g:netrw_dirhist_2='/home/cammonks/Projects/dotfiles/config/Kvantum'
 let g:netrw_dirhist_1='/home/cammonks/Projects/dotfiles/config/Kvantum/WhiteSur'
 let g:netrw_dirhist_0='/home/cammonks/Projects/dotfiles/config/Kvantum'
 let g:netrw_dirhist_9='/home/cammonks/Projects/dotfiles/config/Kvantum/WhiteSur'
 let g:netrw_dirhist_8='/home/cammonks/Projects/dotfiles/config/Kvantum'
-let g:netrw_dirhist_7='/home/cammonks/.kde4/share/apps/color-schemes'
-let g:netrw_dirhist_6='/home/cammonks/.kde4/share/apps'
-let g:netrw_dirhist_5='/home/cammonks/.kde4/share'
-let g:netrw_dirhist_4='/home/cammonks/.kde4'

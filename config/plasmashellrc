@@ -3,6 +3,9 @@ Recent Files[$e]=file:$HOME/Projects/dotfiles/images/Big Sur Dark.jpg,file:$HOME
 Recent URLs[$e]=file:$HOME/Projects/dotfiles/images/
 detailViewIconSize=16
 
+[PlasmaTransientsConfig]
+PreloadWeight=92
+
 [PlasmaViews][Panel 2][Defaults]
 thickness=44
 

@@ -27,7 +27,7 @@ _k_friendly_name=Custom Shortcuts Service
 {e8a9478f-5bed-4d21-ac5b-656c2365949b}=Ctrl+Alt+T,none,Launch Konsole
 
 [kmix]
-_k_friendly_name=KMix
+_k_friendly_name=Audio Volume
 decrease_microphone_volume=Microphone Volume Down,Microphone Volume Down,Decrease Microphone Volume
 decrease_volume=Volume Down,Volume Down,Decrease Volume
 increase_microphone_volume=Microphone Volume Up,Microphone Volume Up,Increase Microphone Volume
@@ -210,6 +210,12 @@ activate entry 6=Meta+6,Meta+6,Activate Entry 6
 activate entry 7=Meta+7,Meta+7,Activate Entry 7
 activate entry 8=Meta+8,Meta+8,Activate Entry 8
 activate entry 9=Meta+9,Meta+9,Activate Entry 9
+activate widget 21=Meta+Space,none,Activate Ditto Menu Widget
+clear-history=none,none,Clear Clipboard History
+clipboard_action=,Ctrl+Alt+X,Enable Clipboard Actions
+cycleNextAction=none,none,Next History Item
+cyclePrevAction=none,none,Previous History Item
+edit_clipboard=none,none,Edit Contents…
 new instance for entry 1=Meta+Ctrl+1,Meta+Ctrl+1,New Instance for Entry 1
 new instance for entry 10=Meta+Ctrl+0,Meta+Ctrl+0,New Instance for Entry 10
 new instance for entry 11=Meta+Ctrl+Z,Meta+Ctrl+Z,New Instance for Entry 11
@@ -229,9 +235,23 @@ new instance for entry 6=Meta+Ctrl+6,Meta+Ctrl+6,New Instance for Entry 6
 new instance for entry 7=Meta+Ctrl+7,Meta+Ctrl+7,New Instance for Entry 7
 new instance for entry 8=Meta+Ctrl+8,Meta+Ctrl+8,New Instance for Entry 8
 new instance for entry 9=Meta+Ctrl+9,Meta+Ctrl+9,New Instance for Entry 9
+repeat_action=,Ctrl+Alt+R,Manually Invoke Action on Current Clipboard
 show latte global settings=Meta+W,Meta+W,Show Latte Global Settings
 show latte view=Meta+`,Meta+`,Show Latte Dock/Panel
 show view settings=Meta+A,Meta+A,Cycle Through Dock/Panel Settings Windows
+show-barcode=none,none,Show Barcode…
+show-on-mouse-pos=,Meta+V,Open Klipper at Mouse Position
+
+[mediacontrol]
+_k_friendly_name=Media Controller
+mediavolumedown=none,none,Media volume down
+mediavolumeup=none,none,Media volume up
+nextmedia=Media Next,Media Next,Media playback next
+pausemedia=Media Pause,Media Pause,Pause media playback
+playmedia=none,none,Play media playback
+playpausemedia=Media Play,Media Play,Play/Pause media playback
+previousmedia=Media Previous,Media Previous,Media playback previous
+stopmedia=Media Stop,Media Stop,Stop media playback
 
 [org.kde.dolphin.desktop]
 _k_friendly_name=Dolphin
@@ -269,7 +289,7 @@ Turn Off Screen=none,none,Turn Off Screen
 _k_friendly_name=Power Management
 
 [plasmashell]
-_k_friendly_name=Plasma
+_k_friendly_name=Latte Dock
 activate task manager entry 1=,Meta+1,Activate Task Manager Entry 1
 activate task manager entry 10=,Meta+0,Activate Task Manager Entry 10
 activate task manager entry 2=,Meta+2,Activate Task Manager Entry 2

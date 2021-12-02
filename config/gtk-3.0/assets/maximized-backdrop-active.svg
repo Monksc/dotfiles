@@ -7,42 +7,34 @@
 </defs>
 <g fill="none" stroke="black" stroke-width="1" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="bevel" >
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(3.125,0,0,3.125,-978.125,595.743)"
 font-family="Noto Sans" font-size="10" font-weight="400" font-style="normal" 
->
-<image x="0" y="0" width="50" height="50" preserveAspectRatio="none" xlink:href="data:image/png;base64,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" />
+opacity="0" >
+<rect x="313" y="-190.638" width="16" height="16"/>
 </g>
 
-<g fill="none" stroke="#464d54" stroke-opacity="1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,1.5)"
+<g fill="#59c837" fill-opacity="1" stroke="none" transform="matrix(3.125,0,0,3.125,-994.444,623.182)"
 font-family="Noto Sans" font-size="10" font-weight="400" font-style="normal" 
 >
+<path vector-effect="none" fill-rule="evenodd" d="M326.222,-184.418 C330.088,-184.418 333.222,-187.552 333.222,-191.418 C333.222,-195.284 330.088,-198.418 326.222,-198.418 C322.356,-198.418 319.222,-195.284 319.222,-191.418 C319.222,-187.552 322.356,-184.418 326.222,-184.418 "/>
 </g>
 
-<g fill="none" stroke="#464d54" stroke-opacity="1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(2.38095,0,0,2.38095,0,1.5)"
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(3.125,0,0,3.125,-994.42,704.673)"
 font-family="Noto Sans" font-size="10" font-weight="400" font-style="normal" 
->
-<path vector-effect="none" fill-rule="evenodd" d="M7.5,10.5 L10.5,7.5 L13.5,10.5 L10.5,13.5 L7.5,10.5"/>
+opacity="0.5" >
+<path vector-effect="none" fill-rule="nonzero" d="M326.214,-222.086 L326.214,-218.5 C326.214,-218.084 326.798,-217.5 327.214,-217.5 L330.8,-217.5 L326.214,-222.086"/>
 </g>
 
-<g fill="none" stroke="#464d54" stroke-opacity="1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,1.5)"
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(3.125,0,0,3.125,-994.42,704.673)"
 font-family="Noto Sans" font-size="10" font-weight="400" font-style="normal" 
->
+opacity="0.5" >
+<path vector-effect="none" fill-rule="nonzero" d="M326.215,-212.905 L326.215,-216.491 C326.215,-216.906 325.63,-217.491 325.215,-217.491 L321.629,-217.491 L326.215,-212.905"/>
 </g>
 
-<g fill="none" stroke="#727679" stroke-opacity="1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(3.125,0,0,3.125,-994.444,623.182)"
 font-family="Noto Sans" font-size="10" font-weight="400" font-style="normal" 
->
-</g>
-
-<g fill="none" stroke="#727679" stroke-opacity="1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(2.38095,0,0,2.38095,0,0)"
-font-family="Noto Sans" font-size="10" font-weight="400" font-style="normal" 
->
-<path vector-effect="none" fill-rule="evenodd" d="M7.5,10.5 L10.5,7.5 L13.5,10.5 L10.5,13.5 L7.5,10.5"/>
-</g>
-
-<g fill="none" stroke="#727679" stroke-opacity="1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
-font-family="Noto Sans" font-size="10" font-weight="400" font-style="normal" 
->
+opacity="0.2" >
+<path vector-effect="none" fill-rule="evenodd" d="M326.222,-184.418 C330.088,-184.418 333.222,-187.552 333.222,-191.418 C333.222,-195.284 330.088,-198.418 326.222,-198.418 C322.356,-198.418 319.222,-195.284 319.222,-191.418 C319.222,-187.552 322.356,-184.418 326.222,-184.418 "/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"

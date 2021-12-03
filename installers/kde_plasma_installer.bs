@@ -2,7 +2,8 @@
 
 $@ xorg xorg plasma plasma-wayland-session kde-applications kvantum-qt5 lightdm
 
-alias knshandler='/usr/lib/x86_64-linux-gnu/libexec/kf5/kpackagehandlers/knshandler'
+#alias knshandler='/usr/lib/x86_64-linux-gnu/libexec/kf5/kpackagehandlers/knshandler'
+alias knshandler='/usr/lib/kf5/kpackagehandlers/knshandler'
 knshandler kns://plasmoids.knsrc/api.kde-look.org/1398835
 knshandler kns://plasmoids.knsrc/api.kde-look.org/1398831
 knshandler kns://plasmoids.knsrc/api.kde-look.org/1400988

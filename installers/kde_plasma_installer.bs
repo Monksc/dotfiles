@@ -2,6 +2,19 @@
 
 $@ xorg xorg plasma plasma-wayland-session kde-applications kvantum-qt5 lightdm
 
+alias knshandler='/usr/lib/x86_64-linux-gnu/libexec/kf5/kpackagehandlers/knshandler'
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1398835
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1398831
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1400988
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1400021
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1294604
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1400409
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1365044
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1398839
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1398833
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1398835
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1411743
+
 pamac install latte-dock
 
 # mkdir /tmp/

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE khotnewstuff3>
+<hotnewstuffregistry>
+ <stuff category="104">
+  <name>WhiteSur dark plasma</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>vinceliuice</author>
+  <homepage>https://store.kde.org/p/1400409</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>78</rating>
+  <downloads>5539</downloads>
+  <installedfile>/home/cammonks/.local/share/plasma/desktoptheme/WhiteSur-dark</installedfile>
+  <id>1400409</id>
+  <releasedate>2021-11-23</releasedate>
+  <summary>MacOS big sur theme for kde plasma&lt;br />
+-----------------------&lt;br />
+&lt;strong>Kvantum theme:&lt;/strong> &lt;a href="https://www.pling.com/p/1398841/" target="_blank" rel="nofollow">https://www.pling.com/p/1398841/&lt;/a>&lt;br />
+-----------------------&lt;br />
+&lt;strong>Icon theme:&lt;/strong> &lt;a href="https://www.pling.com/p/1405756/" target="_blank" rel="nofollow">https://www.pling.com/p/1405756/&lt;/a>&lt;br />
+-----------------------&lt;br />
+&lt;strong>Cursors theme:&lt;/strong> &lt;a href="https://www.pling.com/p/1355701/" target="_blank" rel="nofollow">https://www.pling.com/p/1355701/&lt;/a>&lt;br />
+-----------------------&lt;br />
+&lt;strong>Wallpaper:&lt;/strong> &lt;a href="https://www.pling.com/p/1398833/" target="_blank" rel="nofollow">https://www.pling.com/p/1398833/&lt;/a></summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/e/9/8/a/3e7b3166dbee0a004ed4a44a7e17218fbb19.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/e/9/8/a/3e7b3166dbee0a004ed4a44a7e17218fbb19.png</previewBig>
+  <payload>https://dl3.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2Mzc2NjIwMjEiLCJvIjoiMSIsInMiOiI0MjM0ZDg5Njc3OWYzYzJjZDY2MThkYjdlYmM5NDdhOGRmMzAzZjkwNDNhNjYyNzMwNTYxNWJhNTRjMGNhNjE0MTlhZTU0N2NlNjY1OWI1Mzk4YzE0OTM5NzkwZTAyOWUzOWI2NDQyNDYzYjNhZTAyYTQzNGUxMDMyZmM3NWUwMiIsInQiOjE2MzgzNDA3OTgsInN0ZnAiOm51bGwsInN0aXAiOiI2Ny4yNDEuMjUzLjMyIn0.wA3PpDmIPG08p6E0C0JLiOMfooJUqcu7F67aC9wwXKI/WhiteSur-dark.tar.xz</payload>
+  <tags>linux,unix,theme,kde,plasma,original-product,gplv3</tags>
+  <status>installed</status>
+ </stuff>
+ <stuff category="104">
+  <name>WhiteSur Plasma</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>vinceliuice</author>
+  <homepage>https://store.kde.org/p/1398837</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>77</rating>
+  <downloads>1603</downloads>
+  <installedfile>/home/cammonks/.local/share/plasma/desktoptheme/WhiteSur</installedfile>
+  <id>1398837</id>
+  <releasedate>2021-11-23</releasedate>
+  <summary>MacOS big sur theme for kde plasma&lt;br />
+-----------------------&lt;br />
+&lt;strong>Kvantum theme:&lt;/strong> &lt;a href="https://www.pling.com/p/1398841/" target="_blank" rel="nofollow">https://www.pling.com/p/1398841/&lt;/a>&lt;br />
+-----------------------&lt;br />
+&lt;strong>Icon theme:&lt;/strong> &lt;a href="https://www.pling.com/p/1405756/" target="_blank" rel="nofollow">https://www.pling.com/p/1405756/&lt;/a>&lt;br />
+-----------------------&lt;br />
+&lt;strong>Cursors theme:&lt;/strong> &lt;a href="https://www.pling.com/p/1355701/" target="_blank" rel="nofollow">https://www.pling.com/p/1355701/&lt;/a>&lt;br />
+-----------------------&lt;br />
+&lt;strong>Wallpaper:&lt;/strong> &lt;a href="https://www.pling.com/p/1398833/" target="_blank" rel="nofollow">https://www.pling.com/p/1398833/&lt;/a></summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/8/6/3/2/129887a42b22bb843754c81631903b901c02.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/8/6/3/2/129887a42b22bb843754c81631903b901c02.png</previewBig>
+  <payload>https://dl1.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2Mzc2NjI0NTMiLCJvIjoiMSIsInMiOiI2ZjQzMzI4YjkwNDg5Mzc2ODM1MTc5OGQ4YzcyMDI5OGMwM2ViMzMyODM2MjVhNjQ2MWZmODI4MTQ5ZTc3MmU2ZjIzNzEyYTExOGMwNDQ1YWY3Yjk5NjM3NzUxZDUyOTA3NGY5YTRhNGExMzlhMjU0ZTM4M2I0MGE3ZmZjZmI2ZiIsInQiOjE2Mzg0MDYzNDEsInN0ZnAiOm51bGwsInN0aXAiOiI2Ny4yNDEuMjUzLjMyIn0._4p3v_OuBJ5FjHL9fvPBtGZUocExIobCbk806rApEU0/WhiteSur.tar.xz</payload>
+  <tags>gplv3,original-product,linux,unix,theme,kde,plasma</tags>
+  <status>installed</status>
+ </stuff>
+</hotnewstuffregistry>

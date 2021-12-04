@@ -1,0 +1,5 @@
+[PlasmaRunnerManager]
+LaunchCounts=1 exec:///usr/bin/latte-dock,3 exec:///usr/lib/firefox/firefox,1 exec:///usr/bin/synapse,9 exec:///usr/bin/systemsettings5,1 appstream_firefox.desktop,24 exec:///usr/bin/alacritty,4 exec:///usr/bin/pamac-manager,1 exec:///usr/bin/opera,2 windows_0_{a4a67bd1-846a-4578-901f-95b7317b58c7},2 exec:///usr/bin/discord,2 exec:///usr/bin/kvantummanager
+
+[PlasmaRunnerManager][History]
+34b851bc-dc58-43fc-9cad-60b6fa4222a2=al,sett,latte,ala,fire,software,system,firefox,kvan,kv,set,Al

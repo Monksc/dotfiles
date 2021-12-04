@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE khotnewstuff3>
+<hotnewstuffregistry>
+ <stuff category="107">
+  <name>McMojave cursors</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>vinceliuice</author>
+  <homepage>https://store.kde.org/p/1355701</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>87</rating>
+  <downloads>478010</downloads>
+  <installedfile>/home/cammonks/.icons/McMojave-cursors/*</installedfile>
+  <id>1355701</id>
+  <releasedate>2020-01-30</releasedate>
+  <summary>This is an x-cursor theme inspired by macOS &lt;br />
+based on capitaine-cursors &lt;a href="http:// https://github.com/keeferrourke/capitaine-cursors " target="_blank" rel="nofollow"> https://github.com/keeferrourke/capitaine-cursors &lt;/a></summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/3/c/1/a/70a26c84b31a9129c36a25dce18a1a2dfc0d.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/3/c/1/a/70a26c84b31a9129c36a25dce18a1a2dfc0d.png</previewBig>
+  <payload>https://dl1.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1ODA0MDIzODkiLCJvIjoiMSIsInMiOiJhMDhlZjQzNjgxNTA4Nzg3NTViNWZlOGUyM2MzNWE0YzgwMDRkNWYwMmQyMTgxMGM1YWE5MWViMzE3MzFjZjAwNGYzOGFkNWZkMDdjODkzNjQwZTQzNzQyOTc3MTI1MmE0Y2VmMWQyZjViYjMyODNjYjZkZGY0OTBlNTk3MzA2NiIsInQiOjE2Mzg0MDcxNjQsInN0ZnAiOm51bGwsInN0aXAiOiI2Ny4yNDEuMjUzLjMyIn0.8tk8HEPDUOhtJsTgfq3WZ4HLA8M2XmyDyYdAaHPccR4/McMojave-cursors.tar.xz</payload>
+  <tags>linux,unix,cursor,gplv3</tags>
+  <status>installed</status>
+ </stuff>
+ <stuff category="107">
+  <name>WhiteSur cursors</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>vinceliuice</author>
+  <homepage>https://store.kde.org/p/1411743</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>85</rating>
+  <downloads>333734</downloads>
+  <installedfile>/home/cammonks/.icons/WhiteSur-cursors/*</installedfile>
+  <id>1411743</id>
+  <releasedate>2020-08-12</releasedate>
+  <summary>WhiteSur cursors</summary>
+  <changelog></changelog>
+  <preview>https://cn.opendesktop.org/cache/100x100-0/img/2/7/d/7/f09b709b76cbcaa053dcb9a3c84d0ed845c25f24870a3af83977f89b43ca00da11b9.png</preview>
+  <previewBig>https://cn.opendesktop.org/cache/770x540-0/img/2/7/d/7/f09b709b76cbcaa053dcb9a3c84d0ed845c25f24870a3af83977f89b43ca00da11b9.png</previewBig>
+  <payload>https://dl3.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1OTcyMTk1NTAiLCJvIjoiMSIsInMiOiI2YTlkNDRjMDc2MDBmODlmZTM3MzU3YWMzMDk0OWY1M2UxMDU5NmU3OWI2NWI5YTNhMThhNzQwMjJiOGY4OTliZTU1ZTQ1MGYyNWQwMjA1NjczZDY5NTU3YjFhZWNjNjMxZTA2MTk4Mzc5ZGQyMzQwODNkNDViOGYzNjJjYTI3MSIsInQiOjE2MzgzNDA4NjYsInN0ZnAiOm51bGwsInN0aXAiOiI2Ny4yNDEuMjUzLjMyIn0.cQ2VwdHiEaK5bVoUjSM31rSeBDFtKEUw6zm_Dyg16xg/WhiteSur-cursors.tar.xz</payload>
+  <tags>original-product,gplv3,linux,unix,cursor</tags>
+  <status>installed</status>
+ </stuff>
+</hotnewstuffregistry>

@@ -135,10 +135,17 @@ ForegroundNormal=222,222,222
 ForegroundPositive=39,174,96
 ForegroundVisited=120,120,120
 
+[DirSelect Dialog]
+DirSelectDialog Size=828,564
+History Items[$e]=file:$HOME/Downloads/WhiteSur
+
 [General]
 Name=Breeze Light
 shadeSortColumn=true
 widgetStyle=Breeze
+
+[Icons]
+Theme=Mkos-Big-Sur-Night
 
 [KDE]
 ColorScheme=BreezeLight

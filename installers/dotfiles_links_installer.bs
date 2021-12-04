@@ -29,6 +29,7 @@ installFile() {
     fi
 }
 
+sudo installFile "$(pwd)/config/pacman.conf" "/etc/pacman.conf"
 installFile "$(pwd)/config/.vimrc" "$HOME/.vimrc"
 installFile "$(pwd)/config/.vim" "$HOME/.vim"
 installFile "$(pwd)/config/.bash_profile" "$HOME/.bash_profile"
@@ -44,6 +45,8 @@ installFile "$(pwd)/config/gruvbox-dark.xresources" "$HOME/.Xdefaults"
 installFile "$(pwd)/config/.Xresources" "$HOME/.Xresources"
 installFile "$(pwd)/config/.xprofile" "$HOME/.xprofile"
 installFile "$(pwd)/config" "$HOME/.config"
+installFile "$(pwd)/themes" "$HOME/.themes"
+installFile "$(pwd)/local" "$HOME/.local"
 mkdir -p "$HOME/.cache/trash"
 installFile "$(pwd)/config/.xinitrc" "$HOME/.xinitrc"
 installFile "$(pwd)/other/.usefullcommands.txt" "$HOME/.usefullcommands.txt"

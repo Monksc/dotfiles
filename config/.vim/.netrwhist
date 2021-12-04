@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =8
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/cammonks/Projects/dotfiles'
+let g:netrw_dirhist_0='/home/cammonks'
+let g:netrw_dirhist_9='/home/cammonks/.pyenv'
 let g:netrw_dirhist_8='/home/cammonks/Projects/dotfiles/local'
 let g:netrw_dirhist_7='/home/cammonks/Projects/dotfiles/local/share/plasma/plasmoids'
 let g:netrw_dirhist_6='/home/cammonks/Projects/dotfiles/local/share/plasma'
@@ -7,6 +10,3 @@ let g:netrw_dirhist_5='/home/cammonks/Projects/dotfiles/local/share'
 let g:netrw_dirhist_4='/home/cammonks/Projects/dotfiles/local'
 let g:netrw_dirhist_3='/home/cammonks/Projects/dotfiles/local/share/plasma/plasmoids/org.kde.plasma.inlineBattery'
 let g:netrw_dirhist_2='/home/cammonks/Projects/dotfiles/local/share/plasma/plasmoids/org.kde.plasma.inlineBattery/contents'
-let g:netrw_dirhist_1='/home/cammonks/Projects/dotfiles/local/share/plasma/plasmoids/org.kde.plasma.inlineBattery/contents/ui'
-let g:netrw_dirhist_0='/home/cammonks/Projects/dotfiles/local/share/plasma/plasmoids/org.kde.plasma.inlineBattery/contents'
-let g:netrw_dirhist_9='/home/cammonks/Projects/dotfiles/local/share/plasma/plasmoids/org.kde.plasma.inlineBattery/contents/config'

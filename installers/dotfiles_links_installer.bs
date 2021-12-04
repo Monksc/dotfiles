@@ -29,6 +29,7 @@ installFile() {
     fi
 }
 
+sudo installFile "$(pwd)/config/pacman.conf" "/etc/pacman.conf"
 installFile "$(pwd)/config/.vimrc" "$HOME/.vimrc"
 installFile "$(pwd)/config/.vim" "$HOME/.vim"
 installFile "$(pwd)/config/.bash_profile" "$HOME/.bash_profile"

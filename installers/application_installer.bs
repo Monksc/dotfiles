@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
 $@ firefox discord
+$@ wine winetricks wine-mono wine-gecko proton lutris playonlinux
+$@ obs-studio

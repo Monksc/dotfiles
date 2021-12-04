@@ -29,7 +29,11 @@ installFile() {
     fi
 }
 
-sudo installFile "$(pwd)/config/pacman.conf" "/etc/pacman.conf"
+if ! [[ -a "/etc/pacman.conf.old" ]]; then
+    sudo mv /etc/pacman.conf /etc/pacman.conf.old
+    sudo ln -s "/etc/pacman.conf" "$(pwd)/config/pacman.conf"
+fi
+
 installFile "$(pwd)/config/.vimrc" "$HOME/.vimrc"
 installFile "$(pwd)/config/.vim" "$HOME/.vim"
 installFile "$(pwd)/config/.bash_profile" "$HOME/.bash_profile"

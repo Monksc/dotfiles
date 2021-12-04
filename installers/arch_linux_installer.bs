@@ -19,7 +19,8 @@ installThirdPartyPackageManagers() {
     # Installing Yay
     cd /tmp
     git clone https://aur.archlinux.org/yay-git.git
-    cd yay-git
+    cd -
+    cd /tmp/yay-git
     makepkg -si
     yay -Syu
 
@@ -40,6 +41,8 @@ installThirdPartyPackageManagers() {
     sudo pacman -Syu
     sudo pacman --sync --refresh --sysupgrade
     sudo pacman -Syu
+
+    cd -
 }
 
 installZenKernel() {
@@ -62,6 +65,7 @@ sudo pacman -Syy tmux neofetch archey3 \
 
 installThirdPartyPackageManagers
 
+pwd
 confirm 'Do you want to install xfce?' && ./installers/xfce_installer.bs sudo pacman -Syy
 
 confirm 'Do you want to install kde plasma?' && ./installers/kde_plasma_installer.bs sudo pacman -Syy

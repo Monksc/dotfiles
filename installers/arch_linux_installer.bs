@@ -65,7 +65,6 @@ sudo pacman -Syy tmux neofetch archey3 \
 
 installThirdPartyPackageManagers
 
-pwd
 confirm 'Do you want to install xfce?' && ./installers/xfce_installer.bs sudo pacman -Syy
 
 confirm 'Do you want to install kde plasma?' && ./installers/kde_plasma_installer.bs sudo pacman -Syy

@@ -1,0 +1,52 @@
+
+#alias knshandler='/usr/lib/x86_64-linux-gnu/libexec/kf5/kpackagehandlers/knshandler'
+knshandler() {
+    /usr/lib/kf5/kpackagehandlers/knshandler $@
+}
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1398835
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1398831
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1400988
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1400021
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1294604
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1400409
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1365044
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1398839
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1398833
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1398835
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1411743
+knshandler kns://plasmoids.knsrc/api.kde-look.org/1400424
+
+getDirName() {
+    unzip -l "$1" | head -n 5 | tail -n 1 | awk '{ for (i=4; i<=NF; i++) printf $i; print "" }'
+}
+
+cd /tmp
+mkdir ~/.maybethemes
+IFS=$'\n'
+for filename in $(find . -maxdepth 1 -regex '\./.*\.tar.*'); do
+    tar -xf $filename
+    kpackagetool5 -i ${filename%\.tar*}
+    plasmapk2 -i ${filename%\.tar*}
+    plasmapk2 -p ${filename%\.tar*}
+    mv ${filename%\.tar*} "$HOME/.maybethemes/"
+done
+
+for filename in *.tar.*; do
+done
+# ls | awk -v='FS=.' '/tar/{ print tar -xf $0 "; mv " $1 " $HOME/.themes;" }'
+
+
+# plasma-apply-desktoptheme --list-themes
+plasma-apply-desktoptheme WhiteSur-dark
+plasma-apply-colorscheme WhiteSurDark
+plasma-apply-cursortheme WhiteSur Cursors
+plasma-apply-lookandfeel -a com.github.vinceliuice.WhiteSur-dark
+plasma-apply-wallpaperimage './images/Big Sur Dark.jpg'
+
+#kpackagetool5
+
+latte-dock --layout config/latter/mcOS-BigSur-Large.layout.latte
+
+kwriteconfig5 --file ~/.config/gtk-4.0/settings.ini --group Settings --key 'gtk-decoration-layout' 'close,minimize,maximize:'
+kwin_x11  --replace & disown
+

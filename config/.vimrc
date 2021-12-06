@@ -179,11 +179,23 @@ let g:dart_format_on_save = 1
 " Enable Flutter menu
 "call FlutterMenu()
 
+function! Chomp(string)
+    return substitute(a:string, '\n', '', '')
+endfunction
+
+function! OpenFlutterFiles()
+    let line=getline('.')
+    let filename=trim(system('my-flutter-tools.sh plugin -a "' . line . '"'))
+    let command=':tabnew '.filename
+    silent execute command
+endfunction
+
 nnoremap <leader>fa :FlutterRun<cr>
 nnoremap <leader>fq :FlutterQuit<cr>
 nnoremap <leader>fr :FlutterHotReload<cr>
 nnoremap <leader>fR :FlutterHotRestart<cr>
 nnoremap <leader>fD :FlutterVisualDebug<cr>
+autocmd BufRead,BufNewFile,BufEnter *.dart nnoremap <leader>ff :call OpenFlutterFiles()<cr>
 
 " For a CoC mood
 "nmap <silent> gd <Plug>(coc-definition)
@@ -233,7 +245,6 @@ set statusline+=\ %l:%c
 " Templates
 
 funct! Exec(command)
-    echo a:command
     redir =>output
     silent exec a:command
     redir END

@@ -195,7 +195,7 @@ nnoremap <leader>fq :FlutterQuit<cr>
 nnoremap <leader>fr :FlutterHotReload<cr>
 nnoremap <leader>fR :FlutterHotRestart<cr>
 nnoremap <leader>fD :FlutterVisualDebug<cr>
-autocmd BufRead,BufNewFile,BufEnter *.dart nnoremap <leader>ff :call OpenFlutterFiles()<cr>
+autocmd BufRead,BufNewFile,BufEnter *.dart nnoremap ff :call OpenFlutterFiles()<cr>
 
 " For a CoC mood
 "nmap <silent> gd <Plug>(coc-definition)

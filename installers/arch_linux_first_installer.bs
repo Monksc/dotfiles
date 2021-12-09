@@ -22,7 +22,7 @@ timedatectl set-timezone US/Eastern
 timedatectl set-ntp true
 # timedatectl status
 # fdisk -l
-echo -e "g\nn\n1\n\n+550M\nn\n2\n\n+2G\nn\n3\n\n\nt\n1\n1\nt\n2\n19\n\nw\n" | fdisk /dev/sda
+echo -e "g\nn\n1\n\n+550M\nn\n2\n\n+8G\nn\n3\n\n\nt\n1\n1\nt\n2\n19\n\nw\n" | fdisk /dev/sda
 # fdisk /dev/sda
 #   m
 #   g

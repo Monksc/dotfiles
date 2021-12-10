@@ -22,7 +22,7 @@ timedatectl set-timezone US/Eastern
 timedatectl set-ntp true
 # timedatectl status
 # fdisk -l
-echo -e "g\nn\n1\n\n+550M\nn\n2\n\n+8G\nn\n3\n\n\nt\n1\n1\nt\n2\n19\n\nw\n" | fdisk /dev/sda
+echo -e "g\nn\n1\n\n+550M\nn\n2\n\n+8G\nn\n3\n\n\nt\n1\n1\nt\n2\n19\n\nw\n" | fdisk /dev/nvme0n1p1
 # fdisk /dev/sda
 #   m
 #   g
@@ -47,11 +47,11 @@ echo -e "g\nn\n1\n\n+550M\nn\n2\n\n+8G\nn\n3\n\n\nt\n1\n1\nt\n2\n19\n\nw\n" | fd
 #   19
 #
 #   w
-mkfs.fat -F32 /dev/sda1
-mkswap /dev/sda2
-swapon /dev/sda2
-mkfs.ext4 /dev/sda3
-mount /dev/sda3 /mnt
+mkfs.fat -F32 /dev/nvme0n1p1
+mkswap /dev/nvme0n1p2
+swapon /dev/nvme0n1p2
+mkfs.ext4 /dev/nvme0n1p3
+mount /dev/nvme0n1p3 /mnt
 #mount /dev/sda1 /mnt/boot
 pacstrap /mnt base linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab

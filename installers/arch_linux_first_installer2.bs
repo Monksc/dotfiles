@@ -30,7 +30,7 @@ cat /tmp/sudoers > /etc/sudoers
 #   %wheel ALL=(ALL) ALL
 pacman -Syy --noconfirm grub efibootmgr dosfstools os-prober mtools
 mkdir /boot/EFI
-mount /dev/sda1 /boot/EFI
+mount /dev/nvme0n1p1 /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
 pacman -Syy --noconfirm networkmanager vim git

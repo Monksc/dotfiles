@@ -1,1 +1,10 @@
-setxkbmap -option ctrl:swapcaps
+# Keyboard Layout
+#setxkbmap us &
+#setxkbmap -option ctrl:swapcaps &
+setxkbmap -option capslock:ctrl_modifier &
+
+# Wallpaper
+#nitrogen --restore &
+
+# Compositor
+#picom -f &

@@ -1,3 +1,12 @@
 #!/usr/bin/env bash
 $@ nushell dust bat ripgrep
 $@ grex 
+$@ man-pages
+$@ man-pages man-db
+$@ powertop
+$@ tlp
+# ln -s /etc/systemd/system/powertop.service ../
+sudo powertop --calibrate
+sudo powertop --auto-tune
+sudo systemctl enable powertop
+sudo systemctl enable tlp

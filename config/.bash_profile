@@ -108,7 +108,7 @@ eval "$(pyenv init --path)"
 
 eval "$(pyenv init -)"
 
-eval "$(opam env)"
+# eval "$(opam env)"
 
 # Changing python versions
 # if command -v pyenv 1>/dev/null 2>&1; then
@@ -123,6 +123,19 @@ export EDITOR
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Functions
+
+confirm() {
+    # call with a prompt string or use a default
+    read -r -p "${1:-Are you sure? [y/N]} " response
+    case "$response" in
+        [yY][eE][sS]|[yY]) 
+            true
+            ;;
+        *)
+            false
+            ;;
+    esac
+}
 
 ip() {
     if [ "$1" == "tor" ]; then
@@ -164,6 +177,60 @@ my-tmux-cddir() {
 
 my-flutter-device-id() {
     flutter devices | grep 'mobile' | awk -v'FS=•' 'NF>2{ print $2 }'
+}
+
+my-kill-regex() {
+    if [ "$#" -lt 1 ]; then
+        echo "You need to supply an argument"
+    else
+        ps aux | grep -i "$1"
+        confirm "Do you want to kill these applications?" && kill -s 9 $(ps aux | grep -i "$1" | awk '{print $2}')
+    fi
+}
+
+my-kill-wine() {
+    my-kill-regex 'lutris\|wine\|unreal\|epic'
+}
+
+my-cpu-speed() {
+    if [ "$#" -lt 1 ]; then
+        echo "You need to supply an argument of performance or energy."
+    elif [ "$@" == "performance" ]; then
+        sudo cpupower frequency-set -u 4.8GHZ
+        sudo cpupower frequency-set -g performance
+        sudo x86_energy_perf_policy --turbo-enable 1
+        PCIE_ASPM_ON_BAT=powersupersave
+    elif [ "$@" == "energy" ]; then
+        sudo cpupower frequency-set -u 1.8GHZ
+        sudo cpupower frequency-set -g powersave
+        sudo x86_energy_perf_policy --turbo-enable 0
+    fi
+}
+
+my-setup-i3() {
+    #setxkbmap -option ctrl:swapcaps &
+    #setxkbmap -option capslock:ctrl_modifier &
+    setxkbmap -option 'caps:ctrl_modifier' &
+    xinput --set-prop --type=int "PIXA3854:00 093A:0274 Touchpad" 'libinput Natural Scrolling Enabled Default' 1
+    #xinput --set-prop --type=int "Apple Inc. Magic Trackpad 2" 'libinput Natural Scrolling Enabled Default' 1
+    #xinput --set-button-map "PIXA3854:00 093A:0274 Touchpad" 1 2 3 5 4 7 6
+    # xinput --set-button-map "Apple Inc. Magic Trackpad 2" 1 2 3 5 4 7 6
+    #synclient VertScrollDelta=-111
+    xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Click Method Enabled" 0 1
+    feh --bg-fill --randomize /home/cammonks/Projects/dotfiles/images/
+    echo "Good"
+}
+
+say() {
+    if [ "$(uname -s)" == 'Darwin' ]; then
+        say "$@"
+    else
+        if [ "$#" -eq 0 ]; then
+            espeak-ng -v en-gb-scotland
+        else
+            echo "$@" | espeak-ng -v en-gb-scotland
+        fi
+    fi
 }
 
 # Some more alias to avoid making mistakes:
@@ -232,6 +299,7 @@ if [ "$(uname -s)" == 'Darwin' ]; then
     export PATH="$(brew --prefix bison)/bin:$PATH"
     export PATH="$(brew --prefix flex)/bin:$PATH"
     alias ll="ls -G -lh -all"
+    export PATH="/usr/local/opt/node@16/bin:$PATH"
 fi
 
 if [ "$(uname -s)" != 'Darwin' ]; then
@@ -242,6 +310,6 @@ if [ "$(uname -s)" != 'Darwin' ]; then
     alias ll="ls -G -lh -all --color=auto"
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
 
-export PATH="/usr/local/opt/node@16/bin:$PATH"
 #export PAGER=less

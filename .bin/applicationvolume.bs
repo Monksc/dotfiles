@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+changeVolume() {
+
+    pactl set-sink-input-volume \
+        $(pactl list sink-inputs | \
+        awk -v FOO='HI' \
+        'match($0, /application.process.id = "'"$(xdotool getactivewindow getwindowpid)"'"/''){print FOO} match($0, /Sink Input #[0-9]+/){FOO=substr($0, 13)}') "$1"
+}
+
+if [ "$1" == "up" ]; then
+    changeVolume "+5%"
+elif [ "$1" == "down" ]; then
+    changeVolume "-5%"
+else
+    changeVolume "$@"
+fi
+

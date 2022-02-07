@@ -48,5 +48,12 @@ plasma-apply-wallpaperimage './images/Big Sur Dark.jpg'
 latte-dock --layout config/latter/mcOS-BigSur-Large.layout.latte
 
 kwriteconfig5 --file ~/.config/gtk-4.0/settings.ini --group Settings --key 'gtk-decoration-layout' 'close,minimize,maximize:'
+kwriteconfig5 --file ~/.config/gtk-4.0/settings.ini --group Settings --key 'gtk-key-theme-name' 'Emacs'
+kwriteconfig5 --file ~/.config/gtk-4.0/settings.ini --group Settings --key 'gtk-cursor-theme-name' 'WhiteSur-cursors'
+kwriteconfig5 --file ~/.config/gtk-4.0/settings.ini --group Settings --key 'gtk-cursor-theme-name' 'WSF Pro,  12'
+kwriteconfig5 --file ~/.config/gtk-4.0/settings.ini --group Settings --key 'gtk-icon-theme-name' 'WhiteSur-dark'
+kwriteconfig5 --file ~/.config/gtk-4.0/settings.ini --group Settings --key 'gtk-theme-name' 'macOS-Dark-6.1-dark'
 kwin_x11  --replace & disown
+
+yay -Ss otf apple | awk '/^[^ ]/{ print substr($1, 5)}' | xargs yay -S
 

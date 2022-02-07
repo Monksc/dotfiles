@@ -1,15 +1,21 @@
-[Default Applications]
-inode/directory=xfce4-file-manager.desktop
-x-scheme-handler/trash=xfce4-file-manager.desktop
-x-scheme-handler/mailto=xfce4-mail-reader.desktop
-application/geo+json=vim.desktop
-application/gml+xml=vim.desktop
-application/javascript=vim.desktop
-
 [Added Associations]
-inode/directory=xfce4-file-manager.desktop;
-x-scheme-handler/trash=xfce4-file-manager.desktop;
-x-scheme-handler/mailto=xfce4-mail-reader.desktop;
 application/geo+json=vim.desktop;
 application/gml+xml=vim.desktop;
 application/javascript=vim.desktop;
+inode/directory=org.kde.dolphin.desktop;xfce4-file-manager.desktop;
+x-scheme-handler/http=org.gnome.Epiphany.desktop;firefox.desktop;
+x-scheme-handler/https=org.gnome.Epiphany.desktop;firefox.desktop;
+x-scheme-handler/mailto=org.kde.kmail2.desktop;xfce4-mail-reader.desktop;
+x-scheme-handler/trash=xfce4-file-manager.desktop;
+application/pdf=org.gnome.Evince.desktop;okularApplication_pdf.desktop;gimp.desktop;
+
+[Default Applications]
+application/geo+json=vim.desktop
+application/gml+xml=vim.desktop
+application/javascript=vim.desktop
+inode/directory=org.kde.dolphin.desktop;
+x-scheme-handler/discord-378347429537251328=discord-378347429537251328.desktop
+x-scheme-handler/http=org.gnome.Epiphany.desktop;
+x-scheme-handler/https=org.gnome.Epiphany.desktop;
+x-scheme-handler/mailto=org.kde.kmail2.desktop;
+x-scheme-handler/trash=xfce4-file-manager.desktop

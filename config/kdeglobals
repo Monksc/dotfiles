@@ -136,16 +136,27 @@ ForegroundPositive=39,174,96
 ForegroundVisited=120,120,120
 
 [DirSelect Dialog]
-DirSelectDialog Size=828,564
+DirSelectDialog Size=828,562
 History Items[$e]=file:$HOME/Downloads/WhiteSur
 
 [General]
-Name=Breeze Light
+BrowserApplication=org.gnome.Epiphany.desktop
+ColorScheme=WhiteSurDark
+Name=WhiteSurDark
+TerminalApplication=alacritty
+TerminalService=Alacritty.desktop
+XftHintStyle=hintslight
+XftSubPixel=rgb
+fixed=Hack,12,-1,5,50,0,0,0,0,0
+font=SF Pro Text,14,-1,5,50,0,0,0,0,0
+menuFont=SF Pro,16,-1,5,75,0,0,0,0,0,Bold
 shadeSortColumn=true
+smallestReadableFont=SF Pro,14,-1,5,50,0,0,0,0,0
+toolBarFont=SF Pro,16,-1,5,50,0,0,0,0,0
 widgetStyle=Breeze
 
 [Icons]
-Theme=Mkos-Big-Sur-Night
+Theme=WhiteSur-dark
 
 [KDE]
 ColorScheme=BreezeLight
@@ -169,12 +180,47 @@ Sort by=Name
 Sort directories first=true
 Sort reversed=false
 Speedbar Width=138
-View Style=DetailTree
+View Style=Simple
+
+[KScreen]
+ScaleFactor=1
+ScreenScaleFactors=eDP-1=1;DP-1=1;DP-2=1;DP-3=1;DP-4=1;
+
+[Shortcuts]
+Activate Next Tab=CapsLock, Ctrl+T
+BeginningOfLine=CapsLock, Ctrl+A; Ctrl+A
+Close=Ctrl+Esc; Alt+Shift+Q
+Copy=Ctrl+Ins; Ctrl+C
+Cut=Ctrl+X
+DeleteWordBack=Ctrl+W; Ctrl+Y
+DeleteWordForward=Esc, F
+Deselect=Alt+Shift+A
+EndOfLine=CapsLock, Ctrl+E; Ctrl+E
+Find=Alt+F
+FindNext=Alt+F, Alt+N
+FindPrev=Alt+F, Alt+P
+New=
+NextCompletion=Ctrl+N
+Paste=Ctrl+V
+Paste Selection=Alt+Shift+V
+Preferences=Alt+,
+PrevCompletion=CapsLock, Ctrl+P, Ctrl+P, Ctrl+P
+Print=Ctrl+P; Alt+P
+PrintPreview=Alt+Shift+P
+Quit=Alt+Q
+Redo=Alt+Shift+Z
+Save=Alt+S
+SaveAs=Alt+Shift+S
+SelectAll=Alt+A
+SubstringCompletion=Alt+T
+TextCompletion=Alt+E
+Undo=Ctrl+Z; Alt+Z
 
 [WM]
 FakeEntryToKeepThisGroup=true
 activeBackground=51,51,51
 activeBlend=171,171,171
+activeFont=SF Pro,16,-1,5,75,0,0,0,0,0,Bold
 activeForeground=222,222,222
 inactiveBackground=66,66,66
 inactiveBlend=85,85,85

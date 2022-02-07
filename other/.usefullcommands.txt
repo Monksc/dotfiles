@@ -24,3 +24,22 @@ tldr man
 timeout 10s yes > file.txt; cat file.txt | wc -l
 du -h .
 python3 -m sounddevice
+find /etc/systemd/ -name "*.service"
+sudo -iu postgres
+xdotool key CTRL+SHIFT+ALT+F7
+xdotool key "CTRL+ALT+Right"
+libinput-gestures-setup autostart start
+systemctl start postgresql
+
+xrandr --output DP-2 --auto --right-of eDP-1
+xinput --set-button-map "Apple Inc. Magic Trackpad 2" 1 2 3 5 4
+pavucontrol
+systemctl start shairport-sync
+shairport-sync -a AirPi
+
+for qemu
+    sudo systemctl enable --now libvirtd
+    sudo systemctl status libvirtd
+mpc update
+systemctl --user start mpd
+watch -n0 cat /sys/class/power_supply/BAT1/capacity

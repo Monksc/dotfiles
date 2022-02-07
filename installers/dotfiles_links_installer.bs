@@ -31,7 +31,7 @@ installFile() {
 
 if ! [[ -a "/etc/pacman.conf.old" ]]; then
     sudo mv /etc/pacman.conf /etc/pacman.conf.old
-    sudo ln -s "/etc/pacman.conf" "$(pwd)/config/pacman.conf"
+    sudo ln -s "$(pwd)/config/pacman.conf" "/etc/pacman.conf"
 fi
 
 installFile "$(pwd)/config/.vimrc" "$HOME/.vimrc"
@@ -54,3 +54,12 @@ installFile "$(pwd)/local" "$HOME/.local"
 mkdir -p "$HOME/.cache/trash"
 installFile "$(pwd)/config/.xinitrc" "$HOME/.xinitrc"
 installFile "$(pwd)/other/.usefullcommands.txt" "$HOME/.usefullcommands.txt"
+installFile "$(pwd)/config/powertop.service" "/etc/systemd/system/powertop.servic"
+installFile "$(pwd)/themes/Emacs" "$HOME/.themes/Emacs"
+NAMES=(alacritty autostart awesome cairo-dock findex gtk-2.0 gtk-3.0 gtk-4.0 htop i3 latte neofetch plank, ranger rofi spacebar synapse vala-panel xfce4 xsettingsd yay compton.conf gruvbox-dark.xresources kdeglobals kglobalshortcutsrc khotkeysrc libinput-gestures.conf mimeapps.list user-dirs.dirs)
+line=2  # Need to skip first 2 lines
+for name in "${NAMES[@]}"
+do
+    ((line++))
+    installFile "$(pwd)/config/$name" "$HOME/.config/$name"
+done

@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+timeInterval="0.3"
+if [ "$#" == 1 ]; then
+    timeInterval="$1"
+fi
+
+while IFS='$\n' read -r line; do
+    sleep "$timeInterval"
+    echo $line
+done

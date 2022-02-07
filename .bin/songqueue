@@ -107,10 +107,10 @@ function handleAdd() {
     while [ $# -gt 0 ]
     do
         if $isSilent; then
-            (youtube-dl "ytsearch:$1" --audio-format wav -o "/tmp/songqueue/songs/$1.wav" > /dev/null)&
+            (youtube-dl "ytsearch:$1" --extract-audio --audio-format wav -o "/tmp/songqueue/songs/$1.wav" > /dev/null)&
         else
             echo "$1"
-            youtube-dl "ytsearch:$1" --audio-format wav -o "/tmp/songqueue/songs/$1.wav"
+            youtube-dl "ytsearch:$1" --extract-audio --audio-format wav -o "/tmp/songqueue/songs/$1.wav"
         fi
         echo "$1" >> /tmp/songqueue/queue.txt
         shift
@@ -136,7 +136,7 @@ function handleSkip() {
 function handlePlay() {
     while [ $(cat "/tmp/songqueue/queue.txt" | wc -l | awk '{ print $1 }') -gt 0 ]
     do 
-        cat /tmp/songqueue/queue.txt | head -n 1 | awk -v quote="'" -v "args=$*" '{ print "afplay " args " " quote "/tmp/songqueue/songs/" $0 ".wav" quote }' | bash
+        cat /tmp/songqueue/queue.txt | head -n 1 | awk -v quote="'" -v "args=$*" '{ print "mpv " args " " quote "/tmp/songqueue/songs/" $0 ".wav" quote "*" }' | bash
         handleSkip
     done
 }

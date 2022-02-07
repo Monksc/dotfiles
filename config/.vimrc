@@ -2,7 +2,31 @@ let background='dark'
 syntax on
 set spell spelllang=en_us
 setlocal spell spelllang=en_us
-" set foldmethod=syntax " set clipboard=unnamed
+" set foldmethod=syntax
+" set clipboard=unnamed
+
+" Plus means clipboard * means selection
+nnoremap <Leader>Y "*y
+nnoremap <Leader>P "*p
+nnoremap <Leader>y "+y
+nnoremap <Leader>p "+p
+nnoremap <ESC>c "+y
+nnoremap <ESC>v "+p
+
+inoremap <Leader>Y "*y
+inoremap <Leader>P "*p
+inoremap <Leader>y "+y
+inoremap <Leader>p "+p
+inoremap <ESC>c "+y
+inoremap <ESC>v "+p
+
+vnoremap <Leader>Y "*y
+vnoremap <Leader>P "*p
+vnoremap <Leader>y "+y
+vnoremap <Leader>p "+p
+vnoremap <ESC>c "+y
+vnoremap <ESC>v "+p
+
 set ignorecase
 set laststatus=2
 "set shell=bash\ -l
@@ -306,8 +330,10 @@ function! LatexSave()
     "silent! execute "!pdflatex % >/dev/null 2>&1" | redraw!
     "silent execute "!camlatex %" | call RedrawOnEnter()
     !pdflatex %
-    silent !open ./*.pdf
-    silent !open -a Alacritty
+    "silent !xdg-open ./*.pdf
+    "silent !xdg-open Alacritty
+    "silent !open ./*.pdf
+    "silent !open -a Alacritty
     "call RedrawOnEnter()
 endfunction
 autocmd BufWritePost *.tex call LatexSave()
@@ -341,6 +367,8 @@ inoremap <C-q> <C-a>
 inoremap <C-a> <Esc>I
 inoremap <C-r> <C-e>
 inoremap <C-e> <Esc>A
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
 
 
 
@@ -576,3 +604,4 @@ se cursorline
 " vip to visual a paragraph
 " <C-a> to increment a number
 
+hi SpellBad cterm=underline

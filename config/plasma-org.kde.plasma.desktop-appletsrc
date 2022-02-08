@@ -1,0 +1,8 @@
+[Containments][29][Configuration]
+PreloadWeight=0
+
+[Containments][29][Wallpaper][org.kde.image][General]
+Image=file:///home/cammonks/.local/share/wallpapers/WhiteSur/contents/images/2560x1440.png
+
+[ScreenMapping]
+itemsOnDisabledScreens=0,1,desktop:/Projects

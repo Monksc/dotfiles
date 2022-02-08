@@ -1,0 +1,33 @@
+[LegacySession: saved at previous logout]
+count=0
+
+[Session: saved at previous logout]
+clientId1=101de15d1ac1b7000164402814100000012650005
+clientId2=101de15d1ac1b7000164027703500000117620008
+clientId3=101de15d1ac1b7000164027703500000117620009
+clientId4=101de15d1ac1b7000164263132800000013290010
+clientId5=101de15d1ac1b7000164428029700000012651672
+count=5
+discardCommand2[$e]=rm,$HOME/.config/session/kmix_101de15d1ac1b7000164027703500000117620008_1644280512_980150
+discardCommand4[$e]=rm,$HOME/.config/session/kgpg_101de15d1ac1b7000164263132800000013290010_1644280512_980833
+discardCommand5[$e]=rm,$HOME/.config/session/systemsettings_101de15d1ac1b7000164428029700000012651672_1644280512_981142
+program1=/usr/lib/DiscoverNotifier
+program2=/usr/bin/kmix
+program3=/usr/bin/korgac
+program4=/usr/bin/kgpg
+program5=/usr/bin/systemsettings5
+restartCommand1=/usr/lib/DiscoverNotifier,-session,101de15d1ac1b7000164402814100000012650005_1644280512_979780
+restartCommand2=/usr/bin/kmix,-session,101de15d1ac1b7000164027703500000117620008_1644280512_980150
+restartCommand3=/usr/bin/korgac,-session,101de15d1ac1b7000164027703500000117620009_1644280512_979796
+restartCommand4=/usr/bin/kgpg,-session,101de15d1ac1b7000164263132800000013290010_1644280512_980833
+restartCommand5=/usr/bin/systemsettings5,-session,101de15d1ac1b7000164428029700000012651672_1644280512_981142
+restartStyleHint1=0
+restartStyleHint2=0
+restartStyleHint3=0
+restartStyleHint4=0
+restartStyleHint5=0
+userId1=cammonks
+userId2=cammonks
+userId3=cammonks
+userId4=cammonks
+userId5=cammonks

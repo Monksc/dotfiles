@@ -141,7 +141,7 @@ History Items[$e]=file:$HOME/Downloads/WhiteSur
 
 [General]
 BrowserApplication=org.gnome.Epiphany.desktop
-ColorScheme=WhiteSurDark
+ColorSchemeHash=bc0033e2c061bbedd22023872b9a2fbdf78bd9ae
 Name=WhiteSurDark
 TerminalApplication=alacritty
 TerminalService=Alacritty.desktop

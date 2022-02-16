@@ -20,4 +20,4 @@ configuration {
     display-combi: 					"Combi";
 }
 
-@theme "/home/k/.config/rofi/themes/dmenu.rasi"
+@theme "/home/cammonks/.config/rofi/themes/dmenu.rasi"

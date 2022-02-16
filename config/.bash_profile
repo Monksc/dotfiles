@@ -192,6 +192,10 @@ my-kill-wine() {
     my-kill-regex 'lutris\|wine\|unreal\|epic'
 }
 
+my-kill-discord() {
+    my-kill-regex 'discord'
+}
+
 my-cpu-speed() {
     if [ "$#" -lt 1 ]; then
         echo "You need to supply an argument of performance or energy."
@@ -201,10 +205,18 @@ my-cpu-speed() {
         sudo x86_energy_perf_policy --turbo-enable 1
         PCIE_ASPM_ON_BAT=powersupersave
     elif [ "$@" == "energy" ]; then
-        sudo cpupower frequency-set -u 1.8GHZ
+        sudo cpupower frequency-set -u 1.2GHZ
         sudo cpupower frequency-set -g powersave
         sudo x86_energy_perf_policy --turbo-enable 0
     fi
+}
+
+my-setup-awesome() {
+    setxkbmap -option 'caps:ctrl_modifier' &
+    xinput --set-prop --type=int "PIXA3854:00 093A:0274 Touchpad" 'libinput Natural Scrolling Enabled Default' 1
+    xinput --set-button-map "PIXA3854:00 093A:0274 Touchpad" 1 2 3 5 4
+    xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Click Method Enabled" 0 1
+    echo "Good"
 }
 
 my-setup-i3() {

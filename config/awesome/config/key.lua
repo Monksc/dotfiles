@@ -10,10 +10,16 @@ local keys = {}
 require("awful.hotkeys_popup.keys")
 require("awful.autofocus")
 
-terminal = "kitty"
-browser = "google-chrome-stable"
-fm = "thunar"
-vscode = "code"
+modkey = "Mod4"
+modaltkey = "Mod1"
+
+terminal = "alacritty"
+browser = "epiphany"
+-- fm = "thunar"
+fm = "nautilus"
+vscode = terminal
+application_launcher = "findex"
+application_launcher2 = "rofi -show drun"
 discord = "discord"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
@@ -32,7 +38,6 @@ clientbuttons = gears.table.join(
   end)
 )
 
-modkey = "Mod4"
 
 mykeyboardlayout = awful.widget.keyboardlayout()
 
@@ -42,12 +47,29 @@ keys.desktopbuttons = gears.table.join(
 )
 
 globalkeys = gears.table.join(
+    awful.key({ modkey,              }, "space", function () awful.spawn.easy_async_with_shell(application_launcher)   end,
+              {description = "open an application launcher", group = "launcher"}),
+    awful.key({ modaltkey,           }, "space", function () awful.spawn.easy_async_with_shell(application_launcher2)   end,
+              {description = "open an application launcher", group = "launcher"}),
+    awful.key({ modkey,           }, "l", awesome.quit,
+              {description = "quit awesome", group = "awesome"}),
+
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
+              {description = "view previous", group = "tag"}),
+    awful.key({ modaltkey, "Control"}, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
+    awful.key({ modaltkey, "Control"}, "Right",  awful.tag.viewnext,
+              {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
+    awful.key({ modkey,              }, "s", function () awful.spawn("systemsettings5 kcm_bluetooth")   end,
+              {description = "Settings", group = "client"}),
+    awful.key({ modkey,              }, "a", function () awful.spawn("pavucontrol")   end,
+              {description = "Audio settings", group = "client"}),
+    awful.key({ modkey,              }, "p", function () awful.spawn("gnome-control-center power")   end,
+              {description = "Power settings", group = "client"}),
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -64,8 +86,6 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "w", function () awful.spawn(browser) end,
               {description = "spawn browser", group = "launcher"}),
 
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-              {description = "quit awesome", group = "awesome"}),
     awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
@@ -94,27 +114,25 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-              {description = "quit awesome", group = "awesome"}),
-    awful.key({ }, "Print", function () awful.spawn.easy_async_with_shell("scrot -cd1 -q100 ~/Pictures/H%M%S.png") end, 
+    awful.key({ }, "Print", function () awful.spawn.easy_async_with_shell("scrot -cd1 -q100 ~/Pictures/Screenshot-h%M%S.png") end, 
               {description = "take screenshot", group = "screen"}),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
-              {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
-              {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
-              {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-              {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-              {description = "increase the number of columns", group = "layout"}),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
-              {description = "decrease the number of columns", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-              {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-              {description = "select previous", group = "layout"}),
+    -- awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+    --           {description = "increase master width factor", group = "layout"}),
+    -- awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+    --           {description = "decrease master width factor", group = "layout"}),
+    -- awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
+    --           {description = "increase the number of master clients", group = "layout"}),
+    -- awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
+    --           {description = "decrease the number of master clients", group = "layout"}),
+    -- awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
+    --           {description = "increase the number of columns", group = "layout"}),
+    -- awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
+    --           {description = "decrease the number of columns", group = "layout"}),
+    -- awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+    --           {description = "select next", group = "layout"}),
+    -- awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+    --           {description = "select previous", group = "layout"}),
     awful.key({ modkey },            "z",     function() sidebar_toggle()                     end,
               {description = "show or hide sidebar", group = "awesome"}),
 
@@ -145,7 +163,7 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+    awful.key({ modkey, }, "q",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),

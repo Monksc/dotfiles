@@ -42,7 +42,7 @@ awful.screen.connect_for_each_screen(function(s)
                                   end
                               end)
     )
-    
+
     taglist = awful.widget.taglist {
         screen = s,
         filter = awful.widget.taglist.filter.all,
@@ -118,6 +118,22 @@ awful.screen.connect_for_each_screen(function(s)
 
     local volume_bar = require("widgets.volume_bar")
     local volume = format_progress_bar(volume_bar)
+
+    -- Ram
+
+    local ram_bar = require("widgets.ram_bar")
+    local ram = format_progress_bar(ram_bar)
+
+    -- CPU
+
+    local cpu_bar = require("widgets.cpu_bar")
+    local cpu = format_progress_bar(cpu_bar)
+
+
+    -- Bat
+
+    local battery_bar = require("widgets.battery_bar")
+    local battery = format_progress_bar(battery_bar)
     
     apps_volume = function()
         helpers.run_or_raise({class = "Pavucontrol"}, true, "pavucontrol")
@@ -172,7 +188,10 @@ awful.screen.connect_for_each_screen(function(s)
                     },
                     { -- Right widgets
                         layout = wibox.layout.fixed.horizontal,
+                        wibox.layout.margin(cpu, 20, 20, 20, 20), 
+                        wibox.layout.margin(ram, 20, 20, 20, 20), 
                         wibox.layout.margin(volume, 20, 20, 20, 20), 
+                        wibox.layout.margin(battery, 20, 20, 20, 20), 
                         wibox.layout.margin(clock, 0, 10, 0, 0),
                     },
                 },

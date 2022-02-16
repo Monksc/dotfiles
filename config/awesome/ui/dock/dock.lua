@@ -7,25 +7,27 @@ local helpers = require("helpers")
 local beautiful = require("beautiful")
 
 spotify = "spotify"
-chrome = "google-chrome-stable"
-mail = "google-chrome-stable https://www.gmail.com"
-file = "nemo"
-netflix = "google-chrome-stable https://www.netflix.com"
-vscode = "code"
+-- chrome = "google-chrome-stable"
+chrome = "epiphany"
+mail = "epiphany https://www.gmail.com"
+file = "nautilus"
+netflix = "epiphany https://www.netflix.com"
+vscode = "alacritty"
 
 awful.screen.connect_for_each_screen(function (scr)
 
    local dock = awful.wibar{
       position = "bottom",
-      height = 117,
+      height = 125,
       width = 859,
       screen = scr,
       visible = true,
       bg = "#00000000",
       bgimage = beautiful.dock_bg,
    }
-   
-   dock.y = 950
+
+   -- dock.y = 950
+   dock.y = 1380
 
    local function create_img_widget(image, apps)
       local widget = wibox.widget {

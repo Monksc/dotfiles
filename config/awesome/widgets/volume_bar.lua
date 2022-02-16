@@ -6,12 +6,14 @@ local helpers = require('helpers')
 
 -- Set colors
 local active_color = {
-    color = "#000000"
+    color = "#aaaaaa"
 }
 
-local muted_color = active_color
+local muted_color = {
+    color = "#ff0000"
+}
 local active_background_color = "#ffffff"
-local muted_background_color = "#ffffff"
+local muted_background_color = "#00ffff"
 
 local volume_bar = wibox.widget {
     max_value = 100,

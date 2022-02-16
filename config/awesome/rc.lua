@@ -25,24 +25,6 @@ require("ui")
 require("notifs")
 
                                               
--- My Custom
-modkey = "Mod4"
-terminal = "alacritty"
-application_launcher = "findex"
-editor = os.getenv("EDITOR") or "vim"
-editor_cmd = terminal .. " -e " .. editor
-
-globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey,           }, "space", function () awful.spawn(application_launcher)   end,
-              {description = "open an application launcher", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "r", awesome.restart,
-              {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q",      function (c) c:kill()                         end,
-              {description = "close", group = "client"})
-)
-
 
 client.connect_signal("request::titlebars", function(c)
     -- buttons for the titlebar
@@ -94,7 +76,6 @@ local autostart = require("autostart")
 awesome.register_xproperty("WM_NAME", "string")
 
 awful.rules.rules = {
-
   { rule = { },
     properties = { border_width = beautiful.border_width,
                    border_color = beautiful.border_normal,
@@ -106,7 +87,6 @@ awful.rules.rules = {
                    placement = awful.placement.no_overlap+awful.placement.no_offscreen
    }
   },
-
   { rule_any = {
     }, properties = { floating = true }},
 
@@ -145,8 +125,34 @@ client.connect_signal("focus",
 client.connect_signal("unfocus",
                     function(c) c.border_color = beautiful.border_normal end)
 
+-- My Custom
+modkey = "Mod4"
+modaltkey = "Mod1"
+terminal = "alacritty"
+browser = "epiphany"
+application_launcher = "findex"
+editor = os.getenv("EDITOR") or "vim"
+editor_cmd = terminal .. " -e " .. editor
+
 root.keys(globalkeys)
 
 require("signals")
+
+if true then
+    -- awful.util.spawn(terminal)
+    -- local screen = awful.screen.focused()
+    -- local tag = screen.tags[2]
+    -- if tag then
+    --    tag:view_only()
+    -- end
+    -- awful.util.spawn(browser)
+
+    awful.util.spawn("setxkbmap -option 'caps:ctrl_modifier'")
+    awful.util.spawn("xinput --set-prop --type=int 'PIXA3854:00 093A:0274 Touchpad' 'libinput Natural Scrolling Enabled Default' 1")
+    awful.util.spawn("xinput --set-prop --type=int 'PIXA3854:00 093A:0274 Touchpad' 'libinput Natural Scrolling Enabled' 1")
+    awful.util.spawn("xinput --set-button-map 'PIXA3854:00 093A:0274 Touchpad' 1 2 3 4 5 6 7")
+    awful.util.spawn("xinput set-prop 'PIXA3854:00 093A:0274 Touchpad' 'libinput Click Method Enabled' 0 1")
+    awful.util.spawn("gestures")
+end
 
 

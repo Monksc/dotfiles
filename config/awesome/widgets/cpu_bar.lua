@@ -6,10 +6,10 @@ local dpi = beautiful.xresources.apply_dpi
 
 -- Set colors
 local active_color = {
-    color = "#000000"
+    color = "#ffffff"
 }
 
-local background_color = "#ffffff"
+local background_color = "#ffffff5f"
 
 local cpu_bar = wibox.widget {
     max_value = 100,
@@ -25,8 +25,17 @@ local cpu_bar = wibox.widget {
     widget = wibox.widget.progressbar
 }
 
+local tt = awful.tooltip {
+    text = "CPU Usage: Loading ...",
+    visible = false,
+}
+tt.bg = beautiful.bg_normal
+
 awesome.connect_signal("signals::cpu", function(value)
     cpu_bar.value = value
+    tt.text = "CPU Usage: " .. value .. "%"
 end)
+
+tt:add_to_object(cpu_bar)
 
 return cpu_bar

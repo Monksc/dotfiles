@@ -219,6 +219,35 @@ my-setup-awesome() {
     echo "Good"
 }
 
+my-setup-disablemouse() {
+    xinput --set-prop --type=int 'PIXA3854:00 093A:0274 Touchpad' 'libinput Disable While Typing Enabled' "$1"
+    xinput --set-prop --type=int 'PIXA3854:00 093A:0274 Touchpad' 'libinput Disable While Typing Enabled Default' "$1"
+}
+
+my-setup-gaming() {
+    my-setup-disablemouse 0
+}
+
+my-setup-get-monitor-size() {
+    xrandr --prop | rg "^$1" | awk '{print $4}' | awk -v 'FS=[x+]' '{ print $'"$2"' }'
+}
+
+my-setup-external-monitor-open() {
+    xrandr --output DP-1 --scale 1.5 --primary --auto --right-of eDP-1
+    xrandr --output DP-2 --scale 1.5 --pos 5136x0
+}
+
+my-setup-external-monitor-close() {
+    xrandr --output 'DP-1' --off
+    xrandr --output 'DP-2' --off
+}
+
+my-setup-apple-trackpad() {
+    xinput --set-prop --type=int "Apple Inc. Magic Trackpad 2" 'libinput Natural Scrolling Enabled' 1
+    xinput --set-prop --type=int "Apple Inc. Magic Trackpad 2" 'libinput Natural Scrolling Enabled Default' 1
+    setxkbmap -option 'caps:ctrl_modifier' &
+}
+
 my-setup-i3() {
     #setxkbmap -option ctrl:swapcaps &
     #setxkbmap -option capslock:ctrl_modifier &

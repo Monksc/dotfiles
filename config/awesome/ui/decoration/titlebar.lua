@@ -97,7 +97,7 @@ client.connect_signal("request::titlebars", function(c)
         close:connect_signal("button::press", function() c:kill() end)
 
         local float = create_title_button(c, "#FFEFB4", "#fcf3cc", ci(10, 10))
-        float:connect_signal("button::press", function() c.floating = true end)
+        float:connect_signal("button::press", function() c.floating = not c.floating end)
 
         local max = create_title_button(c, "#B2D0AC", "#d3edce", ci(10, 10))
         max:connect_signal("button::press", function() c.maximized = not c.maximized end)
@@ -107,7 +107,7 @@ client.connect_signal("request::titlebars", function(c)
     awful.titlebar(c, {
         position = "top",
         size = 45,
-        bg = "#00000000",
+        bg = "#FF0000",
     }):setup{
         {
             {
@@ -137,7 +137,7 @@ client.connect_signal("request::titlebars", function(c)
     awful.titlebar(c, {
         position = "bottom",
         size = beautiful.client_radius * 2,
-        bg = "#00000000"
+        bg = "#FF0000"
     }):setup{
         {
             {

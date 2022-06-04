@@ -70,6 +70,7 @@
 
   bind "<ctrl>h" { "delete-from-cursor" (chars, -1) };
   bind "<ctrl>w" { "delete-from-cursor" (word-ends, -1) };
+  bind "<ctrl>y" { "delete-from-cursor" (word-ends, -1) };
   bind "<ctrl>s" { "delete-from-cursor" (word-ends, -1) };
   bind "<ctrl>n" { "move-cursor" (display-lines, 1, 0) };
   bind "<ctrl>q" { "scroll-vertical" () };
@@ -92,6 +93,7 @@
   bind "<alt>c" { "copy-clipboard" () };
   bind "<ctrl>q" { "scroll-vertical" () };
   bind "<ctrl>w" { "delete-from-cursor" (word-ends, -1) };
+  bind "<ctrl>y" { "delete-from-cursor" (word-ends, -1) };
   bind "<ctrl>s" { "delete-from-cursor" (word-ends, -1) };
 }
 
@@ -133,6 +135,10 @@ entry {
 }
 
 textview {
+  -gtk-key-bindings: gtk-emacs-text-entry, gtk-emacs-text-view;
+}
+
+textarea {
   -gtk-key-bindings: gtk-emacs-text-entry, gtk-emacs-text-view;
 }
 

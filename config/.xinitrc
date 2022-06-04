@@ -4,8 +4,8 @@ export QT_SCALE_FACTOR=1.5
 
 
 #exec i3
-startxfce4
+#startxfce4
 #awesome
 #gnome-session
 #kdeinit5
-#gnome-shell
+gnome-shell

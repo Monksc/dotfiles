@@ -12,6 +12,7 @@ icons.png = {
    file = icon .. "dock/folder.png",
    spotify = icon .. "dock/spotify.png",
    netflix = icon .. "dock/netflix.png",
+   twitch = icon .. "dock/twitch-logo-2.png",
    vscode = icon .. "dock/vscode.png",
    mail = icon .. "dock/mail.png",
    prev = icon.. "music/prev.png",

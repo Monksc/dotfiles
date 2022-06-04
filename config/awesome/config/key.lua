@@ -4,16 +4,21 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local revelation = require("revelation")
 
 local keys = {}
 
 require("awful.hotkeys_popup.keys")
 require("awful.autofocus")
+require("awful.remote")
+require("screenful")
+
+revelation.init()
 
 modkey = "Mod4"
 modaltkey = "Mod1"
 
-terminal = "alacritty"
+terminal = "alacritty -vv"
 browser = "epiphany"
 -- fm = "thunar"
 fm = "nautilus"
@@ -47,12 +52,37 @@ keys.desktopbuttons = gears.table.join(
 )
 
 globalkeys = gears.table.join(
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("/home/cammonks/Projects/dotfiles/.bin/changebrightness.sh '-2000'") end),
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("/home/cammonks/Projects/dotfiles/.bin/changebrightness.sh '2000'") end),
+    awful.key({ "Shift" }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("/home/cammonks/Projects/dotfiles/.bin/changebrightness.sh '-500'") end),
+    awful.key({ "Shift" }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("/home/cammonks/Projects/dotfiles/.bin/changebrightness.sh '500'") end),
+
+
     awful.key({ modkey,              }, "space", function () awful.spawn.easy_async_with_shell(application_launcher)   end,
+              {description = "open an application launcher", group = "launcher"}),
+    awful.key({ modkey, "Shift"      }, "space", function () awful.spawn.easy_async_with_shell("ulauncher")   end,
               {description = "open an application launcher", group = "launcher"}),
     awful.key({ modaltkey,           }, "space", function () awful.spawn.easy_async_with_shell(application_launcher2)   end,
               {description = "open an application launcher", group = "launcher"}),
-    awful.key({ modkey,           }, "l", awesome.quit,
+    awful.key({ modkey, "Control", "Shift"}, "l", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
+
+    awful.key({ modkey,  "Ctrl", }, "1", function () awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/centermouse.sh eDP-1")   end,
+              {description = "Move mouse to monitor.", group = "client"}),
+    awful.key({ modkey,  "Ctrl", }, "2", function () awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/centermouse.sh DP-1")   end,
+              {description = "Move mouse to monitor.", group = "client"}),
+    awful.key({ modkey,  "Ctrl", }, "3", function () awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/centermouse.sh DP-2")   end,
+              {description = "Move mouse to monitor.", group = "client"}),
+    -- awful.key({ modkey,  "Ctrl", "Shift", }, "1", function () awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/centermouse.sh eDP-1")   end,
+    --           {description = "Move mouse to monitor.", group = "client"}),
+    -- awful.key({ modkey,  "Ctrl", "Shift", }, "2", function () awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/centermouse.sh DP-1")   end,
+    --           {description = "Move mouse to monitor.", group = "client"}),
+    -- awful.key({ modkey,  "Ctrl", "Shift", }, "3", function () awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/centermouse.sh DP-2")   end,
+    --           {description = "Move mouse to monitor.", group = "client"}),
 
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
@@ -70,6 +100,24 @@ globalkeys = gears.table.join(
               {description = "Audio settings", group = "client"}),
     awful.key({ modkey,              }, "p", function () awful.spawn("gnome-control-center power")   end,
               {description = "Power settings", group = "client"}),
+    awful.key({ modkey,              }, "c", function () awful.spawn.easy_async_with_shell("rofi -show calc -modi calc -no-show-match -no-sort")   end,
+              {description = "Power settings", group = "client"}),
+    awful.key({ "Ctrl",           }, "F9",      revelation),
+
+    -- Special Key Bindings Start
+    -- awful.key({ modaltkey,           }, "c", function ()
+    --     awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/sendkeystrokes.sh copy")   end),
+    -- awful.key({ modaltkey,           }, "v", function ()
+    --     awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/sendkeystrokes.sh paste")   end),
+    -- awful.key({ modaltkey,           }, "w", function ()
+    --     awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/sendkeystrokes.sh deletetab")   end),
+    -- awful.key({ "Control",           }, "w", function ()
+    --     awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/sendkeystrokes.sh deletebackwords")   end),
+    -- awful.key({ "Control",           }, "a", function ()
+    --     awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/sendkeystrokes.sh startofword")   end),
+    -- awful.key({ "Control",           }, "e", function ()
+    --     awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/sendkeystrokes.sh endofword")   end),
+    -- Special Key Bindings End
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -85,8 +133,14 @@ globalkeys = gears.table.join(
     ),
     awful.key({ modkey,           }, "w", function () awful.spawn(browser) end,
               {description = "spawn browser", group = "launcher"}),
+    awful.key({ modkey, "Shift",  }, "w", function () awful.spawn("surf -z 1.5 -N duckduckgo.com") end,
+              {description = "spawn browser", group = "launcher"}),
+    awful.key({ modkey, "Shift",  "Control"}, "w", function () awful.spawn("firefox --private-window 'duckduckgo.com'") end,
+              {description = "spawn browser", group = "launcher"}),
+    awful.key({ modkey, "Control",  }, "w", function () awful.spawn("firefox") end,
+              {description = "spawn browser", group = "launcher"}),
 
-    awful.key({ modkey,           }, "Tab",
+    awful.key({ modkey, "Control" }, "Tab",
         function ()
             awful.client.focus.history.previous()
             if client.focus then
@@ -94,6 +148,23 @@ globalkeys = gears.table.join(
             end
         end,
         {description = "go back", group = "client"}),
+    awful.key({ modkey,           }, "Tab",
+        function ()
+            -- awful.client.focus.history.previous()
+            awful.client.focus.byidx(-1)
+            if client.focus then
+                client.focus:raise()
+            end
+        end),
+
+    awful.key({ modkey, "Shift"   }, "Tab",
+        function ()
+            -- awful.client.focus.history.previous()
+            awful.client.focus.byidx(1)
+            if client.focus then
+                client.focus:raise()
+            end
+        end),
 
     -- Audio
 	awful.key({}, "XF86AudioRaiseVolume", function()
@@ -109,12 +180,23 @@ globalkeys = gears.table.join(
         function() awesome.emit_signal("volume_refresh") end)
     end, {description = "mute audio", group = "audio"}),
 
+    awful.key({"Shift"}, "XF86AudioRaiseVolume", function()
+        awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/applicationvolume.bs '+1%'",
+        function() awesome.emit_signal("volume_refresh") end)
+    end, { description = "raise volume by 3%", group = "audio" }),
+    awful.key({"Shift"}, "XF86AudioLowerVolume", function()
+        awful.spawn.easy_async_with_shell("/home/cammonks/Projects/dotfiles/.bin/applicationvolume.bs '-1%'",
+        function() awesome.emit_signal("volume_refresh") end)
+    end, {description = "lower volume by 3%", group = "audio"}),
+
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ }, "Print", function () awful.spawn.easy_async_with_shell("scrot -cd1 -q100 ~/Pictures/Screenshot-h%M%S.png") end, 
+              {description = "take screenshot", group = "screen"}),
+    awful.key({ "Control", }, "Print", function () awful.spawn.easy_async_with_shell("scrot -s '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/Pictures'") end, 
               {description = "take screenshot", group = "screen"}),
 
     -- awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -147,11 +229,20 @@ globalkeys = gears.table.join(
                   end
               end,
               {description = "restore minimized", group = "client"}),
+    awful.key({ modkey, "Shift" }, "n",
+              function ()
+                  local tag = awful.tag.selected()
+                  for i=1, #tag:clients() do
+                      tag:clients()[i].minimized=false
+                      tag:clients()[i]:redraw()
+                  end
+              end,
+              {description = "restore minimized", group = "client"}),
     -- Menubar
     awful.key({ modkey }, "r", function() awful.spawn.easy_async_with_shell("rofi -show drun") end,
               {description = "show the menubar", group = "launcher"}),
     -- emoji
-    awful.key({ modkey }, "d", function() awful.spawn.easy_async_with_shell("rofi-emoji.sh") end,
+    awful.key({ modkey }, "d", function() awful.spawn.easy_async_with_shell("rofi -show emoji -modi emoji") end,
               {description = "emoji menu", group = "launcher"})
 
 )

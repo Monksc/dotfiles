@@ -33,19 +33,19 @@ font:
   normal:
     family: Hack
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Regular
 
   # Bold font face
   bold:
     family: Hack
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    style: Bold
 
   # Italic font face
   italic:
     family: Hack
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: "Bold Italic"
 
   # Point size
   size: 6.0
@@ -70,3 +70,9 @@ font:
   # `WINIT_HIDPI_FACTOR=1.0 alacritty` to scale the font.
   #scale_with_dpi: true
 
+shell:
+  program: /bin/bash
+  args:
+    - -l
+    - -c
+    - "tmux -u attach || tmux -u"

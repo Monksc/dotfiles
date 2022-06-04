@@ -130,6 +130,7 @@ modkey = "Mod4"
 modaltkey = "Mod1"
 terminal = "alacritty"
 browser = "epiphany"
+-- browser = "google-chrome-stable"
 application_launcher = "findex"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
@@ -138,7 +139,7 @@ root.keys(globalkeys)
 
 require("signals")
 
-if true then
+if false then
     -- awful.util.spawn(terminal)
     -- local screen = awful.screen.focused()
     -- local tag = screen.tags[2]
@@ -153,6 +154,9 @@ if true then
     awful.util.spawn("xinput --set-button-map 'PIXA3854:00 093A:0274 Touchpad' 1 2 3 4 5 6 7")
     awful.util.spawn("xinput set-prop 'PIXA3854:00 093A:0274 Touchpad' 'libinput Click Method Enabled' 0 1")
     awful.util.spawn("gestures")
+    -- awful.util.spawn("ulauncher")
+    awful.util.spawn("caffeine&")
+    awful.util.spawn("sleep 3 && kill -s 9 $(ps aux | grep -i 'gestures' | awk '{print $2}')")
 end
 
 

@@ -33,8 +33,9 @@ set laststatus=2
 
 " Up and down left and right padding
 set so=8
-set sidescroll=8
+" set sidescroll=8
 " set nowrap
+" set wrap
 
 " To see tabs and other chatacters
 set list

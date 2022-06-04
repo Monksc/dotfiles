@@ -52,7 +52,7 @@ awful.screen.connect_for_each_screen(function(s)
         layout   = {
             spacing = 0,
             spacing_widget = {
-                color = '#181e23',
+                color = '#ff0000',
                 shape = gears.shape.rounded_rect,
                 widget = wibox.widget.separator,
             },
@@ -140,10 +140,19 @@ awful.screen.connect_for_each_screen(function(s)
     end
     
     volume:buttons(gears.table.join( -- Left click - Mute / Unmute
-    awful.button({}, 1, function() helpers.volume_control(0) end),
+    awful.button({}, 1, function()
+        helpers.volume_control(0)
+        awesome.emit_signal("volume_refresh")
+    end),
     -- Scroll - Increase / Decrease volume
-    awful.button({}, 4, function() helpers.volume_control(5) end),
-    awful.button({}, 5, function() helpers.volume_control(-5) end)))
+    awful.button({}, 4, function() 
+        helpers.volume_control(5)
+        awesome.emit_signal("volume_refresh")
+    end),
+    awful.button({}, 5, function()
+        helpers.volume_control(-5)
+        awesome.emit_signal("volume_refresh")
+    end)))
 
     -- Start
 
@@ -166,7 +175,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.wibar = awful.wibar({
         screen = s,
         height = 60,
-        bg = "#0000000",
+        bg = "#ff0000",
         widget = wibox.container.background(),
     })
     
@@ -195,7 +204,7 @@ awful.screen.connect_for_each_screen(function(s)
                         wibox.layout.margin(clock, 0, 10, 0, 0),
                     },
                 },
-                bg = "#ffffff",
+                bg = "#303030",
                 widget = wibox.container.background
             },
             bottom = 2,

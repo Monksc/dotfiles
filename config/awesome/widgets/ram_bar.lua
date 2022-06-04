@@ -6,10 +6,10 @@ local dpi = beautiful.xresources.apply_dpi
 
 -- Set colors
 local active_color = {
-    color = "#000000"
+    color = "#ffffff"
 }
 
-local background_color = "#ffffff"
+local background_color = "#ffffff5f"
 
 local ram_bar = wibox.widget {
     max_value = 100,
@@ -25,16 +25,31 @@ local ram_bar = wibox.widget {
     widget = wibox.widget.progressbar
 }
 
+local tt = awful.tooltip {
+    text = "RAM Usage: Loading ...",
+    visible = false,
+}
+tt.bg = beautiful.bg_normal
+
 local update_interval = 1
 
+-- local ram_script = [[
+--   sh -c "
+--   free -m | grep 'Mem:' | awk '{printf \"%d@@%d@\", $7, $2}'
+--   "]]
 local ram_script = [[
   sh -c "
-  free -m | grep 'Mem:' | awk '{printf \"%d@@%d@\", $7, $2}'
+  free -m | grep 'Mem:' | awk '{printf \"%d@@%d@\", $3, $2}'
   "]]
 
 awesome.connect_signal("signals::ram", function(used, total)
     local used_ram_percentage = (used / total) * 100
     ram_bar.value = used_ram_percentage
+    -- tt.text = "RAM Usage: " .. used .. "MiB"
+    -- tt.text = "RAM Usage: " .. (10*(used_ram_percentage // 10)) .. "%"
+    tt.text = "RAM Usage: " .. (((10*used) // 1000) / 10) .. "GiB"
 end)
+
+tt:add_to_object(ram_bar)
 
 return ram_bar

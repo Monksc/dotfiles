@@ -11,16 +11,16 @@ local theme = {}
 
 -- themes
 
-theme.font          = "MADE Outer Sans Medium 15"
+theme.font          = "SF Pro Bold 18"
 
 theme.dir = string.format('%s/.config/awesome/theme', os.getenv('HOME'))
 
-theme.wallpaper     = gfs.get_configuration_dir() .. "wallpapers/bg3.jpg"
+theme.wallpaper     = gfs.get_configuration_dir() .. "wallpapers/bg6.jpg"
 
-theme.bg = "#ebebeb"
-theme.bg_widget = "#f5f5f5"
+theme.bg = "#303030"
+theme.bg_widget = "#ff0000"
 
-theme.fg_normal = "#000000"
+theme.fg_normal = "#d0d0d0"
 theme.fg_focus = "#000000"
 
 theme.useless_gap   = 20
@@ -32,15 +32,15 @@ theme.border_color = "#000000"
 
 -- dock
 
-theme.dock_bg = gfs.get_configuration_dir() .. "icons/dock.png"
+theme.dock_bg = gfs.get_configuration_dir() .. "icons/wide-dock-dark.png"
 
 -- widget
 
-theme.tasklist_bg_focus = "#f5f5f5"
+theme.tasklist_bg_focus = "#ff0000"
 
-theme.taglist_fg = "#000000"
-theme.taglist_fg_empty = "#4f4f4f"
-theme.taglist_fg_occupied = "#8c8c8c"
+theme.taglist_fg = "#ff0000"
+theme.taglist_fg_empty = "#6f6f6f"
+theme.taglist_fg_occupied = "#4c4c4c"
 
 -- notif
 

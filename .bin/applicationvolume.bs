@@ -1,12 +1,25 @@
 #!/usr/bin/env sh
 
 changeVolume() {
+    id="$(xdotool getactivewindow getwindowpid)"
+    pids="$(ps --pid "$id" | tail -n +2 | awk '{print $1}')"
+    for pid in $pids
+    do
+        pactl set-sink-input-volume \
+            $(pactl list sink-inputs | \
+            awk -v FOO='HI' \
+            'match($0, /application.process.id = "'"$pid"'"/''){print FOO} match($0, /Sink Input #[0-9]+/){FOO=substr($0, 13)}') "$1"
 
-    pactl set-sink-input-volume \
-        $(pactl list sink-inputs | \
-        awk -v FOO='HI' \
-        'match($0, /application.process.id = "'"$(xdotool getactivewindow getwindowpid)"'"/''){print FOO} match($0, /Sink Input #[0-9]+/){FOO=substr($0, 13)}') "$1"
+    done
 }
+
+# changeVolume() {
+# 
+#     pactl set-sink-input-volume \
+#         $(pactl list sink-inputs | \
+#         awk -v FOO='HI' \
+#         'match($0, /application.process.id = "'"$(xdotool getactivewindow getwindowpid)"'"/''){print FOO} match($0, /Sink Input #[0-9]+/){FOO=substr($0, 13)}') "$1"
+# }
 
 if [ "$1" == "up" ]; then
     changeVolume "+5%"

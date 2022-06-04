@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+/home/cammonks/.bin/rokuapi.sh "$@"

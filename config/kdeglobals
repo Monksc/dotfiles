@@ -26,42 +26,42 @@ IntensityEffect=0
 [Colors:Button]
 BackgroundAlternate=77,77,77
 BackgroundNormal=101,101,101
-DecorationFocus=49,91,239
-DecorationHover=49,91,239
-ForegroundActive=61,174,233
+DecorationFocus=2,158,255
+DecorationHover=2,158,255
+ForegroundActive=2,158,255
 ForegroundInactive=189,195,199
-ForegroundLink=41,128,185
+ForegroundLink=2,158,255
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=222,222,222
+ForegroundNormal=252,252,252
 ForegroundPositive=39,174,96
 ForegroundVisited=127,140,141
 
 [Colors:Complementary]
 BackgroundAlternate=66,66,66
 BackgroundNormal=51,51,51
-DecorationFocus=49,91,239
-DecorationHover=49,91,239
-ForegroundActive=246,116,0
-ForegroundInactive=136,136,136
-ForegroundLink=49,91,239
+DecorationFocus=2,158,255
+DecorationHover=2,158,255
+ForegroundActive=2,158,255
+ForegroundInactive=160,160,160
+ForegroundLink=2,158,255
 ForegroundNegative=237,21,21
 ForegroundNeutral=201,206,59
-ForegroundNormal=222,222,222
+ForegroundNormal=252,252,252
 ForegroundPositive=17,209,22
 ForegroundVisited=49,91,239
 
 [Colors:Header]
 BackgroundAlternate=66,66,66
-BackgroundNormal=51,51,51
-DecorationFocus=49,91,239
-DecorationHover=49,91,239
-ForegroundActive=246,116,0
-ForegroundInactive=136,136,136
-ForegroundLink=49,91,239
+BackgroundNormal=54,54,54
+DecorationFocus=2,158,255
+DecorationHover=2,158,255
+ForegroundActive=2,158,255
+ForegroundInactive=160,160,160
+ForegroundLink=2,158,255
 ForegroundNegative=237,21,21
 ForegroundNeutral=201,206,59
-ForegroundNormal=222,222,222
+ForegroundNormal=252,252,252
 ForegroundPositive=17,209,22
 ForegroundVisited=49,91,239
 
@@ -71,22 +71,22 @@ BackgroundNormal=51,51,51
 DecorationFocus=49,91,239
 DecorationHover=49,91,239
 ForegroundActive=246,116,0,150
-ForegroundInactive=136,136,136,150
+ForegroundInactive=160,160,160,150
 ForegroundLink=49,91,239
 ForegroundNegative=237,21,21
 ForegroundNeutral=201,206,59
-ForegroundNormal=222,222,222,150
+ForegroundNormal=252,252,252,150
 ForegroundPositive=17,209,22
 ForegroundVisited=49,91,239
 
 [Colors:Selection]
-BackgroundAlternate=79,127,239
-BackgroundNormal=49,91,239
-DecorationFocus=255,255,255
-DecorationHover=255,255,255
-ForegroundActive=252,252,252
+BackgroundAlternate=12,121,189
+BackgroundNormal=12,121,189
+DecorationFocus=2,158,255
+DecorationHover=2,158,255
+ForegroundActive=2,158,255
 ForegroundInactive=130,156,239
-ForegroundLink=253,188,75
+ForegroundLink=2,158,255
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
 ForegroundNormal=255,255,255
@@ -96,42 +96,42 @@ ForegroundVisited=128,152,239
 [Colors:Tooltip]
 BackgroundAlternate=77,77,77
 BackgroundNormal=51,51,51
-DecorationFocus=49,91,239
-DecorationHover=49,91,239
-ForegroundActive=49,91,239
+DecorationFocus=2,158,255
+DecorationHover=2,158,255
+ForegroundActive=2,158,255
 ForegroundInactive=189,195,199
-ForegroundLink=49,91,239
+ForegroundLink=2,158,255
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=222,222,222
+ForegroundNormal=252,252,252
 ForegroundPositive=39,174,96
 ForegroundVisited=127,140,141
 
 [Colors:View]
 BackgroundAlternate=48,48,48
 BackgroundNormal=36,36,36
-DecorationFocus=49,91,239
-DecorationHover=49,91,239
-ForegroundActive=49,91,239
-ForegroundInactive=136,136,136
-ForegroundLink=49,91,239
+DecorationFocus=2,158,255
+DecorationHover=2,158,255
+ForegroundActive=2,158,255
+ForegroundInactive=160,160,160
+ForegroundLink=2,158,255
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=222,222,222
+ForegroundNormal=252,252,252
 ForegroundPositive=39,174,96
 ForegroundVisited=120,120,120
 
 [Colors:Window]
 BackgroundAlternate=66,66,66
-BackgroundNormal=36,36,36
-DecorationFocus=49,91,239
-DecorationHover=49,91,239
-ForegroundActive=49,91,239
-ForegroundInactive=136,136,136
-ForegroundLink=49,91,239
+BackgroundNormal=54,54,54
+DecorationFocus=2,158,255
+DecorationHover=2,158,255
+ForegroundActive=2,158,255
+ForegroundInactive=160,160,160
+ForegroundLink=2,158,255
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=222,222,222
+ForegroundNormal=252,252,252
 ForegroundPositive=39,174,96
 ForegroundVisited=120,120,120
 
@@ -140,8 +140,9 @@ DirSelectDialog Size=828,562
 History Items[$e]=file:$HOME/Downloads/WhiteSur
 
 [General]
+AccentColor=2,158,255
 BrowserApplication=org.gnome.Epiphany.desktop
-ColorSchemeHash=bc0033e2c061bbedd22023872b9a2fbdf78bd9ae
+ColorSchemeHash=79296561e8832ef612d7c1138272b1e03e6ba66d
 Name=WhiteSurDark
 TerminalApplication=alacritty
 TerminalService=Alacritty.desktop
@@ -154,9 +155,6 @@ shadeSortColumn=true
 smallestReadableFont=SF Pro,14,-1,5,50,0,0,0,0,0
 toolBarFont=SF Pro,16,-1,5,50,0,0,0,0,0
 widgetStyle=Breeze
-
-[Icons]
-Theme=WhiteSur-dark
 
 [KDE]
 ColorScheme=BreezeLight
@@ -175,7 +173,7 @@ Show Full Path=false
 Show Inline Previews=true
 Show Preview=false
 Show Speedbar=true
-Show hidden files=false
+Show hidden files=true
 Sort by=Name
 Sort directories first=true
 Sort reversed=false
@@ -185,6 +183,9 @@ View Style=Simple
 [KScreen]
 ScaleFactor=1
 ScreenScaleFactors=eDP-1=1;DP-1=1;DP-2=1;DP-3=1;DP-4=1;
+
+[KShortcutsDialog Settings]
+Dialog Size=600,480
 
 [Shortcuts]
 Activate Next Tab=CapsLock, Ctrl+T
@@ -221,7 +222,7 @@ FakeEntryToKeepThisGroup=true
 activeBackground=51,51,51
 activeBlend=171,171,171
 activeFont=SF Pro,16,-1,5,75,0,0,0,0,0,Bold
-activeForeground=222,222,222
+activeForeground=252,252,252
 inactiveBackground=66,66,66
 inactiveBlend=85,85,85
-inactiveForeground=120,120,120
+inactiveForeground=170,170,170

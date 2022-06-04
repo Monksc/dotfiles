@@ -9,12 +9,12 @@ __ScriptVersion="1.0.0"
 #===============================================================================
 function usage ()
 {
-	echo "Usage :  $0 [options] [--]
+    echo "Usage :  $0 [options] [--]
 
     Options:
     -h|help             Display this message
     -v|version          Display script version
-    add [song name]+    Adds a song to the queue
+    add [song name]     Adds a song to the queue
     play                Plays the songs in queue
     skip                Skips the top song in queue
     queue|list          Shows the queue
@@ -26,6 +26,23 @@ function usage ()
 
 function handleRequest() {
     echo "handle request"
+}
+
+function installer() {
+    mkdir -p "$HOME/.local/share/songqueue/songs"
+    touch "$HOME/.local/share/songqueue/current_playlist.txt"
+    touch "$HOME/.local/share/songqueue/playlist1.txt"
+    echo "playlist1" > "$HOME/.local/share/songqueue/current_playlist.txt"
+}
+
+function getPlaylistFile() {
+    # echo "/tmp/songqueue/queue.txt"
+    echo "$HOME/.local/share/songqueue/$(cat "$HOME/.local/share/songqueue/current_playlist.txt")"
+}
+
+function getSongsDirectory() {
+    # echo "/tmp/songqueue/songs/"
+    echo "$HOME/.local/share/songqueue/songs"
 }
 
 #-----------------------------------------------------------------------
@@ -92,7 +109,7 @@ function handleAdd() {
 
         h|help     )  usage; exit 0   ;;
 
-        v|version  )  echo "$0 -- Version __ScriptVersion"; exit 0   ;;
+        v|version  )  echo "$0 -- Version $__ScriptVersion"; exit 0   ;;
 
         s|silent   )  isSilent=true;;
 
@@ -103,16 +120,16 @@ function handleAdd() {
     done
     shift $(($OPTIND-1))
 
-    makeCache
+    #makeCache
     while [ $# -gt 0 ]
     do
         if $isSilent; then
-            (youtube-dl "ytsearch:$1" --extract-audio --audio-format wav -o "/tmp/songqueue/songs/$1.wav" > /dev/null)&
+            (youtube-dl "ytsearch:$1" --extract-audio --audio-format wav -o "$(getSongsDirectory)/$1.wav" > /dev/null)&
         else
             echo "$1"
-            youtube-dl "ytsearch:$1" --extract-audio --audio-format wav -o "/tmp/songqueue/songs/$1.wav"
+            youtube-dl "ytsearch:$1" --extract-audio --audio-format wav -o "$(getSongsDirectory)/$1.wav"
         fi
-        echo "$1" >> /tmp/songqueue/queue.txt
+        echo "$1" >> $(getPlaylistFile)
         shift
     done
 }
@@ -122,10 +139,12 @@ function handleAdd() {
 #  DESCRIPTION:  Handles the skip command
 #===============================================================================
 function handleSkip() {
-    #cat /tmp/songqueue/queue.txt | head -n 1 | awk -v quote="'" '{ print "rm " quote "/tmp/songqueue/songs/" $0 ".wav" quote }' | bash
-    tail -n +2 /tmp/songqueue/queue.txt > /tmp/songqueue/queue-temp.txt
-    head -n 1 /tmp/songqueue/queue.txt >> /tmp/songqueue/queue-temp.txt
-    cat /tmp/songqueue/queue-temp.txt > /tmp/songqueue/queue.txt
+    # cat /tmp/songqueue/queue.txt | head -n 1 | awk -v quote="'" '{ print "rm " quote "/tmp/songqueue/songs/" $0 ".wav" quote }' | bash
+    mkdir -p /tmp/songqueue/
+    touch /tmp/songqueue/queue-temp.txt
+    tail -n +2 "$(getPlaylistFile)" > /tmp/songqueue/queue-temp.txt
+    head -n 1 "$(getPlaylistFile)" >> /tmp/songqueue/queue-temp.txt
+    cat /tmp/songqueue/queue-temp.txt > "$(getPlaylistFile)"
 }
 
 
@@ -134,9 +153,10 @@ function handleSkip() {
 #  DESCRIPTION:  Handles the play command
 #===============================================================================
 function handlePlay() {
-    while [ $(cat "/tmp/songqueue/queue.txt" | wc -l | awk '{ print $1 }') -gt 0 ]
-    do 
-        cat /tmp/songqueue/queue.txt | head -n 1 | awk -v quote="'" -v "args=$*" '{ print "mpv " args " " quote "/tmp/songqueue/songs/" $0 ".wav" quote "*" }' | bash
+    while [ $(cat $(getPlaylistFile) | wc -l | awk '{ print $1 }') -gt 0 ]
+    do
+        cat $(getPlaylistFile) | head -n 1 | awk -v quote="'" -v "args=$*" \
+            '{ print "mpv " args " " quote "'"$(getSongsDirectory)/"'" $0 ".wav" quote "*" }' | bash
         handleSkip
     done
 }
@@ -147,7 +167,7 @@ function handlePlay() {
 #  DESCRIPTION:  Handles the queue command
 #===============================================================================
 function handleQueue() {
-    cat -b /tmp/songqueue/queue.txt
+    cat -b $(getPlaylistFile)
 }
 
 #===  FUNCTION  ================================================================
@@ -159,7 +179,7 @@ function handleDisplay() {
     echo "Queue"
     handleQueue "$@"
     while true; do
-        fswatch -o /tmp/songqueue/queue.txt | (\
+        fswatch -o $(getPlaylistFile) | (\
             clear; \
             echo "Queue"; \
             handleQueue "$@";)
@@ -214,7 +234,7 @@ function handleBanner() {
     shift $(($OPTIND-1))
 
     while true; do
-        ((head -n 1 /tmp/songqueue/queue.txt | (xargs banner -w "$width") ) | slowcat "$timeInterval" | lolcat) || exit 1
+        ((head -n 1 $(getPlaylistFile) | (xargs banner -w "$width") ) | slowcat "$timeInterval" | lolcat) || exit 1
     done
 }
 
@@ -223,8 +243,14 @@ function handleBanner() {
 #  DESCRIPTION:  Handles edit command
 #===============================================================================
 function handleEdit() {
-    $EDITOR /tmp/songqueue/queue.txt
+    $EDITOR $(getPlaylistFile)
 }
+
+if [[ $1 == "install" ]]; then
+    shift
+    installer
+    exit 0
+fi
 
 if [[ $1 == "add" ]]; then
     shift

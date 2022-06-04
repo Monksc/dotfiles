@@ -33,7 +33,7 @@ end
 
 local function create_boxed_widget(widget_to_be_boxed, width, height, bg_color)
     local box_container = wibox.container.background()
-    box_container.bg = "#ffffff"
+    box_container.bg = "#ffffff0f"
     box_container.border_width = 2
     box_container.border_color = beautiful.border_color
     box_container.forced_height = height
@@ -55,7 +55,7 @@ local function create_boxed_widget(widget_to_be_boxed, width, height, bg_color)
             widget = box_container
         },
         margins = box_gap,
-        color = "#00000000",
+        color = "#ff0000",
         widget = wibox.container.margin
     }
     return boxed_widget
@@ -103,7 +103,7 @@ local info = create_boxed_widget(profile, 100, 150, beautiful.bg_widget)
 -- Clock
 
 local clock = wibox.widget.textclock(
-    "<span foreground='" .. "#000000" .."'> %I:%M %p </span>", 5
+    "<span foreground='" .. "#cecece" .."'> %I:%M %p </span>", 5
 )
 clock.align = "center"
 clock.valign = "center"
@@ -144,6 +144,12 @@ local ram_bar = require("widgets.ram_bar")
 
 local ram = format_progress_bar(ram_bar, "<span foreground='" .. "#d5d5d5" .."'><b>Ram</b></span>")
 
+-- Battery
+
+local battery_bar = require("widgets.battery_bar")
+
+local battery = format_progress_bar(battery_bar, "<span foreground='" .. "#d5d5d5" .."'><b>Battery</b></span>")
+
 -- Conatiner
 
 local sys = wibox.widget {
@@ -168,10 +174,18 @@ local sys = wibox.widget {
         right = 10,
         widget = wibox.container.margin,
     },
+    {
+        battery,
+        top = 10,
+        left = 10,
+        right = 10,
+        widget = wibox.container.margin,
+    },
     layout = wibox.layout.flex.vertical,
 }
 
 local sys_box = create_boxed_widget(sys, 390, 300, beautiful.bg_widget)
+
 
 -- Cal
 
@@ -192,11 +206,16 @@ local cal_box = create_boxed_widget(cal_margin, 390, 300, beautiful.bg_widget)
 -- Sidebar
 
 sidebar = wibox({visible = false, ontop = true, screen = screen.primary})
-sidebar.bg = "#00000000"
-sidebar.fg = "#000000"
+sidebar.bg = "#ff0000"
+sidebar.fg = "#ffffff"
 sidebar.height = 1020
+-- sidebar.height = 2000
 sidebar.width = 450
 sidebar.y = 60
+
+awful.screen.connect_for_each_screen(function (scr)
+    sidebar.height = scr.geometry.height - 60
+end)
 
 sidebar_show = function()
     sidebar.visible = true
@@ -241,6 +260,23 @@ sidebar : setup {
                         nil,
                         {
                             playerctl_box,
+                            spacing = dpi(5),
+                            layout = wibox.layout.fixed.vertical
+                        },
+                        expand = "none",
+                        layout = wibox.layout.align.horizontal
+                    },
+                    layout = wibox.layout.fixed.vertical
+                },
+                {    -- center
+                    {
+                        top = 30,
+                        widget = wibox.container.margin,
+                    },
+                    {
+                        nil,
+                        {
+                            sys_box,
                             spacing = dpi(5),
                             layout = wibox.layout.fixed.vertical
                         },

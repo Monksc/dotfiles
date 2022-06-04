@@ -1,3 +1,4 @@
+local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
@@ -6,7 +7,7 @@ local helpers = require('helpers')
 
 -- Set colors
 local active_color = {
-    color = "#000000"
+    color = "#ffffff"
 }
 local muted_color = active_color
 
@@ -14,13 +15,13 @@ local low_battery_color = {
     color = "#cc5757"
 }
 local normal_battery_color = {
-    color = "#000000"
+    color = "#ffffff"
 }
 local charging_color = {
     color = "#8dad88"
 }
-local active_background_color = "#ffffff"
-local muted_background_color = "#ffffff"
+local active_background_color = "#ffffff5f"
+local muted_background_color = "#ffffff5f"
 
 local battery_bar = wibox.widget {
     max_value = 100,
@@ -33,6 +34,20 @@ local battery_bar = wibox.widget {
     border_color = "#000000",
     widget = wibox.widget.progressbar,
 }
+
+local tt = awful.tooltip {
+    text = "Battery tooltip: Loading ...",
+    visible = false,
+}
+tt.bg = beautiful.bg_normal
+
+function update_tooltip()
+    local handle = io.popen("acpi -i | rg '([0-9]{2}:){2}[0-9]{2}' | awk '{print substr($0, 12)}'")
+    local result = handle:read("*a")
+    handle:close()
+
+    tt.text = result:sub(1, -2)
+end
 
 function update_battery()
     local handle = io.popen('cat /sys/class/power_supply/BAT1/capacity')
@@ -61,17 +76,16 @@ function update_battery()
     battery_bar.color = fill_color
     battery_bar.background_color = bg_color
 end
--- gears.timer.start_new(60, function()
---     update_battery()
---     return true -- Signal that the timer should continue running
--- end)
--- update_battery()
 
 local watch = require("awful.widget.watch")
 watch("acpi -i", 10,
     function(widget, stdout)
         update_battery()
+        update_tooltip()
     end
 , battery_bar)
+
+
+tt:add_to_object(battery_bar)
 
 return battery_bar

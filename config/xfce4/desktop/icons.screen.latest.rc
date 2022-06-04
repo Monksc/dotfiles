@@ -1,15 +1,1 @@
-[xfdesktop-version-4.10.3+-rcfile_format]
-4.10.3+=true
-
-[Trash]
-row=0
-col=9
-
-[/]
-row=1
-col=9
-
-[/home/cammonks]
-row=2
-col=9
-
+/home/cammonks/.config/xfce4/desktop/icons.screen0-2240x1455.rc

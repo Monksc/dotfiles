@@ -52,7 +52,7 @@ awful.screen.connect_for_each_screen(function(s)
         layout   = {
             spacing = 0,
             spacing_widget = {
-                color = '#ff0000',
+                color = '#181e23',
                 shape = gears.shape.rounded_rect,
                 widget = wibox.widget.separator,
             },
@@ -175,7 +175,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.wibar = awful.wibar({
         screen = s,
         height = 60,
-        bg = "#ff0000",
+        bg = "#00000000",
         widget = wibox.container.background(),
     })
     
@@ -204,7 +204,7 @@ awful.screen.connect_for_each_screen(function(s)
                         wibox.layout.margin(clock, 0, 10, 0, 0),
                     },
                 },
-                bg = "#303030",
+                bg = beautiful.bar_bg,
                 widget = wibox.container.background
             },
             bottom = 2,

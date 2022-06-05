@@ -7,21 +7,20 @@ local helpers = require('helpers')
 
 -- Set colors
 local active_color = {
-    color = "#ffffff"
+    color = beautiful.topbar_fg_normal
 }
-local muted_color = active_color
 
 local low_battery_color = {
-    color = "#cc5757"
+    color = beautiful.topbar_fg_warning
 }
 local normal_battery_color = {
-    color = "#ffffff"
+    color = beautiful.topbar_fg_normal
 }
 local charging_color = {
-    color = "#8dad88"
+    color = beautiful.topbar_fg_success
 }
-local active_background_color = "#ffffff5f"
-local muted_background_color = "#ffffff5f"
+local active_background_color = beautiful.topbar_bg
+local muted_background_color = beautiful.topbar_bg
 
 local battery_bar = wibox.widget {
     max_value = 100,

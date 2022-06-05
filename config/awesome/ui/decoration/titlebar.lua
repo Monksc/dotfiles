@@ -107,7 +107,7 @@ client.connect_signal("request::titlebars", function(c)
     awful.titlebar(c, {
         position = "top",
         size = 45,
-        bg = "#FF0000",
+        bg = "#00000000",
     }):setup{
         {
             {
@@ -137,7 +137,7 @@ client.connect_signal("request::titlebars", function(c)
     awful.titlebar(c, {
         position = "bottom",
         size = beautiful.client_radius * 2,
-        bg = "#FF0000"
+        bg = "#00000000"
     }):setup{
         {
             {

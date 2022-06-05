@@ -33,7 +33,7 @@ end
 
 local function create_boxed_widget(widget_to_be_boxed, width, height, bg_color)
     local box_container = wibox.container.background()
-    box_container.bg = "#ffffff0f"
+    box_container.bg = beautiful.widget_bg
     box_container.border_width = 2
     box_container.border_color = beautiful.border_color
     box_container.forced_height = height
@@ -55,7 +55,7 @@ local function create_boxed_widget(widget_to_be_boxed, width, height, bg_color)
             widget = box_container
         },
         margins = box_gap,
-        color = "#ff0000",
+        color = "#00000000",
         widget = wibox.container.margin
     }
     return boxed_widget
@@ -75,13 +75,14 @@ local text = wibox.widget {
 }
 
 local user = wibox.widget {
-    markup =  "<span foreground='" .. "#d5d5d5" .."'> cammonks </span>",
+    markup =  "<span foreground='" ..
+        beautiful.widget_fg .."'> " .. os.getenv("USER") .. " </span>",
     widget = wibox.widget.textbox,
     font = "MADE Outer Sans 15"
 }
 
 local profile = wibox.widget {
-    {    
+    {
         {
             text,
             left = 30,
@@ -103,7 +104,7 @@ local info = create_boxed_widget(profile, 100, 150, beautiful.bg_widget)
 -- Clock
 
 local clock = wibox.widget.textclock(
-    "<span foreground='" .. "#cecece" .."'> %I:%M %p </span>", 5
+    "<span foreground='" .. beautiful.widget_fg .."'> %I:%M %p </span>", 5
 )
 clock.align = "center"
 clock.valign = "center"
@@ -120,7 +121,7 @@ local playerctl_box = create_boxed_widget(playerctl, 390,320, beautiful.bg_widge
 -- Volume
 
 local volume_bar = require("widgets.volume_bar")
-local volume = format_progress_bar(volume_bar, "<span foreground='" .. "#d5d5d5" .."'><b>Volume</b></span>")
+local volume = format_progress_bar(volume_bar, "<span foreground='" .. beautiful.widget_fg .."'><b>Volume</b></span>")
 
 apps_volume = function()
     helpers.run_or_raise({class = "Pavucontrol"}, true, "pavucontrol")
@@ -136,19 +137,19 @@ awful.button({}, 5, function() helpers.volume_control(-5) end)))
 
 local cpu_bar = require("widgets.cpu_bar")
 
-local cpu = format_progress_bar(cpu_bar, "<span foreground='" .. "#d5d5d5" .."'><b>Cpu</b></span>")
+local cpu = format_progress_bar(cpu_bar, "<span foreground='" .. beautiful.widget_fg .."'><b>Cpu</b></span>")
 
 -- Ram
 
 local ram_bar = require("widgets.ram_bar")
 
-local ram = format_progress_bar(ram_bar, "<span foreground='" .. "#d5d5d5" .."'><b>Ram</b></span>")
+local ram = format_progress_bar(ram_bar, "<span foreground='" .. beautiful.widget_fg .."'><b>Ram</b></span>")
 
 -- Battery
 
 local battery_bar = require("widgets.battery_bar")
 
-local battery = format_progress_bar(battery_bar, "<span foreground='" .. "#d5d5d5" .."'><b>Battery</b></span>")
+local battery = format_progress_bar(battery_bar, "<span foreground='" .. beautiful.widget_fg .."'><b>Battery</b></span>")
 
 -- Conatiner
 
@@ -206,8 +207,8 @@ local cal_box = create_boxed_widget(cal_margin, 390, 300, beautiful.bg_widget)
 -- Sidebar
 
 sidebar = wibox({visible = false, ontop = true, screen = screen.primary})
-sidebar.bg = "#ff0000"
-sidebar.fg = "#ffffff"
+sidebar.bg = "#00000000"
+sidebar.fg = beautiful.widget_bold_fg
 sidebar.height = 1020
 -- sidebar.height = 2000
 sidebar.width = 450

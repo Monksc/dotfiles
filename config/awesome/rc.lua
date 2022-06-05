@@ -77,21 +77,31 @@ awesome.register_xproperty("WM_NAME", "string")
 
 awful.rules.rules = {
   { rule = { },
-    properties = { border_width = beautiful.border_width,
-                   border_color = beautiful.border_normal,
-                   focus = awful.client.focus.filter,
-                   raise = true,
-                   keys = clientkeys,
-                   buttons = clientbuttons,
-                   screen = awful.screen.preferred,
-                   placement = awful.placement.no_overlap+awful.placement.no_offscreen
-   }
+    properties = {
+        border_width = beautiful.border_width,
+        border_color = beautiful.border_normal,
+        focus = awful.client.focus.filter,
+        raise = true,
+        keys = clientkeys,
+        buttons = clientbuttons,
+        screen = awful.screen.preferred,
+        placement = awful.placement.no_overlap+awful.placement.no_offscreen
+    }
   },
-  { rule_any = {
-    }, properties = { floating = true }},
-
-  { rule_any = {type = { "normal", "dialog" }
-    }, properties = { titlebars_enabled = true }
+  {
+      rule_any = {
+      },
+      properties = { floating = true }
+  },
+  {
+      rule_any = { type = { "normal", "dialog" } },
+      except_any = {
+          name = { "Ulauncher" },
+          class = { "Epiphany", "Gestures", "Nautilus" }
+      },
+      properties = {
+        titlebars_enabled = true,
+      }
   },
 }
 
@@ -129,9 +139,9 @@ client.connect_signal("unfocus",
 modkey = "Mod4"
 modaltkey = "Mod1"
 terminal = "alacritty"
-browser = "epiphany"
--- browser = "google-chrome-stable"
-application_launcher = "findex"
+-- browser = "epiphany"
+browser = "google-chrome-stable"
+-- application_launcher = "findex"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -139,7 +149,7 @@ root.keys(globalkeys)
 
 require("signals")
 
-if false then
+if true then
     -- awful.util.spawn(terminal)
     -- local screen = awful.screen.focused()
     -- local tag = screen.tags[2]

@@ -11,13 +11,13 @@ local beautiful = require("beautiful")
 spotify = "gnome-music"
 chrome = "google-chrome-stable"
 -- chrome = "epiphany"
-mail = "epiphany https://www.gmail.com"
+mail = chrome .. " https://www.gmail.com"
 file = "nautilus"
 -- netflix = "epiphany https://www.netflix.com"
 netflix = "silo -a netflix"
 vscode = "alacritty"
 -- twitch = "silo -a twitch"
-twitch = "google-chrome-stable 'twitch.tv/jordakye'"
+twitch = chrome .. " 'twitch.tv/jordakye'"
 
 awful.screen.connect_for_each_screen(function (scr)
 

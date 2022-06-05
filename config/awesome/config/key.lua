@@ -18,13 +18,15 @@ revelation.init()
 modkey = "Mod4"
 modaltkey = "Mod1"
 
-terminal = "alacritty -vv"
+terminal = "alacritty"
 browser = "epiphany"
 -- fm = "thunar"
 fm = "nautilus"
 vscode = terminal
-application_launcher = "findex"
-application_launcher2 = "rofi -show drun"
+-- application_launcher = "findex"
+application_launcher = "rofi -show drun"
+application_launcher2 = "rofi -show window"
+-- application_launcher2 = "findex"
 discord = "discord"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
@@ -103,6 +105,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey,              }, "c", function () awful.spawn.easy_async_with_shell("rofi -show calc -modi calc -no-show-match -no-sort")   end,
               {description = "Power settings", group = "client"}),
     awful.key({ "Ctrl",           }, "F9",      revelation),
+    awful.key({ modaltkey, "Shift"}, "space",   revelation),
 
     -- Special Key Bindings Start
     -- awful.key({ modaltkey,           }, "c", function ()

@@ -7,14 +7,14 @@ local helpers = require('helpers')
 
 -- Set colors
 local active_color = {
-    color = "#ffffff"
+    color = beautiful.topbar_fg_normal
 }
 
 local muted_color = {
-    color = "#cc5757"
+    color = beautiful.topbar_fg_warning
 }
-local active_background_color = "#ffffff5f"
-local muted_background_color = "#ffffff5f"
+local active_background_color = beautiful.topbar_bg
+local muted_background_color = beautiful.topbar_bg
 
 local volume_bar = wibox.widget {
     max_value = 100,

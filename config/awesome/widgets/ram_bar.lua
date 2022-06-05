@@ -6,10 +6,10 @@ local dpi = beautiful.xresources.apply_dpi
 
 -- Set colors
 local active_color = {
-    color = "#ffffff"
+    color = beautiful.topbar_fg_normal
 }
 
-local background_color = "#ffffff5f"
+local background_color = beautiful.topbar_bg
 
 local ram_bar = wibox.widget {
     max_value = 100,

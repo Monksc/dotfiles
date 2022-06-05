@@ -1,0 +1,1 @@
+/home/cammonks/.config/awesome/theme/themedark.lua

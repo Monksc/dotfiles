@@ -32,7 +32,7 @@ theme.border_color = "#000000"
 
 -- top bar
 
-theme.bar.bg = '#ffffff'
+theme.bar_bg = '#ffffff'
 
 -- Top Bar Items
 

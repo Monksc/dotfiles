@@ -3,11 +3,11 @@ configuration {
     location: 					    0;
     padding: 						0;
     fixed-num-lines: 				true;
-    show-icons: 					false;
+    show-icons: 					true;
     sidebar-mode: 					true;
     separator-style: 				"beam";
     hide-scrollbar: 				true;
-    scroll-method: 					0;
+    scroll-method: 					1;
     window-format: 					"[{w}] ··· {c} ···   {t}";
     click-to-exit: 					true;
     show-match: 					false;
@@ -16,7 +16,9 @@ configuration {
     display-windowcd: 				"Windowcd";
     display-run: 					"Commands";
     display-ssh: 					"Ssh";
-    display-drun: 					"";
+    display-drun: 					"Runner";
+    display-emoji: 					"Emoji";
+    display-calc: 					"Calculator";
     display-combi: 					"Combi";
 }
 

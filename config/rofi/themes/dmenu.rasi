@@ -1,29 +1,28 @@
 
 * {
-    background-color:      #ffffff;
-    text-color:            #000000;
+    background-color:      #303030;
+    text-color:            #cecece;
     font:            "MADE Outer Sans Medium 14";
 }
 
 window {
-    anchor:     south;
-    location:   south;
-    width:     100%;
+    anchor:     center;
+    location:   center;
     padding:    10px;
     children:   [ horibox ];
-        border: 2px 0 0 0;
+    border: 2px 0 0 0;
     border-color: #000000;
 }
 
 horibox {
-    orientation: horizontal;
+    orientation: vertical;
     children:   [ prompt, entry, listview ];
 }
 
 listview {
-    layout:     horizontal;
+    layout:     vertical;
     spacing:    10px;
-    lines:      100;
+    lines:      10;
 }
 
 entry {

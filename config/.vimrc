@@ -331,8 +331,8 @@ function! LatexSave()
     "silent! execute "!pdflatex % >/dev/null 2>&1" | redraw!
     "silent execute "!camlatex %" | call RedrawOnEnter()
     !pdflatex %
-    "silent !xdg-open ./*.pdf
-    "silent !xdg-open Alacritty
+    silent !xdg-open ./*.pdf &
+    "silent !xdg-open Alacritty &
     "silent !open ./*.pdf
     "silent !open -a Alacritty
     "call RedrawOnEnter()

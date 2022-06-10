@@ -234,7 +234,10 @@ my-setup-get-monitor-size() {
 
 my-setup-external-monitor-open() {
     xrandr --output DP-1 --scale 1.5 --primary --auto --right-of eDP-1
+    xrandr --output DP-2 --scale 1.5 --primary --auto --right-of DP-1
     xrandr --output DP-2 --scale 1.5 --pos 5136x0
+    # xrandr --setmonitor VIRTUAL-LEFT 1440/0x1620/1+5136+0 DP-2
+    # xrandr --setmonitor VIRTUAL-RIGHT 1440/1x1620/1+6576+0 none
 }
 
 my-setup-external-monitor-close() {

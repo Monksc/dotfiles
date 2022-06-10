@@ -48,6 +48,8 @@ theme.dock_bg = gfs.get_configuration_dir() .. "icons/wide-dock-dark.png"
 
 -- widget side bar
 
+theme.widget_music_icon = "icons/music-light.png"
+
 theme.widget_bg = "#ffffff0f"
 theme.widget_fg = "#d5d5d5"
 theme.widget_bold_fg = "#ffffff"

@@ -11,7 +11,7 @@ local keys = {}
 require("awful.hotkeys_popup.keys")
 require("awful.autofocus")
 require("awful.remote")
-require("screenful")
+-- require("screenful")
 
 revelation.init()
 

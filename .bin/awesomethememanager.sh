@@ -48,9 +48,10 @@ fi
 #===============================================================================
 function handleList() {
     echo "Themes:
-        Dark
-        Light
-        MacOs
+        Cartoon Dark
+        Cartoon Light
+        MacOs Dark
+        MacOs Light
         Windows"
 }
 
@@ -59,16 +60,53 @@ function handleList() {
 #  DESCRIPTION:  changes theme
 #===============================================================================
 function handleSwitchTheme() {
-    if [[ "$1" == "Dark" ]]; then
+    if [[ "$1" == "MacOs" ]]; then
+        if [[ -L "$HOME/.config/awesome/theme/theme.lua" ]]; then
+            rm "$HOME/.config/awesome/theme/theme.lua"
+        fi
+
+        if [[ -f "~/.config/awesome" ]]; then
+            echo "Error: ~/.config/awesome already exist." 1>&2
+            exit 1
+        fi
+
+        ln -s "$HOME/Project/dotfiles/config/awesome-macos" "$HOME/.config/awesome"
+    elif [[ "$1" == "Cartoon" ]]; then
+        if [[ -L "$HOME/.config/awesome/theme/theme.lua" ]]; then
+            rm "$HOME/.config/awesome/theme/theme.lua"
+        fi
+
+        if [[ -f "~/.config/awesome" ]]; then
+            echo "Error: ~/.config/awesome already exist." 1>&2
+            exit 1
+        fi
+
+        ln -s "$HOME/Project/dotfiles/config/awesome" "$HOME/.config/awesome"
+    elif [[ "$1" == "Windows" ]]; then
+        echo "Windows is being built."
+    else
+        echo "We dont support $@. Sorry."
+        handleList
+    fi
+
+    if [[ "$2" == "Dark" ]]; then
         if [[ -L "$HOME/.config/awesome/theme/theme.lua" ]]; then
             rm "$HOME/.config/awesome/theme/theme.lua"
             ln -s "$HOME/.config/awesome/theme/themedark.lua" "$HOME/.config/awesome/theme/theme.lua"
         fi
+        if [[ -L "$HOME/.config/rofi" ]]; then
+            rm "$HOME/.config/rofi"
+            ln -s "$HOME/Projects/dotfiles/config/rofi.darktheme" "$HOME/.config/rofi"
+        fi
     fi
-    if [[ "$1" == "Light" ]]; then
+    if [[ "$2" == "Light" ]]; then
         if [[ -L "$HOME/.config/awesome/theme/theme.lua" ]]; then
             rm "$HOME/.config/awesome/theme/theme.lua"
             ln -s "$HOME/.config/awesome/theme/themelight.lua" "$HOME/.config/awesome/theme/theme.lua"
+        fi
+        if [[ -L "$HOME/.config/rofi" ]]; then
+            rm "$HOME/.config/rofi"
+            ln -s "$HOME/Projects/dotfiles/config/rofi.lighttheme" "$HOME/.config/rofi"
         fi
     fi
 }

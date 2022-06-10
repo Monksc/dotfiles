@@ -10,7 +10,7 @@ local icons = require('icons')
 local update_interval = 1
 
 local art = wibox.widget {
-    image = gears.filesystem.get_configuration_dir() .. "icons/music.png",
+    image = gears.filesystem.get_configuration_dir() .. beautiful.widget_music_icon,
     resize = true,
     forced_height = dpi(150),
     forced_width = dpi(150),
@@ -53,7 +53,7 @@ awful.widget.watch(song_title_cmd, update_interval, function(widget, stdout)
     end
 
     title_widget:set_markup_silently(
-        '<span foreground="' .. "#000000" .. '">' .. stdout .. '</span>')
+        '<span foreground="' .. beautiful.widget_bold_fg .. '">' .. stdout .. '</span>')
 
 end, art)
 

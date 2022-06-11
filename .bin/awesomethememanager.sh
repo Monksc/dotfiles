@@ -52,8 +52,23 @@ function handleList() {
         Cartoon Light
         MacOs Dark
         MacOs Light
-        Windows"
+        Windows XP"
 }
+
+
+function removeAwesomeConfigAndLink() {
+    if [[ -L "$HOME/.config/awesome" ]]; then
+        rm "$HOME/.config/awesome"
+    fi
+
+    if [[ -f "~/.config/awesome" ]]; then
+        echo "Error: ~/.config/awesome already exist." 1>&2
+        exit 1
+    fi
+
+    ln -s "$HOME/Projects/dotfiles/config/awesome$1" "$HOME/.config/awesome"
+}
+
 
 #===  FUNCTION  ================================================================
 #         NAME:  handleSwitchTheme
@@ -61,32 +76,19 @@ function handleList() {
 #===============================================================================
 function handleSwitchTheme() {
     if [[ "$1" == "MacOs" ]]; then
-        if [[ -L "$HOME/.config/awesome/theme/theme.lua" ]]; then
-            rm "$HOME/.config/awesome/theme/theme.lua"
-        fi
-
-        if [[ -f "~/.config/awesome" ]]; then
-            echo "Error: ~/.config/awesome already exist." 1>&2
-            exit 1
-        fi
-
-        ln -s "$HOME/Project/dotfiles/config/awesome-macos" "$HOME/.config/awesome"
+        removeAwesomeConfigAndLink  "-macos"
     elif [[ "$1" == "Cartoon" ]]; then
-        if [[ -L "$HOME/.config/awesome/theme/theme.lua" ]]; then
-            rm "$HOME/.config/awesome/theme/theme.lua"
-        fi
-
-        if [[ -f "~/.config/awesome" ]]; then
-            echo "Error: ~/.config/awesome already exist." 1>&2
-            exit 1
-        fi
-
-        ln -s "$HOME/Project/dotfiles/config/awesome" "$HOME/.config/awesome"
+        removeAwesomeConfigAndLink ""
+    elif [[ "$1" == "Windows" ]] && [[ "$2" == "XP" ]]; then
+        removeAwesomeConfigAndLink "-windowsxp"
+        exit 0
     elif [[ "$1" == "Windows" ]]; then
-        echo "Windows is being built."
+        echo "We dont have that version of windows"
+        exit 1
     else
         echo "We dont support $@. Sorry."
         handleList
+        exit 1
     fi
 
     if [[ "$2" == "Dark" ]]; then

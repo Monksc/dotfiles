@@ -10,30 +10,37 @@ local dpi = xresources.apply_dpi
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
+local awful = require('awful')
+local icons_path = awful.util.getdir('config') .. '/icons/'
+
 local theme = {}
 
 theme.font          = "SF Pro Bold 18"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
+theme.bg_normal     = "#7e9ee4"
+theme.bg_focus      = "#7e9ee4"
+theme.bg_urgent     = "#7e9ee4"
+theme.bg_minimize   = "#7e9ee4"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#808080"
-theme.fg_focus      = "#303030"
-theme.fg_urgent     = "#808080"
-theme.fg_minimize   = "#808080"
+theme.fg_normal     = "#ffffff"
+theme.fg_focus      = "#ffffff"
+theme.fg_urgent     = "#ffffff"
+theme.fg_minimize   = "#ffffff"
 
-theme.border_radius         = 40
-theme.client_radius         = 10
+theme.border_radius       = 8
+theme.client_radius       = 8
 theme.useless_gap         = dpi(10)
-theme.border_width        = dpi(1)
--- theme.border_color        = "#eeebcfe0"
-theme.border_color        = "#fdfdfff0"
-theme.border_color_normal = "#505050f0"
-theme.border_color_active = "#535d6c"
-theme.border_color_marked = "#91231c"
+-- theme.border_width        = dpi(20)
+theme.border_color        = "#7e9ee4"
+theme.border_color_normal = "#00000000"
+theme.border_color_active = "#00000000"
+theme.border_color_marked = "#7e9ee4"
+
+theme.titlebar_bg_normal = "ffff00"
+theme.titlebar_bg_focus  = "ffff00"
+theme.titlebar_bg_normal = "ffff00"
+theme.titlebar_bg_focus  = "ffff00"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -76,11 +83,12 @@ theme.menu_width  = dpi(100)
 --theme.bg_widget = "#cc0000"
 
 -- Define the image to load
-theme.titlebar_close_button_normal = themes_path.."default/titlebar/close_normal.png"
-theme.titlebar_close_button_focus  = themes_path.."default/titlebar/close_focus.png"
+-- theme.titlebar_close_button_normal = themes_path.."default/titlebar/close_normal.png"
+theme.titlebar_close_button_normal = icons_path .. "close.png"
+theme.titlebar_close_button_focus  = icons_path .. "close.png"
 
-theme.titlebar_minimize_button_normal = themes_path.."default/titlebar/minimize_normal.png"
-theme.titlebar_minimize_button_focus  = themes_path.."default/titlebar/minimize_focus.png"
+theme.titlebar_minimize_button_normal = icons_path .. "minimize.png"
+theme.titlebar_minimize_button_focus  = icons_path .. "minimize.png"
 
 theme.titlebar_ontop_button_normal_inactive = themes_path.."default/titlebar/ontop_normal_inactive.png"
 theme.titlebar_ontop_button_focus_inactive  = themes_path.."default/titlebar/ontop_focus_inactive.png"
@@ -97,12 +105,13 @@ theme.titlebar_floating_button_focus_inactive  = themes_path.."default/titlebar/
 theme.titlebar_floating_button_normal_active = themes_path.."default/titlebar/floating_normal_active.png"
 theme.titlebar_floating_button_focus_active  = themes_path.."default/titlebar/floating_focus_active.png"
 
+theme.titlebar_maximized_button_normal = icons_path .. "maximize.png"
 theme.titlebar_maximized_button_normal_inactive = themes_path.."default/titlebar/maximized_normal_inactive.png"
 theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper     = string.format('%s/Projects/dotfiles/images/Big Sur Sunset.jpg', os.getenv('HOME'))
+theme.wallpaper     = string.format('%s/Projects/dotfiles/images/windowsxp-background.png', os.getenv('HOME'))
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"

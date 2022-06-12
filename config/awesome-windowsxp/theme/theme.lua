@@ -15,7 +15,7 @@ local icons_path = awful.util.getdir('config') .. '/icons/'
 
 local theme = {}
 
-theme.font          = "SF Pro Bold 18"
+theme.font          = "Tahoma Bold 18"
 
 theme.bg_normal     = "#7e9ee4"
 theme.bg_focus      = "#7e9ee4"
@@ -37,10 +37,10 @@ theme.border_color_normal = "#00000000"
 theme.border_color_active = "#00000000"
 theme.border_color_marked = "#7e9ee4"
 
-theme.titlebar_bg_normal = "ffff00"
-theme.titlebar_bg_focus  = "ffff00"
-theme.titlebar_bg_normal = "ffff00"
-theme.titlebar_bg_focus  = "ffff00"
+theme.titlebar_bg_normal = "#ffff00"
+theme.titlebar_bg_focus  = "#ffff00"
+theme.titlebar_bg_normal = "#ffff00"
+theme.titlebar_bg_focus  = "#ffff00"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -54,6 +54,7 @@ theme.titlebar_bg_focus  = "ffff00"
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
+theme.tasklist_bg_focus = "#535ef8"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)

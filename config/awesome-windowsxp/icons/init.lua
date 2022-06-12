@@ -11,6 +11,7 @@ icons.png = {
    rightdock = icon .. "rightborttombar.png",
    volume = icon .. "volume.png",
    startorb = icon .. "StartOrb.png",
+   ie = icon .. "dock/ie.png",
    chrome = icon .. "dock/chrome.png",
    file = icon .. "dock/folder.png",
    spotify = icon .. "dock/spotify.png",

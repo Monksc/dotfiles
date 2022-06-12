@@ -263,12 +263,16 @@ ruled.client.connect_signal("request::rules", function()
     -- Add titlebars to normal clients and dialogs
     ruled.client.append_rule {
         id         = "titlebars",
-        rule_any   = { type = { "normal", "dialog" } },
+        rule_any   = {
+            type = {
+                "normal", "dialog"
+            },
+        },
         except_any = {
             name = { "Ulauncher" },
             class = { "Epiphany", "Gestures", "Nautilus", "lattedock" }
         },
-        properties = { titlebars_enabled = true      }
+        properties = { titlebars_enabled = true }
     }
 
 
@@ -357,7 +361,18 @@ end)
 -- end)
 
 
+application_launcher = "rofi -show drun -normal-window"
+application_launcher2 = "rofi -show window -normal-window"
+
+globalkeys = gears.table.join(
+    globalkeys,
+    awful.key({ modkey,              }, "l", function () 
+        menubar.show()
+    end, {description = "open an application launcher", group = "launcher"})
+)
+
 root.keys(globalkeys)
+
 
 if true then
     awful.util.spawn("setxkbmap -option 'caps:ctrl_modifier'")

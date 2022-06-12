@@ -1,0 +1,36 @@
+
+* {
+    background-color:      #ffffff;
+    text-color:            #404040;
+    font:            "Tahoma bold 14";
+}
+
+window {
+    anchor:     southwest;
+    location:   southwest;
+    padding:    10px;
+    y-offset:   -65px;
+    children:   [ horibox ];
+    border: 2px 0 0 0;
+    border-color: #000000;
+    width:      20em;
+}
+
+horibox {
+    orientation: vertical;
+    children:   [ prompt, listview, entry];
+}
+
+listview {
+    layout:     vertical;
+    spacing:    10px;
+    lines:      10;
+}
+
+entry {
+    expand:     false;
+}
+
+element {
+    padding: 2px 5px;
+}

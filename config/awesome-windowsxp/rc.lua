@@ -233,7 +233,7 @@ ruled.client.connect_signal("request::rules", function()
             raise     = true,
             keys      = clientkeys,
             screen    = awful.screen.preferred,
-            placement = awful.placement.no_overlap+awful.placement.no_offscreen
+            -- placement = awful.placement.no_overlap+awful.placement.no_offscreen
         }
     }
 

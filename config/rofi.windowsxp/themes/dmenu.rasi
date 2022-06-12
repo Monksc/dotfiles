@@ -9,7 +9,7 @@ window {
     anchor:     southwest;
     location:   southwest;
     padding:    10px;
-    y-offset:   -65px;
+    y-offset:   -124px;
     children:   [ horibox ];
     border: 2px 0 0 0;
     border-color: #000000;

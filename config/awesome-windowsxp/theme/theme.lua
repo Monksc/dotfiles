@@ -20,7 +20,7 @@ theme.font          = "Tahoma Bold 18"
 theme.bg_normal     = "#7e9ee4"
 theme.bg_focus      = "#7e9ee4"
 theme.bg_urgent     = "#7e9ee4"
-theme.bg_minimize   = "#7e9ee4"
+theme.bg_minimize   = "#535ef8"
 theme.bg_systray    = "#0e91e300"
 
 theme.fg_normal     = "#ffffff"
@@ -54,7 +54,8 @@ theme.titlebar_bg_focus  = "#ffff00"
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
-theme.tasklist_bg_focus = "#535ef8"
+-- theme.tasklist_bg_focus = "#535ef8"
+theme.tasklist_bg_focus = "#7e9ee4"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)

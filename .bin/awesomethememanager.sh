@@ -69,6 +69,19 @@ function removeAwesomeConfigAndLink() {
     ln -s "$HOME/Projects/dotfiles/config/awesome$1" "$HOME/.config/awesome"
 }
 
+function switchRofiTheme() {
+    if [[ -L "$HOME/.config/rofi" ]]; then
+        rm "$HOME/.config/rofi"
+    fi
+
+    if [[ -f "~/.config/rofi" ]]; then
+        echo "Error: ~/.config/rofi already exist." 1>&2
+        exit 1
+    fi
+
+    ln -s "$HOME/Projects/dotfiles/config/rofi.$theme" "$HOME/.config/rofi"
+}
+
 
 #===  FUNCTION  ================================================================
 #         NAME:  handleSwitchTheme
@@ -81,6 +94,7 @@ function handleSwitchTheme() {
         removeAwesomeConfigAndLink ""
     elif [[ "$1" == "Windows" ]] && [[ "$2" == "XP" ]]; then
         removeAwesomeConfigAndLink "-windowsxp"
+        switchRofiTheme "windowsxp"
         exit 0
     elif [[ "$1" == "Windows" ]]; then
         echo "We dont have that version of windows"
@@ -96,20 +110,14 @@ function handleSwitchTheme() {
             rm "$HOME/.config/awesome/theme/theme.lua"
             ln -s "$HOME/.config/awesome/theme/themedark.lua" "$HOME/.config/awesome/theme/theme.lua"
         fi
-        if [[ -L "$HOME/.config/rofi" ]]; then
-            rm "$HOME/.config/rofi"
-            ln -s "$HOME/Projects/dotfiles/config/rofi.darktheme" "$HOME/.config/rofi"
-        fi
+        switchRofiTheme "darktheme"
     fi
     if [[ "$2" == "Light" ]]; then
         if [[ -L "$HOME/.config/awesome/theme/theme.lua" ]]; then
             rm "$HOME/.config/awesome/theme/theme.lua"
             ln -s "$HOME/.config/awesome/theme/themelight.lua" "$HOME/.config/awesome/theme/theme.lua"
         fi
-        if [[ -L "$HOME/.config/rofi" ]]; then
-            rm "$HOME/.config/rofi"
-            ln -s "$HOME/Projects/dotfiles/config/rofi.lighttheme" "$HOME/.config/rofi"
-        fi
+        switchRofiTheme "lighttheme"
     fi
 }
 

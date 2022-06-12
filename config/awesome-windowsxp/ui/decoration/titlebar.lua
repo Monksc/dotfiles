@@ -127,9 +127,10 @@ client.connect_signal("request::titlebars", function(c)
                     layout = wibox.layout.fixed.horizontal,
                 },
                 {
-                    align  = "center",
-                    widget = awful.titlebar.widget.titlewidget(c),
+                    --align  = "center",
+                    -- widget = awful.titlebar.widget.titlewidget(c),
                     buttons = buttons,
+                    layout = wibox.layout.fixed.horizontal,
                 },
                 { -- Middle
                     align  = "right",

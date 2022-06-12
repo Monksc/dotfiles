@@ -19,6 +19,7 @@ vscode = "alacritty"
 -- twitch = "silo -a twitch"
 twitch = chrome .. " 'twitch.tv/jordakye'"
 application_starter = 'rofi -show drun'
+volume = 'pavucontrol'
 
 awful.screen.connect_for_each_screen(function (scr)
 
@@ -57,6 +58,7 @@ awful.screen.connect_for_each_screen(function (scr)
    local netflix = create_img_widget(icons.png.netflix, netflix)
    local twitch = create_img_widget(icons.png.twitch, twitch)
    local vscode = create_img_widget(icons.png.vscode, vscode)
+   local volume = create_img_widget(icons.png.volume, volume)
 
    helpers.add_hover_cursor(spotify, "hand1")
    helpers.add_hover_cursor(chrome, "hand1")
@@ -65,6 +67,7 @@ awful.screen.connect_for_each_screen(function (scr)
    helpers.add_hover_cursor(netflix, "hand1")
    helpers.add_hover_cursor(twitch, "hand1")
    helpers.add_hover_cursor(vscode, "hand1")
+   helpers.add_hover_cursor(volume, "hand1")
 
    local bar = wibox.widget {
       image = icons.png.dock,
@@ -96,13 +99,71 @@ awful.screen.connect_for_each_screen(function (scr)
                  expand = "none",
                  { -- Left 
                      wibox.layout.margin(application_starter, 0, 0, 0, 0), 
-                     wibox.layout.margin(spotify, -100, 0, 0, 0),
-                     wibox.layout.margin(chrome, 0, 0, 0, 0), 
-                     wibox.layout.margin(mail, 0, 0, 0, 0), 
-                     wibox.layout.margin(file, 0, 0, 0, 0), 
-                     wibox.layout.margin(netflix, 0, 0, 0, 0), 
-                     wibox.layout.margin(twitch, 0, 0, 0, 0), 
-                     wibox.layout.margin(vscode, 0, 0, 0, 0),
+                     -- wibox.layout.margin(spotify, -100, 0, 0, 0),
+                     -- wibox.layout.margin(chrome, 0, 0, 0, 0), 
+                     -- wibox.layout.margin(mail, 0, 0, 0, 0), 
+                     -- wibox.layout.margin(file, 0, 0, 0, 0), 
+                     -- wibox.layout.margin(netflix, 0, 0, 0, 0), 
+                     -- wibox.layout.margin(twitch, 0, 0, 0, 0), 
+                     -- wibox.layout.margin(vscode, 0, 0, 0, 0),
+                     wibox.layout.margin(awful.widget.tasklist {
+                         screen  = scr,
+                         filter  = awful.widget.tasklist.filter.currenttags,
+                         style    = {
+                            shape_border_width = 1,
+                            shape_border_color = '#777777',
+                            shape  = gears.shape.rounded_rect,
+                         },
+                         buttons = {
+                             awful.button({ }, 1, function (c)
+                                 c:activate { context = "tasklist", action = "toggle_minimization" }
+                             end),
+                             awful.button({ }, 3, function() awful.menu.client_list { theme = { width = 250 } } end),
+                             awful.button({ }, 4, function() awful.client.focus.byidx(-1) end),
+                             awful.button({ }, 5, function() awful.client.focus.byidx( 1) end),
+                         },
+                         layout = {
+                             spacing = 30,
+                             -- spacing_widget = {
+                             --     {
+                             --         forced_width = 5,
+                             --         shape        = gears.shape.circle,
+                             --         widget       = wibox.widget.separator
+                             --     },
+                             --     valign = 'center',
+                             --     halign = 'center',
+                             --     widget = wibox.container.place,
+                             -- },
+                             layout  = wibox.layout.flex.horizontal
+                         },
+                         -- Notice that there is *NO* wibox.wibox prefix, it is a template,
+                         -- not a widget instance.
+                         widget_template = {
+                             {
+                                 {
+                                     {
+                                         {
+                                             id     = 'icon_role',
+                                             widget = wibox.widget.imagebox,
+                                         },
+                                         margins = 20,
+                                         widget  = wibox.container.margin,
+                                     },
+                                     {
+                                         id     = 'text_role',
+                                         widget = wibox.widget.textbox,
+                                         font = "SF Pro Bold 30",
+                                     },
+                                     layout = wibox.layout.fixed.horizontal,
+                                 },
+                                 left  = 0,
+                                 right = 10,
+                                 widget = wibox.container.margin
+                             },
+                             id     = 'background_role',
+                             widget = wibox.container.background,
+                         },
+                     }, 0, 0, 5, 5),
                      spacing = dpi(0),
                      layout = wibox.layout.fixed.horizontal,
                  },
@@ -115,15 +176,25 @@ awful.screen.connect_for_each_screen(function (scr)
                         layout = wibox.layout.fixed.horizontal,
                     },
                     {
-                        wibox.layout.margin(
-                            wibox.widget {
-                                font = "Sans Bold 18",
-                                widget = wibox.widget.textclock()
-                            },
-                            70, 20, 0, 0
-                        ),
-                       align = "right",
-                       layout = wibox.layout.fixed.horizontal,
+                        {
+                            layout = wibox.layout.fixed.horizontal,
+                        },
+                        {
+                            layout = wibox.layout.flex.horizontal
+                        },
+                        {
+                            wibox.widget.systray(),
+                            wibox.layout.margin(volume, 10, 10, 20, 20),
+                            wibox.layout.margin(
+                                wibox.widget {
+                                    font = "Sans 18",
+                                    widget = wibox.widget.textclock('%l:%M %p')
+                                },
+                                0, 30, 0, 0
+                            ),
+                            layout = wibox.layout.fixed.horizontal,
+                        },
+                        layout = wibox.layout.align.horizontal,
                     },
                     align = "right",
                     layout  = wibox.layout.stack,
@@ -135,6 +206,4 @@ awful.screen.connect_for_each_screen(function (scr)
 
 
 end)
-
-
 

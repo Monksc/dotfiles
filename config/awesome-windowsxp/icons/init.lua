@@ -9,6 +9,7 @@ icons.png = {
    start = icon .. "start.png",
    dock = icon .. "dock.png",
    rightdock = icon .. "rightborttombar.png",
+   volume = icon .. "volume.png",
    startorb = icon .. "StartOrb.png",
    chrome = icon .. "dock/chrome.png",
    file = icon .. "dock/folder.png",

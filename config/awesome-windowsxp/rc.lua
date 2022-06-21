@@ -275,6 +275,20 @@ ruled.client.connect_signal("request::rules", function()
         properties = { titlebars_enabled = true }
     }
 
+    ruled.client.append_rule {
+        id  = "rofi",
+        rule_any = {
+            class = {
+                "rofi", "Rofi",
+            },
+        },
+        properties = {
+            skip_taskbar = true,
+            name = "Welcome Cameron",
+            above = true,
+        }
+    }
+
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- ruled.client.append_rule {
@@ -372,6 +386,8 @@ globalkeys = gears.table.join(
 )
 
 root.keys(globalkeys)
+
+-- awful.wibar:struts ({top=10,bottom=10,left=10,right=10})
 
 
 if true then

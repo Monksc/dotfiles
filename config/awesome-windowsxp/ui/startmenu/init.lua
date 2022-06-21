@@ -1,0 +1,1 @@
+require("ui.startmenu.startmenu")

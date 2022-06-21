@@ -6,6 +6,7 @@ local gears = require("gears")
 local helpers = require("helpers")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
+local startmenu = require("ui.startmenu")
 
 -- spotify = "spotify"
 -- spotify = "pavucontrol"
@@ -51,7 +52,14 @@ awful.screen.connect_for_each_screen(function (scr)
       return widget
    end
 
-   local application_starter = create_img_widget(icons.png.start, application_starter)
+   local application_starter = wibox.widget {
+       image = icons.png.start,
+       widget = wibox.widget.imagebox()
+   }
+   application_starter:buttons(gears.table.join(awful.button({}, 1, function()
+        scr.startmenu.visible = not scr.startmenu.visible
+   end)))
+
    local spotify = create_img_widget(icons.png.spotify, spotify)
    local ie = create_img_widget(icons.png.ie, chrome)
    local chrome = create_img_widget(icons.png.chrome, chrome)

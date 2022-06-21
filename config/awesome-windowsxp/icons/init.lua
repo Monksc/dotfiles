@@ -5,10 +5,14 @@ local icon = conf .. '/icons/'
 local icons = {}
 
 icons.png = {
-   me = icon .. "profile.png",
+   me = icon .. "chess.jpeg",
+   logout = icon .. "logout.png",
+   poweroff = icon .. "poweroff.png",
+   arrow = icon .. "arrow.png",
    start = icon .. "start.png",
    dock = icon .. "dock.png",
    rightdock = icon .. "rightborttombar.png",
+   trash = icon .. "trash.png",
    volume = icon .. "volume.png",
    startorb = icon .. "StartOrb.png",
    ie = icon .. "dock/ie.png",

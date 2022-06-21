@@ -10,9 +10,30 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = require("beautiful.xresources").apply_dpi
 
+local naughty = require("naughty")
+
 -- local bling = require("modules.bling")
 -- local icons = require("icons")
 local helpers = require("helpers")
+
+local function toggle_maximize_window(c)
+    c.screen.workarea.width = c.screen.geometry.width
+    if c.x == 0 and c.y == 0 and c.width == c.screen.geometry.width and c.height == c.screen.workarea.height then
+        c.x = c.px
+        c.y = c.py
+        c.width = c.pwidth
+        c.height = c.pheight
+    else
+        c.px = c.x
+        c.py = c.y
+        c.pwidth = c.width
+        c.pheight = c.height
+        c.x = 0
+        c.y = 0
+        c.width = c.screen.geometry.width
+        c.height = c.screen.workarea.height
+    end
+end
 
 local function create_title_button(c, icon, shp)
     local tb = wibox.widget {
@@ -23,6 +44,7 @@ local function create_title_button(c, icon, shp)
         border_color = "#ffffffce",
         shape = shp,
         bgimage = icon,
+        input_passthrough = false,
         widget = wibox.container.background
     }
 
@@ -51,17 +73,29 @@ client.connect_signal("request::titlebars", function(c)
 
     local buttons = gears.table.join(awful.button({}, 1, function()
         c:emit_signal("request::activate", "titlebar", {raise = true})
-        if c.maximized == true then c.maximized = false end
-        awful.mouse.client.move(c)
-
-        helpers.double_click_event_handler(function()
-            c.floating = false
-            c.maximized = not c.maximized
-        end)
+        helpers.double_click_event_handler(
+            function()
+                if c.maximized then
+                    c.maximized = false
+                end
+                awful.mouse.client.move(c)
+            end,
+            function()
+                -- c.maximized = false
+                toggle_maximize_window(c)
+            end
+        )
     end), awful.button({}, 3, function()
         c:emit_signal("request::activate", "titlebar", {raise = true})
         awful.mouse.client.resize(c)
     end))
+
+    local sidebuttons = gears.table.join(awful.button({}, 1, function()
+        c:emit_signal("request::activate", "titlebar", {raise = true})
+        awful.mouse.client.resize(c)
+    end))
+
+
     local borderbuttons = gears.table.join(
                               awful.button({}, 3, function()
             c:emit_signal("request::activate", "titlebar", {raise = true})
@@ -104,11 +138,17 @@ client.connect_signal("request::titlebars", function(c)
 
         local minimize = create_title_button(c, beautiful.titlebar_minimize_button_normal, bo(30, 30, 8))
         minimize:connect_signal("button::press", function()
+            -- naughty.notify({ title = "Title", text = "Minimize button clicked " .. tostring(c.minimized), timeout = 0 })
+            -- c.hidden = true
             c.minimized = true
+            -- naughty.notify({ title = "Title", text = "Minimize button clicked " .. tostring(c.minimized), timeout = 0 })
         end)
 
         local max = create_title_button(c, beautiful.titlebar_maximized_button_normal, bo(30, 30, 8))
-        max:connect_signal("button::press", function() c.fullscreen = not c.fullscreen end)
+        max:connect_signal("button::press", function()
+            -- c.maximized = not c.maximized
+            toggle_maximize_window(c)
+        end)
 
     -- Titlebar
 
@@ -137,7 +177,6 @@ client.connect_signal("request::titlebars", function(c)
                     wibox.layout.margin(minimize, 10, 0, 15, 0),
                     wibox.layout.margin(max, 10, 0, 15, 0),
                     wibox.layout.margin(close, 10, 15, 15, 0),
-                    buttons = buttons,
                     layout = wibox.layout.fixed.horizontal,
                 },
                 bg = beautiful.bg,
@@ -157,8 +196,34 @@ client.connect_signal("request::titlebars", function(c)
         widget = wibox.container.background
     }
 
-    awful.titlebar(c, {
+    local bottom = awful.titlebar(c, {
         position = "bottom",
+        size = 2,
+        bg = beautiful.border_color,
+    })
+    helpers.add_hover_cursor(bottom, "mouse_resize")
+    bottom:setup{
+        {
+            {
+                bg = beautiful.bg,
+                shape = helpers.prrect(0, false, false,
+                                       true, true),
+                widget = wibox.container.background
+            },
+            top = 2,
+            bottom = 2,
+            left = 2,
+            right = 2,
+            widget = wibox.container.margin
+        },
+        bg = beautiful.border_color,
+        shape = helpers.prrect(0, false, false, true, true),
+        widget = wibox.container.background,
+        buttons = sidebuttons,
+    }
+
+    awful.titlebar(c, {
+        position = "left",
         size = 2,
         bg = beautiful.border_color,
     }):setup{
@@ -177,19 +242,36 @@ client.connect_signal("request::titlebars", function(c)
         },
         bg = beautiful.border_color,
         shape = helpers.prrect(0, false, false, true, true),
-        widget = wibox.container.background
+        widget = wibox.container.background,
+        buttons = sidebuttons,
     }
 
-    awful.titlebar(c, {
-        position = "left",
-        size = 2,
-        bg = beautiful.border_color
-    })
 
     awful.titlebar(c, {
         position = "right",
         size = 2,
-        bg = beautiful.border_color
-    })
+        bg = beautiful.border_color,
+    }):setup{
+        {
+            {
+                bg = beautiful.bg,
+                shape = helpers.prrect(0, false, false,
+                                       true, true),
+                widget = wibox.container.background
+            },
+            top = 2,
+            bottom = 2,
+            left = 2,
+            right = 2,
+            widget = wibox.container.margin
+        },
+        bg = beautiful.border_color,
+        shape = helpers.prrect(0, false, false, true, true),
+        widget = wibox.container.background,
+        buttons = sidebuttons,
+    }
+
 
 end)
+
+-- client:struts {}

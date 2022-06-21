@@ -57,7 +57,7 @@ function helpers.add_hover_cursor(w, hover_cursor)
     end)
 end
 
-function helpers.double_click_event_handler(double_click_event)
+function helpers.double_click_event_handler(single_click_event, double_click_event)
     if double_click_timer then
         double_click_timer:stop()
         double_click_timer = nil
@@ -68,9 +68,23 @@ function helpers.double_click_event_handler(double_click_event)
     end
 
     double_click_timer = gears.timer.start_new(0.20, function()
+        single_click_event()
         double_click_timer = nil
         return false
     end)
+end
+
+function helpers.dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. helpers.dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
 end
 
 return helpers

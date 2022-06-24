@@ -400,8 +400,8 @@ if true then
     -- awful.util.spawn("ulauncher")
     awful.util.spawn("caffeine&")
     awful.util.spawn("sleep 3 && kill -s 9 $(ps aux | grep -i 'gestures' | awk '{print $2}')")
-    awful.util.spawn("picom --experimental-backends --config " ..
-        gears.filesystem.get_configuration_dir() .. "config/picom.conf")
+    -- awful.util.spawn("picom --experimental-backends --config " ..
+    --     gears.filesystem.get_configuration_dir() .. "config/picom.conf")
 
 end
 

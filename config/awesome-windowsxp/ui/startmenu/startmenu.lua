@@ -6,6 +6,7 @@ local icons = require('icons')
 local beautiful = require("beautiful")
 local helpers = require("helpers")
 local menubar = require("menubar")
+local alertbox = require("ui.alertbox.alertbox")
 
 require("awful.autofocus")
 
@@ -67,7 +68,7 @@ awful.screen.connect_for_each_screen(function(s)
             width = 300,
             screen = s,
             ontop = true,
-            below = true,
+            below = false,
             dockable = true,
             drawable = true,
             bg = "#ffffffff",
@@ -357,11 +358,12 @@ awful.screen.connect_for_each_screen(function(s)
             {
                 {
                     create_buttonbar(icons.png.logout, 'Log out', function()
-                        awesome.quit()
+                        alertbox.create(s)
+                        -- awesome.quit()
                     end),
-                    create_buttonbar(icons.png.poweroff, 'Turn off computer',
-                        function()
-                            awful.spawn('poweroff')
+                    create_buttonbar(icons.png.poweroff, 'Turn off computer', function()
+                        alertbox.create(s)
+                        -- awful.spawn('poweroff')
                     end),
                     layout = wibox.layout.fixed.horizontal,
                 },

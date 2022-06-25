@@ -18,7 +18,7 @@ local helpers = require("helpers")
 
 local function toggle_maximize_window(c)
     c.screen.workarea.width = c.screen.geometry.width
-    if c.x == 0 and c.y == 0 and c.width == c.screen.geometry.width and c.height == c.screen.workarea.height then
+    if c.x == c.screen.geometry.x and c.y == c.screen.geometry.y and c.width == c.screen.geometry.width and c.height == c.screen.workarea.height then
         c.x = c.px
         c.y = c.py
         c.width = c.pwidth
@@ -28,8 +28,8 @@ local function toggle_maximize_window(c)
         c.py = c.y
         c.pwidth = c.width
         c.pheight = c.height
-        c.x = 0
-        c.y = 0
+        c.x = c.screen.geometry.x
+        c.y = c.screen.geometry.y
         c.width = c.screen.geometry.width
         c.height = c.screen.workarea.height
     end
@@ -201,7 +201,7 @@ client.connect_signal("request::titlebars", function(c)
         size = 2,
         bg = beautiful.border_color,
     })
-    helpers.add_hover_cursor(bottom, "mouse_resize")
+    helpers.add_hover_cursor(bottom, "double_arrow")
     bottom:setup{
         {
             {

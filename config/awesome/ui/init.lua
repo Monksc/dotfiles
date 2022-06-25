@@ -6,6 +6,7 @@ require("ui.decoration")
 require("ui.bar")
 require("ui.sidebar")
 require("ui.dock")
+-- require("ui.windowswitcher")
 
 awful.layout.layouts = {
     awful.layout.suit.tile,

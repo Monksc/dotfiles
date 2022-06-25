@@ -23,6 +23,7 @@ require("awful.hotkeys_popup.keys")
 require("config")
 require("ui")
 require("notifs")
+local windowswitcher = require('ui.windowswitcher')
 
                                               
 
@@ -145,11 +146,37 @@ browser = "google-chrome-stable"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
+
+-- globalkeys = gears.table.join(
+--     globalkeys,
+--     awful.key({ modkey,           }, "Tab",
+--         function ()
+--             windowswitcher.show()
+--             root.keys(geers.table.join(
+--                 awful.key({ modkey, "Shift"   }, "Tab",
+--                     function ()
+--                         windowswitcher.show()
+--                     end),
+--                 awful.key({  }, "Super_L", function () end),
+--                 awful.key({ "Mod4" }, "Super_L", function() print("does not happen") end, function()
+--                     windowswitcher.close()
+--                 end)
+--             ))
+--         end)
+--     -- awful.key({ modkey, "Shift"   }, "Tab",
+--     --     function ()
+--     --         windowswitcher.show()
+--     --     end),
+--     -- awful.key({  }, "Super_L", function () end),
+--     -- awful.key({ "Mod4" }, "Super_L", function() print("does not happen") end, function()
+--     --     windowswitcher.close()
+--     -- end)
+-- )
 root.keys(globalkeys)
 
 require("signals")
 
-if true then
+if false then
     -- awful.util.spawn(terminal)
     -- local screen = awful.screen.focused()
     -- local tag = screen.tags[2]

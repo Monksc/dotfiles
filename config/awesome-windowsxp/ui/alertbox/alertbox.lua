@@ -52,6 +52,7 @@ end
 function alertbox.create(s)
     local alertbar = awful.wibar {
         visible = true,
+        restrict_workarea = false,
         height = 300,
         x = 0,
         y = 0,
@@ -68,8 +69,8 @@ function alertbox.create(s)
     }
     alertbar:struts({bottom=0,top=0,left=0,right=0})
 
-    alertbar.x = s.geometry.width / 2 - alertbar.width / 2
-    alertbar.y = s.geometry.height / 2 - alertbar.height / 2
+    alertbar.x = s.geometry.x + s.geometry.width / 2 - alertbar.width / 2
+    alertbar.y = s.geometry.y + s.geometry.height / 2 - alertbar.height / 2
 
     local cancelbtn = wibox.widget {
         {
@@ -91,7 +92,7 @@ function alertbox.create(s)
         widget = wibox.container.background,
     }
     cancelbtn:connect_signal("button::press", function ()
-        alertbar.visible = false
+        alertbar:remove()
     end)
 
     alertbar:setup {

@@ -79,7 +79,7 @@ function switchRofiTheme() {
         exit 1
     fi
 
-    ln -s "$HOME/Projects/dotfiles/config/rofi.$theme" "$HOME/.config/rofi"
+    ln -s "$HOME/Projects/dotfiles/config/rofi.$1" "$HOME/.config/rofi"
 }
 
 

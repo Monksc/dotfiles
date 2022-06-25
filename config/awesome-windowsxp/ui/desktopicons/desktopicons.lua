@@ -24,6 +24,7 @@ awful.screen.connect_for_each_screen(function(s)
       below = true,
       dockable = true,
       drawable = true,
+      restrict_workarea = false,
       bg = "#ffffff00",
       type = "background",
     }
@@ -49,7 +50,9 @@ awful.screen.connect_for_each_screen(function(s)
             widget = wibox.widget.textbox
         }
     end
-    backgroundwibar:struts ({bottom=0,top=0,left=0,right=0})
+    -- backgroundwibar:struts ({bottom=0,top=0,left=200,right=0})
+    -- awful.wibar:struts ({top=0,bottom=65,left=0,right=0})
+
 
     backgroundwibar : setup {
         {

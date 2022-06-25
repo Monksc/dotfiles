@@ -63,6 +63,7 @@ awful.screen.connect_for_each_screen(function(s)
     local function create_listview_of_applications(category)
         local menu = awful.wibar {
             visible = true,
+            restrict_workarea = false,
             height = 1250,
             y = 0,
             width = 300,
@@ -91,11 +92,11 @@ awful.screen.connect_for_each_screen(function(s)
             end)
         )
 
-        menu.x = 300
-        menu.y = s.geometry.height - menu.height - 100
+        menu.x = s.geometry.x + 300
+        menu.y = s.geometry.y + s.geometry.height - menu.height - 100
         menu:struts({bottom=0,top=0,left=0,right=0})
         menu:connect_signal("mouse::leave", function ()
-            menu.visible = false
+            menu:remove()
         end)
 
         local categoriesListView = wibox.widget {
@@ -145,8 +146,8 @@ awful.screen.connect_for_each_screen(function(s)
         type = "background",
         visible = false,
     }
-    categorymenu.x = 100
-    categorymenu.y = s.geometry.height - categorymenu.height - 100
+    categorymenu.x = s.geometry.x + 100
+    categorymenu.y = s.geometry.y + s.geometry.height - categorymenu.height - 100
     categorymenu:struts({bottom=0,top=0,left=0,right=0})
     categorymenu:connect_signal("mouse::leave", function ()
         categorymenu.visible = false
@@ -192,8 +193,8 @@ awful.screen.connect_for_each_screen(function(s)
         visible = false,
     })
     menubar.categorymenu = categorymenu
-    menubar.x = 0
-    menubar.y = s.geometry.height - menubar.height - 61
+    menubar.x = s.geometry.x + 0
+    menubar.y = s.geometry.y + s.geometry.height - menubar.height - 61
     menubar:struts({bottom=0,top=0,left=0,right=0})
 
 

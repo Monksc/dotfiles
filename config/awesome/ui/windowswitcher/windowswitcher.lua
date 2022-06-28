@@ -19,22 +19,46 @@ awful.screen.connect_for_each_screen(function(s)
                 shape = gears.shape.rounded_rect,
             },
             layout   = {
-                spacing = 5,
-                forced_num_rows = 2,
-                layout = wibox.layout.grid.horizontal
+                spacing = 4,
+                layout = wibox.layout.fixed.horizontal
             },
             widget_template = {
                 {
                     {
-                        id     = 'clienticon',
-                        widget = awful.widget.clienticon,
+                        {
+                            {
+                                id     = 'clienticon',
+                                widget = awful.widget.clienticon,
+                                valign = 'center',
+                            },
+                            top = 16,
+                            right = 4,
+                            down = 16,
+                            left = 4,
+                            forced_width = 128,
+                            forced_height = 128,
+                            widget  = wibox.container.margin,
+                        },
+                        valign = 'center',
+                        halign = 'center',
+                        widget = wibox.container.place,
                     },
-                    margins = 4,
-                    widget  = wibox.container.margin,
+                    {
+                        {
+                            id     = 'text_role',
+                            align  = 'center',
+                            valign = 'center',
+                            widget = wibox.widget.textbox,
+                        },
+                        valign = 'center',
+                        halign = 'center',
+                        widget = wibox.container.place,
+                    },
+                    layout = wibox.layout.fixed.vertical,
                 },
                 id              = 'background_role',
-                forced_width    = 48,
-                forced_height   = 48,
+                forced_width    = 256,
+                forced_height   = 194,
                 widget          = wibox.container.background,
                 create_callback = function(self, c, index, objects) --luacheck: no unused
                     self:get_children_by_id('clienticon')[1].client = c

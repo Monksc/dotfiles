@@ -23,6 +23,7 @@ require("awful.hotkeys_popup.keys")
 require("config")
 require("ui")
 require("notifs")
+local helpers = require("helpers")
 local windowswitcher = require('ui.windowswitcher')
 
                                               
@@ -147,31 +148,53 @@ editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 
--- globalkeys = gears.table.join(
---     globalkeys,
---     awful.key({ modkey,           }, "Tab",
---         function ()
---             windowswitcher.show()
---             root.keys(geers.table.join(
---                 awful.key({ modkey, "Shift"   }, "Tab",
---                     function ()
---                         windowswitcher.show()
---                     end),
---                 awful.key({  }, "Super_L", function () end),
---                 awful.key({ "Mod4" }, "Super_L", function() print("does not happen") end, function()
---                     windowswitcher.close()
---                 end)
---             ))
---         end)
---     -- awful.key({ modkey, "Shift"   }, "Tab",
---     --     function ()
---     --         windowswitcher.show()
---     --     end),
---     -- awful.key({  }, "Super_L", function () end),
---     -- awful.key({ "Mod4" }, "Super_L", function() print("does not happen") end, function()
---     --     windowswitcher.close()
---     -- end)
--- )
+function release_tab()
+    helpers.modkey_released_event_handler(
+        function(mod, key, event)
+            if event == 'press' and key == 'Tab' then
+                local contains_shift = false
+                for k in pairs(mod) do
+                    if mod[k] == 'Shift' then
+                        contains_shift = true
+                    end
+                end
+
+                if contains_shift then
+                    awful.client.focus.byidx(1)
+                    if client.focus then
+                        client.focus:raise()
+                    end
+                else
+                    awful.client.focus.byidx(-1)
+                    if client.focus then
+                        client.focus:raise()
+                    end
+                end
+            end
+        end,
+        function()
+            windowswitcher.close()
+        end
+    )
+end
+
+globalkeys = gears.table.join(
+    globalkeys,
+    awful.key({ modkey,           }, "Tab",
+        function ()
+            windowswitcher.show()
+        end, function ()
+            release_tab()
+        end
+    ),
+    awful.key({ modkey, "Shift"   }, "Tab",
+        function ()
+            windowswitcher.show()
+        end, function ()
+            release_tab()
+        end
+    )
+)
 root.keys(globalkeys)
 
 require("signals")

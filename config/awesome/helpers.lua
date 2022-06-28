@@ -57,4 +57,36 @@ function helpers.add_hover_cursor(w, hover_cursor)
     end)
 end
 
+function helpers.modkey_released_event_handler(handle_keys, event_modkey_released)
+    if exit_screen_grabber then
+        return
+    end
+
+    exit_screen_grabber = awful.keygrabber.run(
+        function(mod, key, event)
+            if event == 'release' and key == 'Super_L' then
+                event_modkey_released()
+                modkey_released_timer = nil
+                awful.keygrabber.stop(exit_screen_grabber)
+                exit_screen_grabber = nil
+            else
+                handle_keys(mod, key, event)
+            end
+        end
+    )
+end
+
+function helpers.dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. helpers.dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
+end
+
 return helpers

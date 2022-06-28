@@ -54,7 +54,11 @@ theme.widget_bg = "#ffffff0f"
 theme.widget_fg = "#d5d5d5"
 theme.widget_bold_fg = "#ffffff"
 
-theme.tasklist_bg_focus = "#ff0000"
+-- tasklist_[bg|fg]_[focus|urgent]
+theme.tasklist_bg_focus = "#303030"
+theme.tasklist_bg_urgent = "#ff0000"
+theme.tasklist_fg_focus = "#ffffff"
+theme.tasklist_fg_urgent = "#ffffff"
 
 theme.taglist_fg = "#ff0000"
 theme.taglist_fg_empty = "#6f6f6f"

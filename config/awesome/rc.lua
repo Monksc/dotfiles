@@ -199,7 +199,7 @@ root.keys(globalkeys)
 
 require("signals")
 
-if false then
+if true then
     -- awful.util.spawn(terminal)
     -- local screen = awful.screen.focused()
     -- local tag = screen.tags[2]

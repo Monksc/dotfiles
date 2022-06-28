@@ -145,7 +145,7 @@ naughty.connect_signal("request::display", function(n)
                         bottom = dpi(10),
                         widget = wibox.container.margin
                     },
-                    bg = "#ffffff",
+                    bg = beautiful.notification_bg,
                     shape = helpers.rrect(beautiful.border_radius),
                     widget = wibox.container.background
                 },

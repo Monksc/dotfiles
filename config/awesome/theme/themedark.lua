@@ -66,7 +66,19 @@ theme.taglist_fg_occupied = "#4c4c4c"
 
 -- notif
 
+theme.notification_font = "SF Pro Bold 18"
+theme.notification_bg   = "#303030"
+theme.notification_fg   = "#ececec"
+-- notification_[width|height|margin]
+-- notification_[border_color|border_width|shape|opacity]
 theme.notification_icon = gfs.get_configuration_dir() .. "icons/notifications/notif.png"
+
+-- rnotification.connect_signal('request::rules', function()
+--     rnotification.append_rule {
+--         rule       = { urgency = 'critical' },
+--         properties = { bg = '#ff0000', fg = '#ffffff' }
+--     }
+-- end)
 
 theme.icon_theme = nil
 

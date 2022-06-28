@@ -13,7 +13,9 @@ awful.screen.connect_for_each_screen(function(s)
     s.tabpopup = awful.popup {
         widget = awful.widget.tasklist {
             screen   = s,
-            filter   = awful.widget.tasklist.filter.allscreen,
+            -- filter   = awful.widget.tasklist.filter.allscreen,
+            -- filter   = awful.widget.tasklist.filter.alltags,
+            filter   = awful.widget.tasklist.filter.currenttags,
             buttons  = tasklist_buttons,
             style    = {
                 shape = gears.shape.rounded_rect,

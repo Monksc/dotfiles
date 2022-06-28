@@ -2,8 +2,10 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local naughty = require("naughty")
 local dpi = beautiful.xresources.apply_dpi
 local helpers = require('helpers')
+local sounds = require('sounds')
 
 -- Set colors
 local active_color = {
@@ -48,6 +50,17 @@ function update_tooltip()
     tt.text = result:sub(1, -2)
 end
 
+function sendout_lowbattery_notif(old_value, new_value, marked_value)
+    if new_value <= marked_value and old_value > marked_value then
+        naughty.notify({
+            title = "Low Battery",
+            message = "Battery percentage is at " .. new_value .. "%",
+            timeout = 20
+        })
+        awful.spawn('mpv '.. sounds.mp3.notification)
+    end
+end
+
 function update_battery()
     local handle = io.popen('cat /sys/class/power_supply/BAT1/capacity')
     local result = handle:read("*a")
@@ -70,6 +83,11 @@ function update_battery()
         fill_color = normal_battery_color
         bg_color = active_background_color
     end
+
+    sendout_lowbattery_notif(battery_bar.value, value, 20)
+    sendout_lowbattery_notif(battery_bar.value, value, 10)
+    sendout_lowbattery_notif(battery_bar.value, value, 5)
+    sendout_lowbattery_notif(battery_bar.value, value, 3)
 
     battery_bar.value = value
     battery_bar.color = fill_color
